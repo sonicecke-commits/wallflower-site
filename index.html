@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wallflower Waitlist</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Wallflower: a swivel wall mount that gets your bike off the hallway floor. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a real-photo hero, one short scroll moment (the bike goes up the wall), then full-width sections: photos, the "will it work" checker, the kit, questions, the waitlist. */
+:root{
+  --plaster:#F2EEE7; --plaster-2:#E8E1D5; --oak:#C9A27A; --oak-2:#B48960; --graphite:#24272B; --muted:#4F5257; --signal:#FF5B24; --signal-ink:#B83A0D;
+  --bg:var(--plaster); --surface:var(--plaster-2); --fg:var(--graphite); --fg-2:var(--muted); --accent:var(--signal); --accent-text:var(--signal-ink); --on-accent:#1B1D20;
+  --field:var(--graphite); --on-field:#F2EEE7; --stud:#D9CFBF;
+  --display:"Bricolage Grotesque","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --s-sm:15px; --s-body:clamp(17px,1.15vw,19px); --s-h3:clamp(22px,1.8vw,28px); --s-h2:clamp(34px,4vw,58px); --s-h1:clamp(36px,5vw,74px);
+  --gutter:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1B1D20;--surface:#24272B;--fg:#EEE9E1;--fg-2:#B9B4AC;--accent:#FF6B38;--accent-text:#FF8E63;--on-accent:#1B1D20;--field:#101113;--on-field:#EEE9E1;--stud:#34383D;--oak:#B48E66;--oak-2:#9C7853;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1B1D20;--surface:#24272B;--fg:#EEE9E1;--fg-2:#B9B4AC;--accent:#FF6B38;--accent-text:#FF8E63;--on-accent:#1B1D20;--field:#101113;--on-field:#EEE9E1;--stud:#34383D;--oak:#B48E66;--oak-2:#9C7853;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 var(--s-body)/1.55 var(--body);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.035em;font-weight:800}
+h1{font-size:var(--s-h1);line-height:.95}
+h2{font-size:var(--s-h2);line-height:1}
+h3{font-size:var(--s-h3);line-height:1.1;letter-spacing:-.02em;font-weight:600}
+p{margin:0;max-width:44ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.inner{max-width:1360px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border:0;border-radius:0;background:var(--accent);color:var(--on-accent);font:700 17px/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--bg)}
+.bar .inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px}
+.word{display:flex;align-items:center;gap:10px;font:800 24px/1 var(--display);letter-spacing:-.04em;text-decoration:none}
+.word .o{display:inline-block;width:.6em;height:.9em;margin:0 .01em;vertical-align:-.03em}
+.bar nav{display:flex;gap:28px;align-items:center;font-size:var(--s-sm);font-weight:600}
+.bar nav a{text-decoration:none}
+.bar nav a:hover{color:var(--accent-text)}
+.bar .btn{min-height:44px;padding:0 18px;font-size:15px}
+@media (max-width:760px){.bar nav .opt{display:none}}
+
+/* hero: copy beside one big real photo */
+.hero .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,4vw,72px);align-items:center;padding-block:clamp(24px,4vw,56px) clamp(72px,8vw,120px)}
+.hero .copy{display:flex;flex-direction:column;gap:24px}
+.hero .lede{font-size:clamp(19px,1.5vw,23px);max-width:34ch}
+.hero .row{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:center}
+.hero .small{font-size:var(--s-sm);color:var(--fg-2)}
+.hero figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.hero figure img{width:100%;height:min(78svh,820px);object-fit:cover;object-position:50% 22%}
+@media (max-width:860px){.hero .inner{grid-template-columns:1fr}.hero figure{order:-1}.hero figure img{height:52svh}}
+
+/* the one scroll moment: the bike goes up while you scroll a little over one screen */
+.moment{height:190vh;background:var(--surface)}
+.moment .pin{position:sticky;top:64px;height:calc(100svh - 64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,72px);max-width:1360px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.moment svg{width:100%;height:min(76svh,720px)}
+.moment .steps{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:18px}
+.moment .steps li{display:flex;flex-direction:column;gap:4px;color:var(--fg-2);transition:color .3s ease}
+.moment .steps li b{font:700 var(--s-h3)/1.15 var(--display);letter-spacing:-.02em}
+.moment .steps li.on{color:var(--fg)}
+.moment .steps li.on b{color:var(--accent-text)}
+@media (max-width:860px){.moment{height:170vh}.moment .pin{grid-template-columns:1fr;align-content:center;gap:8px}.moment svg{height:44svh}.moment .steps{margin-top:8px;gap:10px}.moment .steps li span{display:none}}
+/* scene parts */
+.wall{fill:var(--surface)} .floor{fill:var(--oak)} .floor-edge{fill:var(--oak-2)}
+.stud{fill:var(--stud)} .scan{fill:var(--accent);opacity:.18}
+.plate{fill:var(--oak-2)} .hook{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round}
+.tyre{fill:none;stroke:var(--fg);stroke-width:8}
+.rim{fill:none;stroke:var(--fg-2);stroke-width:1.6}
+.frame{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.kit-parts{fill:none;stroke:var(--fg);stroke-width:5.5;stroke-linecap:round}
+.label{fill:var(--fg);font:600 13px var(--body)}
+.flash{fill:none;stroke:var(--accent);stroke-width:3}
+.band{fill:var(--accent);opacity:0}
+.shoes{fill:var(--fg-2)}
+
+
+/* sections after the film */
+.sec{padding-block:clamp(96px,12vw,200px)}
+.sec .head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(40px,5vw,72px)}
+
+/* real life: photo pair */
+.pair{display:grid;grid-template-columns:7fr 5fr;gap:clamp(16px,2vw,28px);align-items:end}
+.pair figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.pair img{width:100%;object-fit:cover}
+.pair .a img{aspect-ratio:3/2}
+.pair .b img{aspect-ratio:4/5}
+figcaption{font-size:var(--s-sm);color:var(--fg-2)}
+figcaption b{color:var(--fg);font-weight:700}
+.drift{overflow:hidden}
+@media (prefers-reduced-motion:no-preference){.drift img{transform:scale(1.06);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}.drift.in img{transform:scale(1)}}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+
+/* checker */
+.check{background:var(--surface)}
+.check-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,4vw,72px);align-items:start}
+.q{border:0;margin:0 0 28px;padding:0;min-width:0}
+.q legend{font:700 var(--s-body)/1.3 var(--body);margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;background:var(--bg);color:var(--fg);font:600 16px/1 var(--body);transition:background-color .15s ease,color .15s ease,transform .15s ease}
+.chip input:hover+span{transform:translateY(-1px)}
+.chip input:checked+span{background:var(--fg);color:var(--bg)}
+.chip input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.result{position:sticky;top:96px;background:var(--field);color:var(--on-field);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.result .big{font:800 clamp(52px,6vw,88px)/.9 var(--display);letter-spacing:-.05em;color:var(--accent)}
+.result .unit{font:600 18px/1.3 var(--body)}
+.result h3{color:var(--on-field)}
+.result p{max-width:none;color:var(--on-field);opacity:.92}
+.result svg{width:100%;height:auto;max-height:150px}
+.result .verdict{display:inline-flex;align-self:flex-start;padding:6px 12px;font:700 15px/1.2 var(--body);background:var(--accent);color:var(--on-accent)}
+.result .verdict.warn{background:var(--oak);color:#24272B}
+.result .btn{background:var(--on-field);color:var(--field);align-self:flex-start}
+@media (max-width:860px){.check-grid{grid-template-columns:1fr}.result{position:static}}
+
+/* kit: pinned heading, passing rows */
+.kit{background:var(--accent);color:#1B1D20}
+.kit .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,64px)}
+.kit h2{position:sticky;top:96px;font-size:clamp(56px,6.6vw,104px);color:#1B1D20}
+.kit .pin p{margin-top:20px;color:#1B1D20;font-weight:500}
+.kit .rows{display:flex;flex-direction:column;gap:clamp(48px,5vw,72px)}
+.item{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;align-items:start}
+.item:nth-child(even){grid-template-columns:minmax(0,1fr) 200px}
+.item:nth-child(even) .pic{order:2}
+.item .pic{background:#F2EEE7;aspect-ratio:3/4;display:grid;place-items:center;overflow:hidden}
+.item .pic img{width:100%;height:100%;object-fit:cover}
+.item .pic svg{width:76%;height:auto}
+.item h3{color:#1B1D20;margin-bottom:12px}
+.item ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.item li{max-width:40ch;color:#1B1D20}
+@media (max-width:860px){.kit .inner{grid-template-columns:1fr}.kit h2{position:sticky;top:64px;background:var(--accent);padding-block:12px;font-size:12vw;z-index:2}.item,.item:nth-child(even){grid-template-columns:1fr}.item:nth-child(even) .pic{order:0}.item .pic{aspect-ratio:4/3}}
+
+/* walls: showcase with photos */
+.walls .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:center}
+.walls .photos{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:end}
+.walls .photos figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.walls .photos .tall img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.walls .photos .sq img{aspect-ratio:1;object-fit:cover;width:100%}
+.walls .copy{display:flex;flex-direction:column;gap:22px}
+@media (max-width:860px){.walls .inner{grid-template-columns:1fr}.walls .copy{order:-1}}
+
+/* questions */
+.faq .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,72px);align-items:start}
+.facts{display:flex;flex-direction:column;gap:18px;margin-top:28px}
+.facts div{display:flex;flex-direction:column;gap:2px;max-width:44ch}
+.facts b{font-weight:700}
+.acc{display:flex;flex-direction:column;gap:12px}
+.acc details{background:var(--surface);padding:20px 24px}
+.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font:700 20px/1.3 var(--body)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:600 24px/1 var(--display);color:var(--accent-text);transition:transform .2s ease}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc details p{margin-top:12px;color:var(--fg-2);max-width:60ch}
+.faq .side img{width:100%;aspect-ratio:3/4;object-fit:cover}
+@media (max-width:860px){.faq .inner{grid-template-columns:1fr}}
+
+/* waitlist */
+.join{background:var(--field);color:var(--on-field)}
+.join .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:center}
+.join p{color:var(--on-field)}
+.join .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
+form.signup{display:flex;flex-direction:column;gap:16px;margin-top:28px;max-width:520px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font:600 15px/1.3 var(--body)}
+form.signup input,form.signup select{width:100%;height:56px;border:0;border-radius:0;background:var(--on-field);color:#24272B;font:400 17px var(--body);padding:0 16px}
+.consent{font-size:var(--s-sm);opacity:.85}
+.done{display:none;font:700 var(--s-h3)/1.2 var(--display)}
+.is-done .done{display:block} .is-done form{display:none}
+@media (max-width:860px){.join .inner{grid-template-columns:1fr}}
+
+/* privacy */
+.privacy .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,72px)}
+.policy{display:flex;flex-direction:column;gap:14px}
+.policy h3{font-size:20px;margin-top:10px}
+.policy ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;max-width:62ch}
+.policy p{max-width:62ch}
+@media (max-width:860px){.privacy .inner{grid-template-columns:1fr}}
+
+/* footer */
+footer{padding-block:18svh 32px}
+footer .inner{display:grid;grid-template-columns:1fr auto 1fr;gap:16px 24px;align-items:end;font-size:var(--s-sm)}
+footer .mid{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+footer .end{text-align:right;color:var(--fg-2)}
+footer .credits{grid-column:1/-1;color:var(--fg-2);max-width:none}
+@media (max-width:760px){footer .inner{grid-template-columns:1fr}footer .mid{justify-content:flex-start}footer .end{text-align:left}}
+
+/* entrances */
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .rise.in{opacity:1;transform:none}
+  .js-off .rise{opacity:1;transform:none}
+}
+
+/* MailerLite embedded form, restyled to the graphite waitlist section. Its CSS uses #mlb2-N ids, so rules double the id and use !important */
+#signup#signup{margin-top:28px;max-width:520px}
+#signup#signup .ml-form-embedContainer,#signup#signup .ml-form-embedWrapper,#signup#signup .ml-form-embedBody,#signup#signup .ml-form-successBody{background:transparent!important;border:0!important;padding:0!important;max-width:none!important;width:100%!important}
+#signup#signup .ml-form-embedContent{display:none!important}
+#signup#signup .ml-field-signup_source,#signup#signup .ml-field-fit_answers{display:none!important}
+#signup#signup .ml-form-fieldRow{margin:0 0 16px!important}
+#signup#signup label,#signup#signup .label-description p{font:600 15px/1.3 Figtree,sans-serif!important;color:var(--on-field)!important}
+#signup#signup .ml-form-checkboxRow .label-description p{font-weight:400!important;opacity:.9}
+#signup#signup .ml-form-successContent h4,#signup#signup .ml-form-successContent p{font-family:"Bricolage Grotesque",sans-serif!important;color:var(--on-field)!important;text-align:left!important}
+#signup#signup input.form-control,#signup#signup select.custom-select{height:56px!important;border:0!important;border-radius:0!important;background:var(--on-field)!important;color:#24272B!important;font:400 17px Figtree,sans-serif!important;padding:0 16px!important}
+#signup#signup input.form-control:focus,#signup#signup select.custom-select:focus{outline:3px solid var(--accent)!important;outline-offset:2px!important}
+#signup#signup .ml-form-embedSubmit button.primary,#signup#signup .ml-form-embedSubmit button.loading{height:56px!important;border:0!important;border-radius:0!important;background:var(--accent)!important;color:var(--on-accent)!important;font:700 17px Figtree,sans-serif!important;width:100%!important}
+#signup#signup .ml-form-embedSubmit button.primary:hover{filter:brightness(1.06)}
+</style>
+
+<header class="bar"><div class="inner">
+  <a class="word" href="#top" aria-label="Wallflower, back to top">
+    <span class="wm">wallfl<svg class="o" viewBox="0 0 20 30" aria-hidden="true"><rect x="5.5" y="0" width="9" height="3.6" fill="var(--oak-2)"/><path d="M10 2.5v8" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="20" r="7.6" fill="none" stroke="currentColor" stroke-width="2.6"/><g stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><line x1="10" y1="20" x2="10.00" y2="13.40"/><line x1="10" y1="20" x2="16.28" y2="17.96"/><line x1="10" y1="20" x2="13.88" y2="25.34"/><line x1="10" y1="20" x2="6.12" y2="25.34"/><line x1="10" y1="20" x2="3.72" y2="17.96"/></g><circle cx="10" cy="20" r="1.6" fill="var(--accent)"/></svg>wer</span>
+  </a>
+  <nav aria-label="Main">
+    <a class="opt" href="#fit">Will it work?</a>
+    <a class="opt" href="#kit">The kit</a>
+    <a class="opt" href="#questions">Questions</a>
+    <a class="btn" href="#join">Join the waitlist</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-h"><div class="inner">
+  <div class="copy">
+    <h1 id="hero-h">Bikes make<br>great wallflowers.</h1>
+    <p class="lede">Wallflower is a swivel wall mount for small homes. Your bike leaves the hallway floor and hangs on the wall instead.</p>
+    <div class="row"><a class="btn" href="#join">Get first dibs</a><span class="small">Not on sale yet. Waitlist only.</span></div>
+  </div>
+  <figure><img src="assets/cafe-wall.jpg" width="1100" height="1799" alt="A vintage bicycle hung high on a wall above a café counter."><figcaption>A bike on a café wall. That's the idea, at home.</figcaption></figure>
+</div></section>
+
+<section class="moment" id="moment" aria-labelledby="moment-h">
+  <div class="pin">
+    <svg id="scene" viewBox="0 0 400 520" aria-hidden="true">
+      <rect class="wall" x="0" y="0" width="400" height="440"/>
+      <rect class="floor" x="0" y="440" width="400" height="80"/>
+      <rect class="floor-edge" x="0" y="440" width="400" height="6"/>
+      <rect id="band" class="band" x="54" y="446" width="270" height="40"/>
+      <text id="bandlabel" class="label" x="140" y="472" opacity="0">≈ 1 m² back</text>
+      <circle id="flash" class="flash" cx="190" cy="156" r="10" opacity="0"/>
+      <g id="swivel"><g id="bike" transform="translate(110 400)">
+        <circle class="tyre" cx="0" cy="0" r="40"/><circle class="rim" cx="0" cy="0" r="31"/>
+        <circle class="tyre" cx="130" cy="0" r="40"/><circle class="rim" cx="130" cy="0" r="31"/>
+        <path class="frame" d="M0 0L54 2L41-60Z M41-60L113-60L54 2 M113-60L130 0"/>
+        <path class="kit-parts" d="M30-70L54-70 M41-60L38-70 M113-60L110-77L124-81"/>
+        <circle cx="54" cy="2" r="7" fill="var(--fg)"/>
+      </g></g>
+      <g id="plate"><rect class="plate" x="168" y="104" width="40" height="44"/><path class="hook" d="M188 128v18a10 10 0 0 0 10 10"/></g>
+      <g id="shoes" opacity="1"><rect class="shoes" x="300" y="426" width="34" height="14" rx="6"/><rect class="shoes" x="338" y="428" width="32" height="12" rx="6"/></g>
+    </svg>
+    <div>
+      <h2 id="moment-h">Lift. Hook. Done.</h2>
+      <ol class="steps">
+        <li id="st0"><b>Roll it up on the back wheel</b><span>Find a stud first. The kit's stud card shows how.</span></li>
+        <li id="st1"><b>Hook the front wheel</b><span>It hangs by the wheel, so nothing touches the frame.</span></li>
+        <li id="st2"><b>About 1 m² of floor back</b><span>A bike on the floor covers about 175 × 60 cm, or 11 sq ft.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="real-h"><div class="inner">
+  <div class="head rise"><h2 id="real-h">Small homes, big bikes.</h2><p>Most apartments have no bike room. So the bike lives by the sofa or in the hall, and everyone squeezes past it.</p></div>
+  <div class="pair">
+    <figure class="a drift rise"><img src="assets/living.jpg" width="1800" height="1200" alt="A road bike standing in the middle of a bright living room between two chairs." loading="lazy"><figcaption><b>Today.</b> The bike takes the middle of the room.</figcaption></figure>
+    <figure class="b drift rise"><img src="assets/hallway.jpg" width="1300" height="1948" alt="A narrow apartment hallway with oak floor and grey doors, nothing on the floor." loading="lazy"><figcaption><b>What you're after.</b> A hallway you can walk down.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="sec check" id="fit" aria-labelledby="fit-h"><div class="inner">
+  <div class="head rise"><h2 id="fit-h">Will it work in your place?</h2><p>Four taps. You'll see how much floor you get back and anything to know before you drill.</p></div>
+  <div class="check-grid">
+    <form id="checker" class="rise" aria-label="Fit checker">
+      <fieldset class="q"><legend>How many bikes?</legend><div class="chips">
+        <label class="chip"><input type="radio" name="n" value="1" checked><span>One</span></label>
+        <label class="chip"><input type="radio" name="n" value="2"><span>Two</span></label>
+        <label class="chip"><input type="radio" name="n" value="3"><span>Three</span></label></div></fieldset>
+      <fieldset class="q"><legend>What kind of bike?</legend><div class="chips">
+        <label class="chip"><input type="radio" name="bike" value="road" checked><span>Road or gravel</span></label>
+        <label class="chip"><input type="radio" name="bike" value="hybrid"><span>Hybrid or commuter</span></label>
+        <label class="chip"><input type="radio" name="bike" value="mtb"><span>Mountain</span></label>
+        <label class="chip"><input type="radio" name="bike" value="ebike"><span>E-bike</span></label></div></fieldset>
+      <fieldset class="q"><legend>What's the wall?</legend><div class="chips">
+        <label class="chip"><input type="radio" name="wall" value="wood" checked><span>Drywall on wood studs</span></label>
+        <label class="chip"><input type="radio" name="wall" value="metal"><span>Drywall on metal studs</span></label>
+        <label class="chip"><input type="radio" name="wall" value="masonry"><span>Brick or concrete</span></label>
+        <label class="chip"><input type="radio" name="wall" value="unsure"><span>Not sure</span></label></div></fieldset>
+      <fieldset class="q"><legend>Do you rent or own?</legend><div class="chips">
+        <label class="chip"><input type="radio" name="home" value="own" checked><span>I own</span></label>
+        <label class="chip"><input type="radio" name="home" value="rent"><span>I rent</span></label></div></fieldset>
+    </form>
+    <div class="result rise" aria-live="polite">
+      <div><div class="big" id="r-big">1.05 m²</div><div class="unit" id="r-unit">about 11 sq ft of floor back</div></div>
+      <svg id="r-plan" viewBox="0 0 300 110" role="img" aria-label="Floor plan"></svg>
+      <span class="verdict" id="r-verdict">Good fit</span>
+      <h3 id="r-head">Wood studs are the easy case.</h3>
+      <p id="r-text">Find a stud, drive two screws, hang the bike.</p>
+      <a class="btn" href="#join" id="r-join">Join with these answers</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec kit" id="kit" aria-labelledby="kit-h"><div class="inner">
+  <div class="pin"><h2 id="kit-h">The float kit</h2><p>Planned contents. We'll confirm every detail, and the tested load rating, before anything goes on sale.</p></div>
+  <div class="rows">
+    <div class="item rise">
+      <div class="pic"><svg viewBox="0 0 120 160" aria-hidden="true"><rect x="38" y="20" width="44" height="58" fill="#B48960"/><path d="M60 52v40a22 22 0 0 0 22 22" fill="none" stroke="#24272B" stroke-width="9" stroke-linecap="round"/><circle cx="50" cy="34" r="4" fill="#24272B"/><circle cx="70" cy="66" r="4" fill="#24272B"/></svg></div>
+      <div><h3>Swivel wall mount</h3><ul><li>Oak wall plate with a steel arm</li><li>Hangs the bike by its front wheel</li><li>Turns sideways to sit closer to the wall</li><li>Load rating published before launch; we're aiming for 25 kg</li></ul></div>
+    </div>
+    <div class="item rise">
+      <div class="pic"><img src="assets/detail.jpg" width="1100" height="1650" alt="Close-up of a black bicycle's front wheel and frame against a white wall." loading="lazy"></div>
+      <div><h3>Wall pad</h3><ul><li>Sits where the back tyre rests</li><li>Keeps tyre marks off the paint</li><li>Wipes clean</li></ul></div>
+    </div>
+    <div class="item rise">
+      <div class="pic"><svg viewBox="0 0 120 160" aria-hidden="true"><rect x="22" y="26" width="76" height="108" fill="#fff"/><rect x="34" y="40" width="10" height="80" fill="#C9A27A"/><rect x="76" y="40" width="10" height="80" fill="#C9A27A"/><rect x="30" y="74" width="60" height="10" fill="#FF5B24"/></svg></div>
+      <div><h3>Stud card</h3><ul><li>How to find a stud with a knock and a magnet</li><li>Which screws for wood, metal or masonry</li><li>Where to hang it so the bike clears the floor</li></ul></div>
+    </div>
+    <div class="item rise">
+      <div class="pic"><img src="assets/brick.jpg" width="1300" height="867" alt="A black road bike standing against a white-painted brick wall indoors." loading="lazy"></div>
+      <div><h3>Move-out patch kit</h3><ul><li>Filler and a small putty knife</li><li>For the two screw holes when you leave</li><li>Ask your landlord before you drill</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec walls" aria-labelledby="walls-h"><div class="inner">
+  <figure class="rise" style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="assets/shop.jpg" width="1800" height="1200" alt="A long bike shop with bicycles hung along the walls." loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover"><figcaption>Bike shops hang them up for a reason.</figcaption></figure>
+  <div class="copy rise">
+    <h2 id="walls-h">Bikes look good on walls.</h2>
+    <p>Cafés and bike shops figured this out years ago. A bike on the wall reads as something you chose, not something in the way.</p>
+    <p>Wallflower brings that to a one-bedroom flat: one mount, one bike, and the floor back.</p>
+  </div>
+</div></section>
+
+<section class="sec faq" id="questions" aria-labelledby="faq-h"><div class="inner">
+  <div>
+    <h2 id="faq-h">Questions</h2>
+    <div class="facts">
+      <div><b>Walls</b><span>Into a wooden or metal stud, or masonry with the right anchors.</span></div>
+      <div><b>Bikes</b><span>Road, gravel, hybrid and most mountain bikes. Not e-bikes in the first kit.</span></div>
+      <div><b>Renting</b><span>Most leases allow small holes you fill when you leave. Ask first.</span></div>
+    </div>
+  </div>
+  <div class="acc">
+    <details><summary>When can I buy one?</summary><p>Not yet. We're checking that enough people want it before we order any stock. The waitlist hears first.</p></details>
+    <details><summary>How much will it cost?</summary><p>We haven't set a price. The waitlist hears first.</p></details>
+    <details><summary>Why not e-bikes?</summary><p>E-bikes often weigh 20-30 kg. We won't rate the first kit for that until it's tested.</p></details>
+    <details><summary>I can't drill. Anything for me?</summary><p>We're looking at a lean-on stand that needs no holes. Pick "I rent" in the checker and tell us in the sign-up form, so we know how many people want it.</p></details>
+    <details><summary>Why are the drawings drawings?</summary><p>Wallflower is run with AI help. The drawings and videos are AI-made illustrations, and the photos on this page are stock photos of real homes and shops, not our product. Real photos of the kit come when there's a real kit.</p></details>
+  </div>
+</div></section>
+
+<section class="sec join" id="join" aria-labelledby="join-h"><div class="inner">
+  <div id="signup-box">
+    <h2 id="join-h">Be first on the wall.</h2>
+    <p style="margin-top:18px">We'll email you when the float kit is ready to buy. Nothing else unless you choose to get more.</p>
+    <div class="wf-embed" id="signup">
+      <!-- MailerLite Universal -->
+      <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '2745570');
+      </script>
+      <!-- End MailerLite Universal -->
+      <div class="ml-embedded" data-form="RT6XyW"></div>
+      <p class="consent">We'll email you when the float kit is ready to buy. Unsubscribe any time. We don't sell your email. <a href="#privacy">Privacy notice</a></p>
+    </div>
+  </div>
+  <div class="pic"><figure class="drift" style="margin:0"><img src="assets/hallway.jpg" width="1300" height="1948" alt="The same clear hallway, oak floor and grey doors." loading="lazy" style="aspect-ratio:4/3;object-position:50% 70%"></figure></div>
+</div></section>
+
+<section class="sec privacy" id="privacy" aria-labelledby="priv-h"><div class="inner">
+  <div><h2 id="priv-h">Privacy</h2><p style="margin-top:16px">Effective date: October 29, 2026. This covers the waitlist only. Nothing is on sale yet, and this will be replaced with a fuller policy before anything is.</p></div>
+  <div class="policy">
+    <p>Wallflower is a one-person business in Boulder, Colorado. This explains what I collect when you join the waitlist, why, and who else sees it.</p>
+    <h3>What I collect</h3>
+    <ul><li>Your email address.</li><li>Your answers to the optional questions, including your fit-checker answers if you used it.</li><li>Which link brought you here (for example, from Instagram or TikTok), so I can see which posts work.</li><li>When you signed up and confirmed, and whether you open or click my emails (my email tool records this).</li><li>If you email me: your address and what you write.</li></ul>
+    <h3>Why</h3>
+    <p>To email you when the float kit is ready to buy, to learn which posts and options interest people (I look at totals, not at you personally), and to answer you if you write. I won't send other emails unless you choose to get more.</p>
+    <h3>Who else sees it</h3>
+    <p>I don't sell your personal information and I don't share it for advertising. These services handle it for me:</p>
+    <ul><li>MailerLite runs the sign-up form, stores the list and sends the email. Its servers may be in the European Union.</li><li>Google (Gmail) holds my business email.</li><li>Anthropic: I use an AI assistant (Claude) to help run the business. It may read sign-up numbers and messages you send me.</li><li>GitHub hosts this site and Google Fonts serves its fonts. They receive your IP address and browser details when the page loads.</li></ul>
+    <p>The site has no analytics or advertising trackers of its own. MailerLite's form script may set cookies so the form works.</p>
+    <h3>How long I keep it</h3>
+    <p>Until you unsubscribe or ask me to delete it. After you unsubscribe I keep only a note of your address so I don't email it again.</p>
+    <h3>Your choices</h3>
+    <ul><li>Unsubscribe with the link in any email.</li><li>Ask for a copy, a correction or deletion by emailing wallflower.bikes@gmail.com. I aim to reply within 10 business days.</li><li>Don't sell my information: I don't sell it, but you can still send that request (for example, under Nevada law) to the same address.</li><li>Do Not Track: this site doesn't track you across other sites, so a Do Not Track signal changes nothing here.</li></ul>
+    <h3>Children</h3>
+    <p>The waitlist isn't meant for children under 13. If a child has signed up, email me and I'll delete it.</p>
+    <h3>Changes</h3>
+    <p>If this changes, the effective date above changes too. If a change affects how your information is used, I'll say so by email before it applies.</p>
+    <h3>Contact</h3>
+    <p>Wallflower · wallflower.bikes@gmail.com · Boulder, Colorado</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="inner">
+  <span>Wallflower, bike storage for small homes</span>
+  <span class="mid"><a href="#fit">Will it work?</a><a href="#kit">The kit</a><a href="#join">Waitlist</a></span>
+  <span class="end">© 2026 · <a href="#privacy">Privacy</a></span>
+  <p class="credits">Drawings and videos are made with AI. Photos from Pexels under the Pexels licence: <a href="https://www.pexels.com/photo/bike-in-living-room-10969083/">living room</a>, <a href="https://www.pexels.com/photo/narrow-corridor-with-doors-in-apartment-6588570/">hallway</a>, <a href="https://www.pexels.com/photo/bicycle-holding-on-wall-in-hotel-16013165/">café wall</a>, <a href="https://www.pexels.com/photo/bikes-inside-store-2817452/">bike shop</a>, <a href="https://www.pexels.com/photo/black-and-white-photo-of-bicycle-parked-under-white-wall-18491459/">wheel detail</a>, <a href="https://www.pexels.com/photo/bicycle-bike-biker-black-544997/">brick wall</a>.</p>
+</div></footer>
+
+<script>
+(function(){
+
+/* bridge to the MailerLite embed: copies the fit checker's answers and the source tag into its fields once it has loaded */
+var W={fit:'',rent:null,src:'',pick:''};
+function wfSync(){var f=document.querySelector('#signup .ml-embedded form');if(!f)return;
+  function put(n,v){var el=f.querySelector('[name="fields['+n+']"]');if(el&&v)el.value=v}
+  put('fit_answers',W.fit);put('signup_source',W.src);
+  var hf=f.querySelector('select[name="fields[heard_from]"]');if(hf&&W.pick&&!hf.value)for(var i=0;i<hf.options.length;i++)if(hf.options[i].text.trim()===W.pick){hf.selectedIndex=i;break}
+  var dr=f.querySelector('select[name="fields[can_drill]"]');
+  if(dr&&W.rent!==null&&(!dr.value||dr.dataset.auto)){var want=W.rent?'No, I rent or can\'t drill':'Yes';for(var j=0;j<dr.options.length;j++)if(dr.options[j].text.trim()===want){dr.selectedIndex=j;dr.dataset.auto='1';break}
+    if(!dr.dataset.wired){dr.dataset.wired='1';dr.addEventListener('change',function(){delete this.dataset.auto})}}}
+new MutationObserver(wfSync).observe(document.getElementById('signup'),{childList:true,subtree:true});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---- the one scroll moment: progress through #moment lifts the bike; eased toward the target so it glides ---- */
+  var $=function(id){return document.getElementById(id)};
+  var sec=$('moment'),bike=$('bike'),flash=$('flash'),band=$('band'),bl=$('bandlabel'),shoes=$('shoes'),st=[$('st0'),$('st1'),$('st2')];
+  function cl(x,a,b){return Math.max(a,Math.min(b,x))}
+  function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+  function L(a,b,t){return a+(b-a)*t}
+  var A={x:110,y:400,r:0},M={x:150,y:372,r:-26},B={x:188,y:326,r:-90};
+  function draw(t){
+    var s1=cl(t/.6,0,1),s3=cl((t-.65)/.3,0,1),e=ease(s1),p;
+    if(e<.5){var k=e*2;p={x:L(A.x,M.x,k),y:L(A.y,M.y,k),r:L(A.r,M.r,k)}}else{var k2=(e-.5)*2;p={x:L(M.x,B.x,k2),y:L(M.y,B.y,k2),r:L(M.r,B.r,k2)}}
+    bike.setAttribute('transform','translate('+p.x.toFixed(1)+' '+p.y.toFixed(1)+') rotate('+p.r.toFixed(1)+')');
+    var f=cl(1-Math.abs(s1-.98)*12,0,1)*(s3<.3?1:0);flash.setAttribute('opacity',f.toFixed(2));flash.setAttribute('r',(10+(1-f)*14).toFixed(1));
+    band.setAttribute('opacity',(.85*ease(s3)).toFixed(2));bl.setAttribute('opacity',ease(s3).toFixed(2));
+    shoes.setAttribute('transform','translate('+(-70*ease(s3)).toFixed(1)+' 0)');
+    var on=t<.33?0:t<.7?1:2;st.forEach(function(li,i){li.classList.toggle('on',i===on)});
+  }
+  function target(){var r=sec.getBoundingClientRect(),run=r.height-innerHeight+64;return run>0?cl((64-r.top)/run,0,1):1}
+  var cur=target(),raf=0;
+  function loop(){var tg=target();cur+= (tg-cur)*(reduce?1:.14);draw(cur);if(Math.abs(tg-cur)>.001){raf=requestAnimationFrame(loop)}else{cur=tg;draw(cur);raf=0}}
+  function kick(){if(!raf)raf=requestAnimationFrame(loop)}
+  addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw(cur);
+
+  /* ---- entrances and slow photo drift ---- */
+  var els=[].slice.call(document.querySelectorAll('.rise,.drift'));
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target,sib=[].slice.call(el.parentNode.children).filter(function(x){return x.classList.contains('rise')}),i=Math.max(0,sib.indexOf(el));setTimeout(function(){el.classList.add('in')},i*80);io.unobserve(el)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el)});
+    setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},4000);
+  }else{els.forEach(function(el){el.classList.add('in')})}
+
+  /* ---- fit checker ---- */
+  var form=$('checker');
+  var COPY={
+    wood:['Good fit','Wood studs are the easy case.','Find a stud with the stud card, drive two screws into it, hang the bike.'],
+    metal:['Good fit, different screws','Metal studs need different fixings.','Metal studs take toggle-style fasteners rather than wood screws. The stud card will say exactly which, before launch.'],
+    masonry:['Works with masonry anchors','Brick and concrete hold well.','You need a masonry drill bit and wall plugs rated for the load. The planned kit is set up for stud walls, so we\'ll list what to buy.'],
+    unsure:['Check first','Knock and listen.','A hollow sound means drywall. A dull, solid sound every 40 cm (16 in) is a stud. The stud card walks you through it.']
+  };
+  function plan(n){
+    var T='font-family="Figtree,Arial,sans-serif" font-size="13" font-weight="600" fill="#F2EEE7"';
+    var s='<rect x="0" y="0" width="300" height="8" fill="#F2EEE7"/><text x="0" y="24" '+T+'>wall</text>';
+    for(var i=0;i<n;i++){var x=60+i*70;s+='<rect x="'+(x-6)+'" y="8" width="12" height="8" fill="#B48960"/><rect x="'+(x-3)+'" y="16" width="6" height="34" fill="#FF6B38"/>'}
+    s+='<rect x="0" y="62" width="300" height="44" fill="#FF6B38" opacity=".28"/><text x="150" y="89" text-anchor="middle" '+T+'>'+n*175+' × 60 cm of floor clear</text>';
+    $('r-plan').innerHTML=s;
+  }
+  function update(){
+    var d=new FormData(form),n=+d.get('n'),bk=d.get('bike'),w=d.get('wall'),h=d.get('home');
+    var m2=(1.05*n),ft=Math.round(11.3*n);
+    $('r-big').textContent=m2.toFixed(2).replace(/\.?0+$/,'')+' m²';
+    $('r-unit').textContent='about '+ft+' sq ft of floor back';
+    var c=COPY[w].slice(),warn=(w!=='wood');
+    if(bk==='ebike'){c=['Not in the first kit','E-bikes are heavier.','E-bikes often weigh 20-30 kg. We won\'t rate the first kit for them until it\'s tested. Join anyway so we know you want one.'];warn=true}
+    else if(bk==='mtb'){c[2]+=' Wide mountain-bike tyres: we\'ll publish the widest tyre it takes before launch.'}
+    if(h==='rent'&&bk!=='ebike'){c[2]+=' Renting: ask your landlord first. The patch kit fills the two screw holes when you leave.'}
+    if(n>1){c[2]+=' '+n+' bikes means '+n+' mounts, about 60 cm apart.'}
+    var v=$('r-verdict');v.textContent=c[0];v.classList.toggle('warn',warn);
+    $('r-head').textContent=c[1];$('r-text').textContent=c[2];plan(n);
+    W.fit=[n+' bike'+(n>1?'s':''),bk,w,h].join(', ');W.rent=h==='rent';wfSync();
+  }
+  form.addEventListener('change',update);update();
+
+  /* ---- source tag: ?src=tiktok (or utm_source) pre-picks "heard from" and fills the hidden field ---- */
+  var q=new URLSearchParams(location.search),raw=(q.get('src')||q.get('utm_source')||'').toLowerCase().slice(0,40);
+  var map={facebook:'Facebook',fb:'Facebook',instagram:'Instagram',ig:'Instagram',tiktok:'TikTok',tt:'TikTok',friend:'A friend'};
+  if(raw){W.src=raw;W.pick=map[raw]||'';wfSync()}
+})();
+</script>
+
+</html>
