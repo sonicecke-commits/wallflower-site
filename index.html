@@ -177,6 +177,46 @@ form.signup input,form.signup select{width:100%;height:56px;border:0;border-radi
 .is-done .done{display:block} .is-done form{display:none}
 @media (max-width:860px){.join .inner{grid-template-columns:1fr}}
 
+
+/* hero: a slow settle on load and a floor-back chip that counts up */
+.hero figure{position:relative}
+.hero figure .frame{overflow:hidden}
+.hero figure img{transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+.hero.on figure img{transform:none}
+.stat{position:absolute;left:-18px;bottom:52px;background:var(--fg);color:var(--bg);padding:14px 18px;display:flex;flex-direction:column;gap:2px}
+.stat b{font:800 clamp(30px,3vw,42px)/1 var(--display);letter-spacing:-.03em;color:var(--accent)}
+.stat>span{font-size:var(--s-sm)}
+@media (max-width:860px){.stat{left:12px;bottom:46px}}
+/* swivel toggle under the steps */
+.swv{margin-top:22px;display:flex;align-items:center;gap:14px}
+.swv button{min-height:48px;padding:0 20px;border:2px solid var(--fg);background:transparent;color:var(--fg);font:700 16px var(--body);cursor:pointer}
+.swv button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.swv small{font-size:var(--s-sm);color:var(--fg-2)}
+#swivel{transition:transform .7s cubic-bezier(.3,.8,.3,1)}
+@media (max-width:860px){.swv{margin-top:10px}.swv small{display:none}}
+/* before/after: drag the line */
+.ba{position:relative;aspect-ratio:16/9;overflow:hidden;user-select:none;touch-action:pan-y;--x:50%;background:var(--surface)}
+.ba img{-webkit-user-drag:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--x))}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1.5px;background:var(--plaster,#F2EEE7);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:var(--x);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:800 20px var(--display);pointer-events:none;border:3px solid #F2EEE7}
+.ba .tag{position:absolute;top:16px;padding:8px 12px;background:rgba(20,22,26,.72);color:#F2EEE7;font:700 14px var(--body)}
+.ba .tag.l{left:16px}.ba .tag.r{right:16px}
+.ba{cursor:ew-resize}.ba input{position:absolute;left:0;right:0;bottom:0;width:100%;height:1px;opacity:0;margin:0;pointer-events:none}
+.ba input:focus-visible~.knob{outline:3px solid var(--fg);outline-offset:3px}
+.ba-cap{margin-top:12px}
+@media (max-width:760px){.ba{aspect-ratio:4/5}}
+/* walls: a swipeable strip of real photos */
+.strip-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.strip-nav{display:flex;gap:10px}
+.strip-nav button{width:52px;height:52px;border:2px solid var(--fg);background:transparent;color:var(--fg);font:800 22px var(--display);cursor:pointer}
+.strip-nav button:hover{background:var(--fg);color:var(--bg)}
+.strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:28px;padding-bottom:10px;scrollbar-width:thin}
+.strip figure{flex:0 0 min(78vw,520px);margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+.strip img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s ease}
+.strip figure:hover img{transform:scale(1.02)}
+@media (prefers-reduced-motion: reduce){.hero figure img,#swivel,.strip img{transition:none}.hero figure img{transform:none}}
+
 /* privacy */
 .privacy .inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,72px)}
 .policy{display:flex;flex-direction:column;gap:14px}
@@ -234,7 +274,9 @@ footer .credits{grid-column:1/-1;color:var(--fg-2);max-width:none}
     <p class="lede">Wallflower is a swivel wall mount for small homes. Your bike leaves the hallway floor and hangs on the wall instead.</p>
     <div class="row"><a class="btn" href="#join">Get first dibs</a><span class="small">Not on sale yet. Waitlist only.</span></div>
   </div>
-  <figure><img src="assets/cafe-wall.jpg" width="1100" height="1799" alt="A vintage bicycle hung high on a wall above a café counter."><figcaption>A bike on a café wall. That's the idea, at home.</figcaption></figure>
+  <figure><div class="frame"><img src="assets/cafe-wall.jpg" width="1100" height="1799" alt="A vintage bicycle hung high on a wall above a café counter."></div>
+    <div class="stat" aria-hidden="true"><b><span id="cnt">0</span> sq ft</b><span>of floor back per bike</span></div>
+    <figcaption>A bike on a café wall. That's the idea, at home.</figcaption></figure>
 </div></section>
 
 <section class="moment" id="moment" aria-labelledby="moment-h">
@@ -263,16 +305,21 @@ footer .credits{grid-column:1/-1;color:var(--fg-2);max-width:none}
         <li id="st1"><b>Hook the front wheel</b><span>It hangs by the wheel, so nothing touches the frame.</span></li>
         <li id="st2"><b>About 1 m² of floor back</b><span>A bike on the floor covers about 175 × 60 cm, or 11 sq ft.</span></li>
       </ol>
+      <div class="swv"><button type="button" id="swv" aria-pressed="false">Swivel it flat</button><small>Turns sideways to sit closer to the wall.</small></div>
     </div>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="real-h"><div class="inner">
   <div class="head rise"><h2 id="real-h">Small homes, big bikes.</h2><p>Most apartments have no bike room. So the bike lives by the sofa or in the hall, and everyone squeezes past it.</p></div>
-  <div class="pair">
-    <figure class="a drift rise"><img src="assets/living.jpg" width="1800" height="1200" alt="A road bike standing in the middle of a bright living room between two chairs." loading="lazy"><figcaption><b>Today.</b> The bike takes the middle of the room.</figcaption></figure>
-    <figure class="b drift rise"><img src="assets/hallway.jpg" width="1300" height="1948" alt="A narrow apartment hallway with oak floor and grey doors, nothing on the floor." loading="lazy"><figcaption><b>What you're after.</b> A hallway you can walk down.</figcaption></figure>
+  <div class="ba rise" id="ba">
+    <img src="assets/living.jpg" width="1800" height="1200" alt="Today: a road bike standing in the middle of a living room between two chairs." loading="lazy">
+    <img class="after" src="assets/hallway.jpg" width="1300" height="1948" alt="What you're after: a narrow hallway with an oak floor and nothing on it." loading="lazy" style="object-position:50% 70%">
+    <span class="tag l">Today</span><span class="tag r">What you're after</span>
+    <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the cluttered room and the clear hallway">
+    <span class="line"></span><span class="knob" aria-hidden="true">↔</span>
   </div>
+  <p class="ba-cap"><small style="color:var(--fg-2)">Drag the line. Two real photos of two different homes (stock, Pexels), not our product.</small></p>
 </div></section>
 
 <section class="sec check" id="fit" aria-labelledby="fit-h"><div class="inner">
@@ -330,13 +377,16 @@ footer .credits{grid-column:1/-1;color:var(--fg-2);max-width:none}
   </div>
 </div></section>
 
-<section class="sec walls" aria-labelledby="walls-h"><div class="inner">
-  <figure class="rise" style="margin:0;display:flex;flex-direction:column;gap:10px"><img src="assets/shop.jpg" width="1800" height="1200" alt="A long bike shop with bicycles hung along the walls." loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover"><figcaption>Bike shops hang them up for a reason.</figcaption></figure>
-  <div class="copy rise">
-    <h2 id="walls-h">Bikes look good on walls.</h2>
-    <p>Cafés and bike shops figured this out years ago. A bike on the wall reads as something you chose, not something in the way.</p>
-    <p>Wallflower brings that to a one-bedroom flat: one mount, one bike, and the floor back.</p>
+<section class="sec walls" aria-labelledby="walls-h"><div class="inner" style="display:block">
+  <div class="strip-head rise"><div><h2 id="walls-h">Bikes look good on walls.</h2><p style="margin-top:14px">Cafés and bike shops figured this out years ago. A bike on the wall reads as something you chose, not something in the way.</p></div>
+    <div class="strip-nav"><button type="button" data-d="-1" aria-label="Previous photo">←</button><button type="button" data-d="1" aria-label="Next photo">→</button></div></div>
+  <div class="strip" id="strip" tabindex="0" aria-label="Photos of bikes on walls">
+    <figure><img src="assets/shop.jpg" width="1800" height="1200" alt="A long bike shop with bicycles hung along the walls." loading="lazy"><figcaption><b>Bike shops</b> hang them up for a reason.</figcaption></figure>
+    <figure><img src="assets/cafe-wall.jpg" width="1100" height="1799" alt="A vintage bicycle hung high on a café wall." loading="lazy"><figcaption><b>Cafés</b> make a bike part of the room.</figcaption></figure>
+    <figure><img src="assets/brick.jpg" width="1300" height="867" alt="A black road bike against a white-painted brick wall." loading="lazy"><figcaption><b>Brick and concrete</b> work too, with masonry anchors.</figcaption></figure>
+    <figure><img src="assets/detail.jpg" width="1100" height="1650" alt="Close-up of a black bicycle's front wheel against a white wall." loading="lazy"><figcaption><b>Up close,</b> a bike is a good-looking object.</figcaption></figure>
   </div>
+  <p class="rise" style="margin-top:18px">Wallflower brings that to a one-bedroom flat: one mount, one bike, and the floor back.</p>
 </div></section>
 
 <section class="sec faq" id="questions" aria-labelledby="faq-h"><div class="inner">
@@ -377,7 +427,7 @@ footer .credits{grid-column:1/-1;color:var(--fg-2);max-width:none}
 </div></section>
 
 <section class="sec privacy" id="privacy" aria-labelledby="priv-h"><div class="inner">
-  <div><h2 id="priv-h">Privacy</h2><p style="margin-top:16px">Effective date: October 29, 2026. This covers the waitlist only. Nothing is on sale yet, and this will be replaced with a fuller policy before anything is.</p></div>
+  <div><h2 id="priv-h">Privacy</h2><p style="margin-top:16px">Effective date: October 30, 2026. This covers the waitlist only. Nothing is on sale yet, and this will be replaced with a fuller policy before anything is.</p></div>
   <div class="policy">
     <p>Wallflower is a one-person business in Boulder, Colorado. This explains what I collect when you join the waitlist, why, and who else sees it.</p>
     <h3>What I collect</h3>
@@ -444,6 +494,35 @@ new MutationObserver(wfSync).observe(document.getElementById('signup'),{childLis
   function loop(){var tg=target();cur+= (tg-cur)*(reduce?1:.14);draw(cur);if(Math.abs(tg-cur)>.001){raf=requestAnimationFrame(loop)}else{cur=tg;draw(cur);raf=0}}
   function kick(){if(!raf)raf=requestAnimationFrame(loop)}
   addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw(cur);
+
+
+  /* ---- hero: settle the photo, count the floor up once ---- */
+  var hero=document.querySelector('.hero');requestAnimationFrame(function(){hero.classList.add('on')});
+  (function(){var el=$('cnt'),end=11,t0=null;if(reduce){el.textContent=end;return}
+    function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1400);el.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)}
+    setTimeout(function(){requestAnimationFrame(step)},500)})();
+
+  /* ---- swivel it flat: turns the hanging bike side-on (only once it's on the hook) ---- */
+  var swv=$('swv'),swOn=false;
+  swv.addEventListener('click',function(){swOn=!swOn;swv.setAttribute('aria-pressed',swOn);swv.textContent=swOn?'Swing it back out':'Swivel it flat';
+    if(cur<.95){cur=1;window.scrollTo({top:sec.offsetTop+sec.offsetHeight-innerHeight,behavior:reduce?'auto':'smooth'})}
+    $('swivel').style.transformOrigin='190px 156px';$('swivel').style.transformBox='view-box';$('swivel').style.transform=swOn?'scaleX(.18)':'none'});
+
+  /* ---- before/after: drag (or arrow keys on the slider); a small nudge the first time it comes into view ---- */
+  var ba=$('ba'),rng=ba.querySelector('input');
+  function setX(v){ba.style.setProperty('--x',v+'%')}
+  rng.addEventListener('input',function(){setX(rng.value)});
+  var drag=false;function at(e){var r=ba.getBoundingClientRect(),v=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));rng.value=v;setX(v)}
+  ba.addEventListener('dragstart',function(e){e.preventDefault()});
+  ba.addEventListener('pointerdown',function(e){e.preventDefault();drag=true;ba.setPointerCapture(e.pointerId);at(e)});
+  ba.addEventListener('pointermove',function(e){if(drag)at(e)});
+  ba.addEventListener('pointerup',function(){drag=false});ba.addEventListener('pointercancel',function(){drag=false});
+  if('IntersectionObserver' in window&&!reduce){var bio=new IntersectionObserver(function(es){if(es[0].isIntersecting){bio.disconnect();var t0=null;
+    (function nud(ts){if(!t0)t0=ts;var k=(ts-t0)/1600;if(k>=1){setX(50);rng.value=50;return}setX(50+Math.sin(k*Math.PI*2)*14*(1-k));requestAnimationFrame(nud)})(performance.now())}},{threshold:.5});bio.observe(ba)}
+
+  /* ---- walls strip: arrow buttons step one photo ---- */
+  var strip=$('strip');[].forEach.call(document.querySelectorAll('.strip-nav button'),function(b){b.addEventListener('click',function(){
+    var f=strip.querySelector('figure');strip.scrollBy({left:(+b.dataset.d)*(f.offsetWidth+18),behavior:reduce?'auto':'smooth'})})});
 
   /* ---- entrances and slow photo drift ---- */
   var els=[].slice.call(document.querySelectorAll('.rise,.drift'));
