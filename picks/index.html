@@ -3,62 +3,335 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Bike Storage Picks · Wallflower</title>
-<meta name="description" content="Bike storage picks for small homes: wall mounts and no-drill stands, sorted into budget, mid-range and premium. Contains paid links.">
+<title>Bike storage picks · Wallflower</title>
+<meta name="description" content="Bike storage picks for small homes: wall mounts and floor stands sorted by where your bike lives, with a budget, mid-range and premium pick. Paid links.">
+<meta property="og:title" content="Bike storage picks · Wallflower">
+<meta property="og:description" content="Get the bike off the floor. Wall mounts and floor stands for small homes. Paid links.">
+<meta property="og:image" content="https://sonicecke-commits.github.io/wallflower-site/assets/cafe-wall.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --plaster:#F2EEE7; --plaster-2:#E8E1D5; --oak:#C9A27A; --oak-2:#B48960; --graphite:#24272B; --muted:#4F5257; --signal:#FF5B24; --signal-ink:#B83A0D;
-  --bg:var(--plaster); --surface:var(--plaster-2); --fg:var(--graphite); --fg-2:var(--muted); --accent:var(--signal); --accent-text:var(--signal-ink); --on-accent:#1B1D20;
-  --field:var(--graphite); --on-field:#F2EEE7; --stud:#D9CFBF;
-  --display:"Bricolage Grotesque","Avenir Next","Helvetica Neue",Arial,sans-serif;
-  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
-  --s-sm:15px; --s-body:clamp(17px,1.15vw,19px); --s-h3:clamp(22px,1.8vw,28px); --s-h2:clamp(34px,4vw,58px); --s-h1:clamp(36px,5vw,74px);
-  --gutter:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --plaster:#F2EEE7;--plaster-2:#E8E1D6;--oak:#C9A27A;--graphite:#24272B;--graphite-2:#2E3236;--orange:#FF5B24;--orange-ink:#B83A0D;
+  --bg:var(--plaster);--fg:var(--graphite);--fg-2:#5A5F64;--line:#D6CEC1;--chip:#FFFFFF;--accent-text:var(--orange-ink);
+  --m:clamp(16px,3vw,40px);
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1B1D20;--surface:#24272B;--fg:#EEE9E1;--fg-2:#B9B4AC;--accent:#FF6B38;--accent-text:#FF8E63;--on-accent:#1B1D20;--field:#101113;--on-field:#EEE9E1;--stud:#34383D;--oak:#B48E66;--oak-2:#9C7853;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#1B1D20;--surface:#24272B;--fg:#EEE9E1;--fg-2:#B9B4AC;--accent:#FF6B38;--accent-text:#FF8E63;--on-accent:#1B1D20;--field:#101113;--on-field:#EEE9E1;--stud:#34383D;--oak:#B48E66;--oak-2:#9C7853;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C1E21;--fg:#EEE9E1;--fg-2:#AEB0AE;--line:#3A3E43;--chip:#2A2D31;--plaster-2:#24272B;--accent-text:#FF6B38}}
+:root[data-theme="dark"]{--bg:#1C1E21;--fg:#EEE9E1;--fg-2:#AEB0AE;--line:#3A3E43;--chip:#2A2D31;--plaster-2:#24272B;--accent-text:#FF6B38}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 var(--s-body)/1.55 var(--body);-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.035em;font-weight:800}
-h1{font-size:var(--s-h1);line-height:.95} h2{font-size:var(--s-h2);line-height:1} h3{font-size:var(--s-h3);line-height:1.1;letter-spacing:-.02em;font-weight:600}
-p{margin:0;max-width:52ch} a{color:inherit}
-.inner{max-width:1200px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
-.disclose{background:var(--field);color:var(--on-field);font-size:var(--s-sm)} .disclose .inner{padding-block:12px}
-.bar .inner{display:flex;justify-content:space-between;align-items:center;min-height:64px}
-.word{font:800 24px/1 var(--display);letter-spacing:-.04em;text-decoration:none}
-.hero .inner{padding-block:clamp(32px,5vw,72px);display:flex;flex-direction:column;gap:18px}
-.hero .lede{font-size:clamp(19px,1.5vw,23px)}
-.how{font-size:var(--s-sm);color:var(--fg-2)}
-.need .inner{padding-block:clamp(32px,4vw,56px);border-top:1px solid var(--stud)}
-.need .sub{margin-top:10px;color:var(--fg-2)}
-.tiers{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-@media (max-width:900px){.tiers{grid-template-columns:1fr}}
-.pick{background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:12px}
-.pick.empty{background:transparent;border:1px dashed var(--stud);color:var(--fg-2)}
-.tier{font:700 13px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
-.give{font-size:var(--s-sm)} .stud{font-size:var(--s-sm);font-weight:600}
-.btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;background:var(--accent);color:var(--on-accent);font:700 16px/1 var(--body);text-decoration:none}
-.btn:focus-visible,a:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-footer .inner{padding-block:40px;font-size:var(--s-sm);color:var(--fg-2);display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--stud)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance}
+p{margin:0}
+.label{font:500 13px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.skip{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--graphite);padding:10px 14px;z-index:50}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+/* paid strip + bar */
+.strip{background:var(--graphite);color:#EEE9E1;font-size:14px;padding:9px var(--m)}
+.bar{display:flex;align-items:center;gap:28px;padding:20px var(--m)}
+.mark{font:800 26px/1 var(--display);letter-spacing:-.04em;text-decoration:none;display:inline-flex;align-items:center}
+.mark .hub{display:inline-block;width:.62em;height:.62em;border-radius:50%;border:.12em solid currentColor;position:relative;margin:0 .02em;transform:translateY(.04em)}
+.mark .hub::after{content:"";position:absolute;inset:30%;border-radius:50%;background:var(--orange)}
+.bar nav{display:flex;gap:24px;margin-left:auto}
+.bar nav a{text-decoration:none;color:var(--fg-2)}
+.bar nav a:hover{color:var(--fg)}
+.act{background:var(--orange);color:var(--graphite);text-decoration:none;font-weight:600;padding:11px 20px;border-radius:999px;transition:transform .2s}
+.act:hover{transform:translateY(-2px)}
+@media (max-width:820px){.bar nav{display:none}.act{margin-left:auto}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,72px);align-items:end;padding:clamp(20px,4vw,56px) var(--m) clamp(64px,8vw,120px)}
+.hero h1{font-size:clamp(54px,8.6vw,140px);line-height:.9;letter-spacing:-.05em;margin:0 0 28px}
+.hero h1 span{display:block}
+.hero h1 em{font-style:normal;color:var(--accent-text)}
+.lede{font-size:clamp(19px,1.6vw,23px);max-width:36ch;margin-bottom:18px}
+.paid{max-width:48ch;font-size:16px;background:var(--plaster-2);padding:14px 16px;border-left:4px solid var(--orange);margin-bottom:34px}
+.photo{position:relative;margin:0;overflow:hidden;background:var(--graphite)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo figcaption{position:absolute;left:12px;bottom:12px;right:12px;font-size:13px;color:#fff;background:rgba(20,22,24,.62);padding:5px 9px;width:max-content;max-width:calc(100% - 24px)}
+.hero .photo{aspect-ratio:4/5}.hero .photo img{object-position:50% 12%}
+.hero .photo img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+.hero .photo.in img{transform:scale(1)}
+.tag{position:absolute;left:12px;top:12px;background:var(--graphite);color:#EEE9E1;padding:10px 14px}
+.tag b{display:block;font:800 30px/1 var(--display);color:var(--orange);letter-spacing:-.03em}
+.tag span{font-size:13px}
+@media (max-width:880px){.hero{grid-template-columns:1fr}.hero .photo{aspect-ratio:4/3;order:-1;margin-inline:calc(var(--m)*-1)}}
+
+/* picker */
+fieldset.picker{border:0;margin:0;padding:0}
+.picker legend{font-size:20px;font-weight:600;margin-bottom:12px;padding:0}
+.rides{display:flex;flex-wrap:wrap;gap:10px}
+.rides input{position:absolute;opacity:0;pointer-events:none}
+.rides label{display:flex;align-items:center;gap:10px;cursor:pointer;background:var(--chip);color:var(--fg);padding:10px 18px 10px 10px;border-radius:999px;border:1px solid var(--line);min-height:48px;transition:background .2s,color .2s,transform .2s;user-select:none}
+.rides label:hover{transform:translateY(-2px)}
+.rides svg{width:30px;height:30px;flex:none}
+.rides input:checked+label{background:var(--graphite);color:#EEE9E1;border-color:var(--graphite)}
+.rides input:focus-visible+label{outline:3px solid var(--orange);outline-offset:3px}
+.count{margin-top:14px;color:var(--fg-2);font-size:16px;min-height:1.5em}
+
+/* compare */
+.compare{padding:0 var(--m) clamp(72px,9vw,140px)}
+.compare .gh{margin-bottom:28px}
+.cmp{position:relative;aspect-ratio:3/2;overflow:hidden;background:#000;--x:50%;touch-action:pan-y}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp .after{clip-path:inset(0 0 0 var(--x))}
+.cmp .line{position:absolute;top:0;bottom:0;left:var(--x);width:3px;background:var(--orange);transform:translateX(-50%);pointer-events:none}
+.cmp .knob{position:absolute;top:50%;left:var(--x);width:56px;height:56px;border-radius:50%;background:var(--orange);transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.cmp .knob svg{width:28px;height:28px}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmp input:focus-visible~.knob{outline:3px solid #fff;outline-offset:3px}
+.cmp .side{position:absolute;top:14px;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;background:rgba(20,22,24,.62);color:#fff;padding:7px 10px;pointer-events:none}
+.cmp .s1{left:14px}.cmp .s2{right:14px}
+.note{font-size:14px;color:var(--fg-2);margin-top:10px}
+@media (max-width:640px){.cmp{aspect-ratio:4/5}}
+
+/* groups */
+section.group{padding:clamp(72px,10vw,150px) var(--m)}
+.g-hall{background:var(--plaster-2)}
+.g-wall{background:var(--graphite);color:#EEE9E1}
+.g-wall .label,.g-wall .tier{color:var(--orange)}
+.gh{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,72px)}
+.gh .label{color:var(--accent-text);margin-bottom:14px}
+.gh h2{font-size:clamp(44px,6.6vw,104px);line-height:.92;letter-spacing:-.045em}
+.gh p{max-width:40ch;font-size:20px}
+.split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,64px);align-items:start}
+.flip .split{grid-template-columns:7fr 5fr}
+.split .photo{position:sticky;top:24px;aspect-ratio:4/5}
+@media (max-width:880px){.gh,.split,.flip .split{grid-template-columns:1fr}.split .photo{position:relative;top:auto;aspect-ratio:16/10}.flip .split .photo{order:-1}}
+
+.picks{list-style:none;margin:0;padding:0}
+.pick{display:grid;grid-template-columns:76px 1fr auto;gap:6px 24px;align-items:start;padding:28px 0;border-top:1px solid var(--line);transition:opacity .35s,transform .35s}
+.g-wall .pick{border-color:#3A3E43}
+.pick .ic{width:76px;height:76px;background:var(--graphite);display:grid;place-items:center;border-radius:4px}
+.g-wall .pick .ic{background:#33373C}
+.pick .ic svg{width:54px;height:54px}
+.tier{display:block;font:500 13px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px}
+.pick h3{font-size:clamp(24px,2.4vw,32px);line-height:1.08;letter-spacing:-.025em;margin-bottom:8px}
+.pick .why{max-width:54ch}
+.pick .give{max-width:54ch;margin-top:8px;font-size:16px;color:var(--fg-2)}
+.g-wall .pick .give{color:#B9BBB9}
+.pick .stud{margin-top:10px;font-size:15px;font-weight:600;display:flex;gap:8px;align-items:center}
+.pick .stud::before{content:"";width:10px;height:10px;background:var(--oak);border-radius:2px;flex:none}
+.pick .buy{grid-column:3;grid-row:1/span 2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.btn{display:inline-flex;align-items:center;min-height:48px;text-decoration:none;font-weight:600;padding:0 20px;border-radius:999px;white-space:nowrap;background:var(--graphite);color:#EEE9E1;transition:transform .2s,background .2s}
+.g-wall .btn{background:var(--orange);color:var(--graphite)}
+.btn:hover{transform:translateY(-2px)}
+.paidtag{font-size:14px;color:var(--fg-2)}
+.g-wall .paidtag{color:#B9BBB9}
+.pick.off{opacity:.18;transform:translateX(12px)}
+.pick.off .btn{pointer-events:none}
+.pick.none{grid-template-columns:76px 1fr}
+.pick.none .ic{background:transparent;border:1px dashed var(--line)}
+.g-wall .pick.none .ic{border-color:#4A4F55}
+.pick.none p{color:var(--fg-2)}
+.g-wall .pick.none p{color:#B9BBB9}
+@media (max-width:640px){.pick,.pick.none{grid-template-columns:56px 1fr}.pick .ic{width:56px;height:56px}.pick .ic svg{width:40px;height:40px}.pick .buy{grid-column:2;grid-row:auto;align-items:flex-start;margin-top:12px}.pick.off{display:none}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{background:var(--orange);color:var(--graphite)}:root:not([data-theme="light"]) .g-wall{background:#121315}:root:not([data-theme="light"]) .pick .ic{background:#33373C}}
+
+/* how */
+.how{padding:clamp(72px,9vw,140px) var(--m)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s}
+.steps li{border-top:3px solid var(--fg);padding-top:18px;counter-increment:s}
+.steps li::before{content:"0" counter(s);display:block;font:800 clamp(40px,4vw,60px)/1 var(--display);color:var(--accent-text);letter-spacing:-.04em;margin-bottom:14px}
+.steps h3{font-size:24px;letter-spacing:-.02em;margin-bottom:8px}
+.steps p{color:var(--fg-2)}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* close */
+.close{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+.close img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.close .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,24,.1),rgba(20,22,24,.78))}
+.close .inner{position:relative;padding:clamp(48px,7vw,112px) var(--m);max-width:960px}
+.close h2{font-size:clamp(46px,7vw,112px);line-height:.9;letter-spacing:-.05em;margin-bottom:20px}
+.close p{font-size:20px;margin-bottom:28px;max-width:40ch}
+.close .btn{background:var(--orange);color:var(--graphite)}
+.close small{position:absolute;right:var(--m);bottom:14px;font-size:13px;opacity:.8}
+
+footer{padding:clamp(56px,7vw,96px) var(--m) 40px}
+footer .name{font:800 clamp(64px,15vw,250px)/.82 var(--display);letter-spacing:-.06em;margin:0 0 40px}
+footer .name .hub{display:inline-block;width:.56em;height:.56em;border-radius:50%;border:.1em solid currentColor;position:relative;margin:0 -.01em;transform:translateY(.02em)}
+footer .name .hub::after{content:"";position:absolute;inset:30%;border-radius:50%;background:var(--orange)}
+footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:15px;color:var(--fg-2)}
+footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr}}
+
+/* motion */
+.rise{transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
+.js .rise:not(.in){opacity:0;transform:translateY(24px)}
+.hero h1 span{transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .hero h1:not(.in) span{opacity:0;transform:translateY(44px)}
+.hero h1 span:nth-child(2){transition-delay:.1s}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rise:not(.in),.js .hero h1:not(.in) span{opacity:1;transform:none}.hero .photo img{transform:none}}
 </style>
 </head>
 <body>
-<div class="disclose"><div class="inner">Wallflower earns a commission if you buy through the links on this page. It costs you nothing extra. As an Amazon Associate we earn from qualifying purchases.</div></div>
-<header class="bar"><div class="inner"><a class="word" href="../">Wallflower</a></div></header>
+<a class="skip" href="#hall">Skip to the picks</a>
+<div class="strip">Paid links: Wallflower earns a commission if you buy through the links on this page, at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</div>
+<header class="bar">
+  <a class="mark" href="./" aria-label="Wallflower">wallfl<span class="hub" aria-hidden="true"></span>wer</a>
+  <nav aria-label="Sections"><a href="#hall">Hallway</a><a href="#wall">Living room</a><a href="#floor">No drilling</a><a href="#how">How we pick</a></nav>
+  <a class="act" href="#hall">See the picks</a>
+</header>
+
 <main>
-<section class="hero"><div class="inner">
-<h1>Bike storage picks for small homes</h1>
-<p class="lede">Get the bike off the hallway floor. Three ways to do it, each with a budget, mid-range and premium pick.</p>
-<p class="how">How we pick: every item has strong, long-running ratings from many buyers, and we read owner complaints and recall lists for safety problems before listing it. We haven't used these ourselves; the reasons come from maker specs and public owner reviews. Picks checked November 10, 2026. Prices change, so check them on Amazon.</p>
-</div></section>
-<section class="need"><div class="inner"><h2>Up the wall, swung flat</h2><p class="sub">For narrow hallways. The bike hangs by its front wheel and swivels flat against the wall.</p><ul class="tiers"><li class="pick"><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount (1 pack)</h3><p>Suits most road and hybrid bikes in a tight hallway. The maker says it swivels so the bike sits closer to the wall.</p><p class="give"><b>The trade-off:</b> You lift the front wheel up to the hook yourself.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p><a class="btn" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick"><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p>Suits heavier bikes: the maker says you roll the bike up rather than lift it.</p><p class="give"><b>The trade-off:</b> Costs more than the basic swivel, and needs more wall height.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p><a class="btn" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick empty"><span class="tier">Premium pick</span><p>We're still checking a premium option against our quality bar. Nothing listed until it passes.</p></li></ul></div></section><section class="need"><div class="inner"><h2>Sideways, like a display</h2><p class="sub">For a living room, where the bike becomes part of the wall.</p><ul class="tiers"><li class="pick"><span class="tier">Budget pick</span><h3>Borgen Wall Mount Pedal Hook</h3><p>Suits e-bikes and mountain bikes: hangs the bike by one pedal, close to the wall.</p><p class="give"><b>The trade-off:</b> Owners mention a narrow pedal slot, so check your pedal fits first.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p><a class="btn" href="https://www.amazon.com/dp/B0CN3686YG?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick"><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p>Suits road and hybrid bikes with a top tube: adjustable arms hold the frame level.</p><p class="give"><b>The trade-off:</b> Owners say the included screws can strip; use lag screws into a stud.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p><a class="btn" href="https://www.amazon.com/dp/B07RBZJDGS?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick empty"><span class="tier">Premium pick</span><p>Nothing has passed our bar here yet.</p></li></ul></div></section><section class="need"><div class="inner"><h2>No drilling at all</h2><p class="sub">For renters, or walls you can't touch.</p><ul class="tiers"><li class="pick"><span class="tier">Budget pick</span><h3>BikeHand Bike Floor Stand</h3><p>Suits most 24-29 inch wheels: the bike stands upright in a floor slot.</p><p class="give"><b>The trade-off:</b> It takes floor space; that's the trade for no holes.</p><a class="btn" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick"><span class="tier">Mid-range pick</span><h3>Feedback Sports Rakk Floor Stand</h3><p>Suits road, gravel and mountain bikes: holds one wheel, small footprint.</p><p class="give"><b>The trade-off:</b> Owners say very heavy e-bikes or very thin tires can tip it.</p><a class="btn" href="https://www.amazon.com/dp/B001F9V842?tag=wallflower-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a></li><li class="pick empty"><span class="tier">Premium pick</span><p>Nothing has passed our bar here yet.</p></li></ul></div></section>
+<section class="hero" aria-labelledby="h1">
+  <div>
+    <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
+    <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives, each with a budget and a mid-range pick. Chosen from makers' specs and owner reports; we haven't tested any of them ourselves.</p>
+    <p class="paid rise"><strong>Paid links:</strong> we earn a commission if you buy through our links. Amazon doesn't endorse this page.</p>
+    <form class="rise" onsubmit="return false">
+      <fieldset class="picker">
+        <legend>What do you ride?</legend>
+        <div class="rides">
+          <input type="radio" name="ride" id="r-road" value="road"><label for="r-road"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 19l5-9h7l2 9M13 10l3 9" fill="none" stroke="#FF5B24" stroke-width="2"/></svg>Road, gravel or hybrid</label>
+          <input type="radio" name="ride" id="r-mtb" value="mtb"><label for="r-mtb"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 19l5-8h7l2 8M13 11l3 8" fill="none" stroke="#FF5B24" stroke-width="2"/></svg>Mountain bike</label>
+          <input type="radio" name="ride" id="r-e" value="ebike"><label for="r-e"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 3l-5 8h4l-2 6 6-8h-4z" fill="#FF5B24"/></svg>E-bike</label>
+          <input type="radio" name="ride" id="r-all" value="all" checked><label for="r-all"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="3" fill="currentColor"/><rect x="4" y="13.5" width="22" height="3" fill="#FF5B24"/><rect x="4" y="21" width="22" height="3" fill="currentColor"/></svg>Show everything</label>
+        </div>
+      </fieldset>
+      <p class="count" id="count" aria-live="polite">6 picks below.</p>
+    </form>
+  </div>
+  <figure class="photo rise">
+    <img src="../assets/cafe-wall.jpg" alt="A city bike hung high on a café wall above the tables" fetchpriority="high">
+    <div class="tag"><b>11 sq ft</b><span>of floor a parked bike covers</span></div>
+    <figcaption>Stock photo of a café wall. Not one of the picks.</figcaption>
+  </figure>
+</section>
+
+<section class="compare" aria-labelledby="h-cmp">
+  <div class="gh"><div><p class="label rise">Why bother</p><h2 id="h-cmp" class="rise">Same room. Floor back.</h2></div><p class="rise">Drag the line, or use the arrow keys. A bike on the floor takes about 175 × 60 cm.</p></div>
+  <div class="cmp rise" id="cmp">
+    <img src="../assets/living.jpg" alt="A living room with a bike leaning in the middle of the floor" loading="lazy">
+    <img class="after" src="../assets/living-clear.jpg" alt="The same living room with the bike gone and the floor clear" loading="lazy">
+    <span class="side s1">Bike on the floor</span><span class="side s2">Floor back</span>
+    <span class="line" aria-hidden="true"></span>
+    <input type="range" min="0" max="100" value="50" aria-label="Compare the room with and without the bike">
+    <span class="knob" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M10 8l-6 6 6 6M18 8l6 6-6 6" fill="none" stroke="#24272B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </div>
+  <p class="note">One stock photo (Pexels). On the right we edited the bike out to show the floor you get back.</p>
+</section>
+
+<section class="group g-hall" id="hall" aria-labelledby="h-hall">
+  <div class="gh"><div><p class="label rise">Narrow hallway</p><h2 id="h-hall" class="rise">Up the wall, swung flat.</h2></div><p class="rise">The bike hangs by its front wheel, then swivels flat so it doesn't stick out into the hall.</p></div>
+  <div class="split">
+    <figure class="photo rise"><img src="../assets/hallway.jpg" alt="A narrow apartment hallway with doors on both sides" loading="lazy"><figcaption>A narrow hallway. Stock photo.</figcaption></figure>
+    <ul class="picks">
+      <li class="pick rise" data-ride="road">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
+        <div><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="why">For most road and hybrid bikes in a tight hallway. The maker says it swivels so the bike sits closer to the wall.</p><p class="give">Trade-off: you lift the front wheel up to the hook yourself.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick rise" data-ride="mtb ebike">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M10 48l12-12" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/><path d="M16 36h6v6" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: the maker says you roll the bike up rather than lift it.</p><p class="give">Trade-off: costs more than the basic swivel, and needs more wall height.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick none rise" data-ride="all">
+        <div class="ic" aria-hidden="true"></div>
+        <div><span class="tier">Premium pick</span><p>We're still checking a premium option. Nothing is listed until it passes our checks.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="group g-wall flip" id="wall" aria-labelledby="h-wall">
+  <div class="gh"><div><p class="label rise">Living room</p><h2 id="h-wall" class="rise">Sideways, like a display.</h2></div><p class="rise">The bike sits level along the wall and becomes part of the room.</p></div>
+  <div class="split">
+    <ul class="picks">
+      <li class="pick rise" data-ride="mtb ebike">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="10" width="10" height="20" rx="2" fill="#C9A27A"/><path d="M16 20h14" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><rect x="30" y="16" width="16" height="8" rx="2" fill="#EEE9E1"/><circle cx="38" cy="38" r="9" fill="none" stroke="#EEE9E1" stroke-width="3"/></svg></div>
+        <div><span class="tier">Budget pick</span><h3>Borgen Wall Mount Pedal Hook</h3><p class="why">For e-bikes and mountain bikes: hangs the bike by one pedal, close to the wall.</p><p class="give">Trade-off: owners mention a narrow pedal slot, so check your pedal fits first.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CN3686YG?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick rise" data-ride="road">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="12" width="42" height="8" rx="2" fill="#C9A27A"/><path d="M14 20v10M40 20v10" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><path d="M8 34h38" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p class="why">For road and hybrid bikes with a top tube: adjustable arms hold the frame level.</p><p class="give">Trade-off: owners say the included screws can strip, so use lag screws into a stud.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B07RBZJDGS?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick none rise" data-ride="all">
+        <div class="ic" aria-hidden="true"></div>
+        <div><span class="tier">Premium pick</span><p>Nothing has passed our checks here yet.</p></div>
+      </li>
+    </ul>
+    <figure class="photo rise"><img src="../assets/detail.jpg" alt="Black and white photo of a bicycle against a white wall" loading="lazy"><figcaption>Stock photo. Not one of the picks.</figcaption></figure>
+  </div>
+</section>
+
+<section class="group" id="floor" aria-labelledby="h-floor">
+  <div class="gh"><div><p class="label rise">Renting, or can't drill</p><h2 id="h-floor" class="rise">No drilling at all.</h2></div><p class="rise">A stand holds the bike upright. It still uses some floor, but it leaves no holes.</p></div>
+  <div class="split">
+    <figure class="photo rise"><img src="../assets/shop.jpg" alt="Bikes standing in a row inside a bike shop" loading="lazy"><figcaption>Bikes in a shop. Stock photo.</figcaption></figure>
+    <ul class="picks">
+      <li class="pick rise" data-ride="road mtb">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="27" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M14 42h26" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M21 42l3-6h6l3 6" fill="none" stroke="#FF5B24" stroke-width="3"/></svg></div>
+        <div><span class="tier">Budget pick</span><h3>BikeHand Bike Floor Stand</h3><p class="why">For most 24 to 29 inch wheels: the bike stands upright in a floor slot.</p><p class="give">Trade-off: it takes floor space. That's the price of no holes.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick rise" data-ride="road mtb">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="24" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M10 42h34" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M34 42V24l-6-6" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Mid-range pick</span><h3>Feedback Sports Rakk Floor Stand</h3><p class="why">For road, gravel and mountain bikes: holds one wheel, with a small footprint.</p><p class="give">Trade-off: owners say very heavy e-bikes or very thin tires can tip it.</p></div>
+        <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B001F9V842?tag=wallflower-20" rel="sponsored nofollow noopener" target="_blank">See it on Amazon</a><span class="paidtag">Paid link</span></div>
+      </li>
+      <li class="pick none rise" data-ride="all">
+        <div class="ic" aria-hidden="true"></div>
+        <div><span class="tier">Premium pick</span><p>Nothing has passed our checks here yet.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="how" id="how" aria-labelledby="h-how">
+  <div class="gh"><div><p class="label rise">How we pick</p><h2 id="h-how" class="rise">Checked before it's listed.</h2></div><p class="rise">Picks checked November 10, 2026. Prices change, so check them on Amazon.</p></div>
+  <ol class="steps">
+    <li class="rise"><h3>Fit first</h3><p>We sort by the space and the bike, using each maker's own description of what it holds.</p></li>
+    <li class="rise"><h3>Complaints read</h3><p>We read owner complaints and product recall lists for safety problems, and leave out anything that looks risky.</p></li>
+    <li class="rise"><h3>Honest gaps</h3><p>We haven't used these ourselves. If nothing passes in a tier, we leave it empty rather than fill it.</p></li>
+  </ol>
+</section>
+
+<section class="close" aria-labelledby="h-close">
+  <img src="../assets/brick.jpg" alt="" loading="lazy">
+  <div class="scrim"></div>
+  <div class="inner">
+    <h2 id="h-close" class="rise">Find the stud first.</h2>
+    <p class="rise">Any wall mount is only as strong as what it's screwed into. A cheap stud finder, two lag screws into wood, and your landlord's OK if you rent.</p>
+    <a class="btn rise" href="#hall">Back to the picks</a>
+  </div>
+  <small>Stock photo (Pexels)</small>
+</section>
 </main>
-<footer><div class="inner">
-<p>Wallflower is an AI-run brand: these pages and our videos are made with AI help.</p>
-<p>As an Amazon Associate we earn from qualifying purchases. Links marked "See it on Amazon" are paid links.</p>
-</div></footer>
+
+<footer>
+  <p class="name" aria-hidden="true">wallfl<span class="hub"></span>wer</p>
+  <div class="cols">
+    <p><strong>Paid links</strong>Wallflower earns a commission on purchases made through this page. As an Amazon Associate we earn from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
+    <p><strong>About this page</strong>Wallflower is an AI-run brand: its posts and pages are made with AI and labelled. Product names belong to their makers. Neither Amazon nor any maker endorses this page.</p>
+    <p><strong>Pictures</strong>All photos are from <a href="https://www.pexels.com/">Pexels</a> under the Pexels licence; the bike in the "Floor back" photo was edited out by us. None of them show the picks. Icons drawn for this page.</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rise').forEach((el,i)=>{el.style.transitionDelay=((i%4)*75)+'ms';io.observe(el)});
+const revealPast=()=>document.querySelectorAll('.rise:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in')});
+addEventListener('scroll',revealPast,{passive:true});setTimeout(revealPast,400);
+requestAnimationFrame(()=>document.querySelector('.hero h1').classList.add('in'));
+// compare slider
+const cmp=document.getElementById('cmp'),rng=cmp.querySelector('input');
+const setX=v=>cmp.style.setProperty('--x',v+'%');rng.addEventListener('input',()=>setX(rng.value));
+// ride filter
+const picks=[...document.querySelectorAll('.pick:not(.none)')],count=document.getElementById('count');
+const names={road:'road, gravel or hybrid bike',mtb:'mountain bike',ebike:'e-bike'};
+function apply(v){let n=0;picks.forEach(p=>{const on=v==='all'||p.dataset.ride.split(' ').includes(v);p.classList.toggle('off',!on);p.setAttribute('aria-hidden',on?'false':'true');p.querySelector('a').tabIndex=on?0:-1;if(on)n++});
+ count.textContent=v==='all'?n+' picks below.':n+' picks suit '+(v==='ebike'?'an ':'a ')+names[v]+', by the makers’ descriptions. Check your bike’s weight and tire width.';}
+document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
+</script>
 </body>
 </html>
