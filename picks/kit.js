@@ -65,12 +65,14 @@
         box.firstChild.textContent = head;
         box.lastChild.textContent = 'Checked ' + fmt(checked) + '. Sales can end early.';
         a.parentNode.insertBefore(box, a);
+        var ps = getComputedStyle(a.parentNode);   // right-aligned button column (wide screens): align the badge right too
+        if (ps.flexDirection === 'column' && /end/.test(ps.alignItems)) box.classList.add('end');
       });
     });
   }
   var css = document.createElement('style');
-  css.textContent = '.dealtag{display:flex;flex-direction:column;gap:2px;max-width:260px;text-align:inherit}' +
-    '.dealtag b{align-self:inherit;display:inline-block;font-size:13px;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:#F4C542;color:#1E1F21}' +
+  css.textContent = '.dealtag{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%}.dealtag.end{align-items:flex-end}' +
+    '.dealtag b{width:fit-content;display:inline-block;font-size:13px;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:#F4C542;color:#1E1F21}' +
     '.dealtag small{font-size:12px;color:var(--fg-2,#666)}';
   document.head.appendChild(css);
   fetch('deals.json', { cache: 'no-store' })
