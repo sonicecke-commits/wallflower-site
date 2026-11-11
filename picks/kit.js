@@ -41,6 +41,43 @@
   document.addEventListener('click', onOut);
   document.addEventListener('auxclick', function (e) { if (e.button === 1) onOut(e) });   // middle-click, new tab
 
+  /* ---- deal badges ----
+     deals.json (next to this file) lists deals Sam saw on Amazon in his weekly check. We never fetch from Amazon.
+     Each entry: { "asin": "B0CJR3QCL5", "type": "deal" | "prime", "checked": "2026-11-15T16:00:00-07:00", "ends": "2026-11-16T23:59:00-08:00" }
+     Amazon rules: no price or % here, and the mention must disappear when the deal ends. So each badge hides itself at
+     "ends"; with no "ends" it hides 3 days after "checked"; and never lasts more than 8 days after "checked". */
+  var DAY = 864e5, deals = [];
+  function fmt(d, wd) { return d.toLocaleDateString('en-US', wd ? { weekday: 'short', month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric' }) }
+  function drawDeals() {
+    var now = Date.now();
+    document.querySelectorAll('.dealtag').forEach(function (el) { el.remove() });
+    deals.forEach(function (d) {
+      var checked = new Date(d.checked), ends = d.ends ? new Date(d.ends) : null;
+      if (!d.asin || isNaN(checked)) return;
+      var stop = Math.min(ends && !isNaN(ends) ? ends.getTime() : checked.getTime() + 3 * DAY, checked.getTime() + 8 * DAY);
+      if (now < checked.getTime() || now >= stop) return;
+      document.querySelectorAll('a[href*="/dp/' + d.asin + '"]').forEach(function (a) {
+        var box = document.createElement('span');
+        box.className = 'dealtag';
+        var head = (d.type === 'prime' ? 'Prime deal on Amazon' : (ends ? 'Deal on Amazon now' : 'Deal on Amazon when we checked'));
+        // No end date on the badge: no Amazon clause covers hand-copied promotion dates, so it only drives the auto-hide.
+        box.innerHTML = '<b></b><small></small>';
+        box.firstChild.textContent = head;
+        box.lastChild.textContent = (d.type === 'prime' ? 'Prime members only. ' : '') + 'Checked ' + fmt(checked) + '. Deals can end early. See today’s price on Amazon.';
+        a.parentNode.insertBefore(box, a);
+      });
+    });
+  }
+  var css = document.createElement('style');
+  css.textContent = '.dealtag{display:flex;flex-direction:column;gap:2px;max-width:260px;text-align:inherit}' +
+    '.dealtag b{align-self:inherit;display:inline-block;font-size:13px;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:#F4C542;color:#1E1F21}' +
+    '.dealtag small{font-size:12px;color:var(--fg-2,#666)}';
+  document.head.appendChild(css);
+  fetch('deals.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : [] })
+    .then(function (j) { deals = Array.isArray(j) ? j : (j.deals || []); drawDeals(); setInterval(drawDeals, 60000) })
+    .catch(function () {});
+
   /* ---- sign-up ---- */
   document.querySelectorAll('form[data-kit-signup]').forEach(function (f) {
     var srcField = f.querySelector('input[name="fields[signup_source]"]');
