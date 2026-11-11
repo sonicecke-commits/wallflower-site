@@ -5,7 +5,7 @@
 
    What is counted (GoatCounter, no cookies, no personal data kept):
      - a visit to this page, with ?src= (or utm_source) as the source, e.g. ?src=instagram
-     - "out/<ASIN>"  : a click on a "See it on Amazon" button (same source attached)
+     - "out/<ASIN>"  : a click on a "Check today's price" (Amazon) button (same source attached)
      - "signup"      : a sign-up sent to MailerLite (same source attached)
    We never load, fetch or read anything from Amazon; we only note that a button was clicked. */
 (function () {
@@ -59,11 +59,11 @@
       document.querySelectorAll('a[href*="/dp/' + d.asin + '"]').forEach(function (a) {
         var box = document.createElement('span');
         box.className = 'dealtag';
-        var head = (d.type === 'prime' ? 'Prime deal on Amazon' : (ends ? 'Deal on Amazon now' : 'Deal on Amazon when we checked'));
+        var head = (d.type === 'prime' ? 'On sale at Amazon for Prime members' : 'On sale at Amazon');
         // No end date on the badge: no Amazon clause covers hand-copied promotion dates, so it only drives the auto-hide.
         box.innerHTML = '<b></b><small></small>';
         box.firstChild.textContent = head;
-        box.lastChild.textContent = (d.type === 'prime' ? 'Prime members only. ' : '') + 'Checked ' + fmt(checked) + '. Deals can end early. See today’s price on Amazon.';
+        box.lastChild.textContent = 'Checked ' + fmt(checked) + '. Sales can end early.';
         a.parentNode.insertBefore(box, a);
       });
     });
