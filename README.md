@@ -10,3 +10,6 @@ Static site for GitHub Pages (Settings > Pages > Deploy from branch `main`, fold
 
 ## Tracking ID swap (waiting on Sam)
 Until Sam creates `wallflower-20` in Associates Central, the Amazon links use the main store ID `goodgearpicks-20`, so a sale still counts toward the 3 qualifying sales (it just isn't split by brand). Once `wallflower-20` exists, change every `tag=goodgearpicks-20` in `picks/index.html` to `tag=wallflower-20` (one find-and-replace) and merge.
+
+## Custom domain (wallflowerbikes.com)
+`CNAME` points GitHub Pages at `wallflowerbikes.com`, and canonical, share-image and sitemap URLs use it. Merge only after the domain is bought and its DNS points at GitHub Pages (see ecommerce-team `reports/domains/switch-plan.md`). Once it is live, the old `sonicecke-commits.github.io/wallflower-site/` links forward to `wallflowerbikes.com` by themselves.
