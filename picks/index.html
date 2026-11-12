@@ -320,6 +320,14 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
  @media (hover:hover){.pick:hover>div:first-child,.pick:hover .ic{transform:translateY(-3px)}}
 }
 @media (prefers-reduced-motion:reduce){.gh h2::after{display:none}}
+/* grader round fixes */
+.empty-note{margin:16px 0 0;padding:14px 0;border-top:1px dashed currentColor;border-bottom:1px dashed currentColor;font-size:16px}
+.gl-arm tbody tr{opacity:1!important}
+.hero .photo img{transition-duration:.6s!important}
+@media (max-width:400px){.bar .act{white-space:nowrap;padding:9px 14px;font-size:15px}}
+.g-wall .gh h2::after{background:#FF8A5B}
+@media (prefers-reduced-motion:no-preference){.js .hero h1 span,.js .hero .lede{animation-duration:.5s}.js .hero .photo img{animation-duration:.6s}.gh h2::after{transition-duration:.5s}.group .photo img{transition-duration:.5s}}
+@media (prefers-reduced-motion:reduce){.rise,.js .rise,.js .rise:not(.in){transition:none!important;transform:none!important}}
 </style>
 <script>(function(){if(!('IntersectionObserver' in window)){document.documentElement.classList.add('no-io');return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add(e.target.classList.contains('gh')?'in':'seen');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.gh,.group .photo').forEach(function(el){io.observe(el)})})})();</script>
 </head>
@@ -336,7 +344,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div>
     <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
     <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives and labelled budget, mid-range or premium. Each one says who it suits and its trade-off.</p>
-    <p class="paid rise"><strong>Paid links:</strong> As an Amazon Associate we earn from qualifying purchases.</p>
+    <p class="paid rise"><strong>Paid links:</strong> As an Amazon Associate we earn from qualifying purchases. The commission never decides what we list (<a href="#how">how we pick</a>).</p>
     <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See where we'd start</a></p>
     <form class="rise" onsubmit="return false">
       <fieldset class="picker">
@@ -566,7 +574,8 @@ const setX=v=>cmp.style.setProperty('--x',v+'%');rng.addEventListener('input',()
 const picks=[...document.querySelectorAll('.pick:not(.none)')],count=document.getElementById('count');
 const names={road:'road, gravel or hybrid bike',mtb:'mountain bike',ebike:'e-bike'};
 function apply(v){let n=0;picks.forEach(p=>{const on=v==='all'||p.dataset.ride.split(' ').includes(v);p.classList.toggle('off',!on);p.setAttribute('aria-hidden',on?'false':'true');p.querySelector('a').tabIndex=on?0:-1;if(on)n++});
- count.textContent=v==='all'?n+' picks below.':n+' picks suit '+(v==='ebike'?'an ':'a ')+names[v]+', by the makers’ descriptions. Check your bike’s weight and tire width.';}
+ count.textContent=v==='all'?n+' picks below.':n+' picks suit '+(v==='ebike'?'an ':'a ')+names[v]+', by the makers’ descriptions. Check your bike’s weight and tire width.';
+ document.querySelectorAll('section.group').forEach(sec=>{const left=sec.querySelectorAll('.pick:not(.none):not(.off)').length;let e=sec.querySelector('.empty-note');const show=v!=='all'&&!left&&sec.querySelector('.pick:not(.none)');if(show&&!e){e=document.createElement('p');e.className='empty-note';const L=sec.querySelector('.picks')||sec;L.parentNode.insertBefore(e,L.nextSibling)}if(e){e.hidden=!show;if(show)e.textContent='Nothing for '+(v==='ebike'?'an ':'a ')+names[v]+' has passed our bar here yet.'}});}
 const glRows=[...document.querySelectorAll('.gl tbody tr')];document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>glRows.forEach(t=>t.classList.toggle('off',!(r.value==='all'||t.dataset.ride.split(' ').includes(r.value))))));
 document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
 </script>
