@@ -29,8 +29,7 @@ p{margin:0}
 .skip:focus{left:8px}
 :focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 
-/* paid strip + bar */
-.strip{background:var(--graphite);color:#EEE9E1;font-size:14px;padding:9px var(--m)}
+/* bar */
 .bar{display:flex;align-items:center;gap:28px;padding:20px var(--m)}
 .mark{font:800 26px/1 var(--display);letter-spacing:-.04em;text-decoration:none;display:inline-flex;align-items:center}
 .mark .hub{display:inline-block;width:.62em;height:.62em;border-radius:50%;border:.12em solid currentColor;position:relative;margin:0 .02em;transform:translateY(.04em)}
@@ -48,7 +47,7 @@ p{margin:0}
 .hero h1 span{display:block}
 .hero h1 em{font-style:normal;color:var(--accent-text)}
 .lede{font-size:clamp(19px,1.6vw,23px);max-width:36ch;margin-bottom:18px}
-.paid{max-width:48ch;font-size:16px;background:var(--plaster-2);padding:14px 16px;border-left:4px solid var(--orange);margin-bottom:34px}
+.paid{display:inline-block;font-size:13px;line-height:1.4;background:var(--plaster-2);padding:5px 10px;border-left:3px solid var(--orange);margin-bottom:28px}
 .photo{position:relative;margin:0;overflow:hidden;background:var(--graphite)}
 .photo img{width:100%;height:100%;object-fit:cover}
 .photo figcaption{position:absolute;left:12px;bottom:12px;right:12px;font-size:13px;color:#fff;background:rgba(20,22,24,.62);padding:5px 9px;width:max-content;max-width:calc(100% - 24px)}
@@ -256,7 +255,6 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 </head>
 <body>
 <a class="skip" href="#hall">Skip to the picks</a>
-<div class="strip">Paid links: Wallflower earns a commission if you buy through the links on this page, at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</div>
 <header class="bar">
   <a class="mark" href="./" aria-label="Wallflower">wallfl<span class="hub" aria-hidden="true"></span>wer</a>
   <nav aria-label="Sections"><a href="#hall">Hallway</a><a href="#wall">Living room</a><a href="#floor">No drilling</a><a href="#questions">Questions</a><a href="#how">How we pick</a></nav>
@@ -268,7 +266,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div>
     <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
     <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives, each with a budget and a mid-range pick. Chosen from makers' specs and owner reports; we haven't tested any of them ourselves.</p>
-    <p class="paid rise"><strong>Paid links:</strong> we earn a commission if you buy through our links. Amazon doesn't endorse this page.</p>
+    <p class="paid rise"><strong>Paid links:</strong> As an Amazon Associate we earn from qualifying purchases.</p>
     <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See where we'd start</a></p>
     <form class="rise" onsubmit="return false">
       <fieldset class="picker">
