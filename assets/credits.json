@@ -1,9 +1,65 @@
 [
- { "file": "assets/office-floor.jpg", "title": "Bicycle in Office with Desk (bike brand marks and one picture frame removed by us)", "page": "https://www.pexels.com/photo/bicycle-in-office-with-desk-14640594/", "license": "Pexels licence", "via": "Pexels, edited"},
- { "file": "assets/office-wall.jpg", "title": "Bicycle in Office with Desk (bike moved onto the wall and mount drawn by us)", "page": "https://www.pexels.com/photo/bicycle-in-office-with-desk-14640594/", "license": "Pexels licence", "via": "Pexels, edited"},
- { "file": "assets/hallway.jpg", "title": "Narrow corridor with doors in apartment", "page": "https://www.pexels.com/photo/narrow-corridor-with-doors-in-apartment-6588570/", "license": "Pexels licence", "via": "Pexels"},
- { "file": "assets/cafe-wall.jpg", "title": "Bicycle Holding on Wall in Hotel", "page": "https://www.pexels.com/photo/bicycle-holding-on-wall-in-hotel-16013165/", "license": "Pexels licence", "via": "Pexels"},
- { "file": "assets/brick.jpg", "title": "Parked Black Road Bike in Front of White Brick Wall", "page": "https://www.pexels.com/photo/bicycle-bike-biker-black-544997/", "license": "Pexels licence", "via": "Pexels"},
- { "file": "assets/detail.jpg", "title": "Black and White Photo of Bicycle Parked under White Wall", "page": "https://www.pexels.com/photo/black-and-white-photo-of-bicycle-parked-under-white-wall-18491459/", "license": "Pexels licence", "via": "Pexels"},
- { "file": "assets/shop.jpg", "title": "Bikes Inside Store", "page": "https://www.pexels.com/photo/bikes-inside-store-2817452/", "license": "Pexels licence", "via": "Pexels"}
+ {
+  "file": "assets/office-floor.jpg",
+  "title": "Bicycle in Office with Desk (bike brand marks and one picture frame removed by us)",
+  "page": "https://www.pexels.com/photo/bicycle-in-office-with-desk-14640594/",
+  "license": "Pexels licence",
+  "via": "Pexels, edited"
+ },
+ {
+  "file": "assets/office-wall.jpg",
+  "title": "Bicycle in Office with Desk (bike moved onto the wall and mount drawn by us)",
+  "page": "https://www.pexels.com/photo/bicycle-in-office-with-desk-14640594/",
+  "license": "Pexels licence",
+  "via": "Pexels, edited"
+ },
+ {
+  "file": "assets/hallway.jpg",
+  "title": "Narrow corridor with doors in apartment",
+  "page": "https://www.pexels.com/photo/narrow-corridor-with-doors-in-apartment-6588570/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/cafe-wall.jpg",
+  "title": "Bicycle Holding on Wall in Hotel",
+  "page": "https://www.pexels.com/photo/bicycle-holding-on-wall-in-hotel-16013165/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/brick.jpg",
+  "title": "Parked Black Road Bike in Front of White Brick Wall",
+  "page": "https://www.pexels.com/photo/bicycle-bike-biker-black-544997/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/detail.jpg",
+  "title": "Black and White Photo of Bicycle Parked under White Wall",
+  "page": "https://www.pexels.com/photo/black-and-white-photo-of-bicycle-parked-under-white-wall-18491459/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/shop.jpg",
+  "title": "Bikes Inside Store",
+  "page": "https://www.pexels.com/photo/bikes-inside-store-2817452/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/home-wall.jpg",
+  "title": "Bike on brick wall against table in dining room",
+  "page": "https://www.pexels.com/photo/bike-on-brick-wall-against-table-in-dining-room-7018256/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ },
+ {
+  "file": "assets/flat-wall.jpg",
+  "title": "Photo of a road bike hanging on a wall",
+  "page": "https://www.pexels.com/photo/photo-of-a-road-bike-hanging-on-a-wall-4827702/",
+  "license": "Pexels licence",
+  "via": "Pexels"
+ }
 ]
