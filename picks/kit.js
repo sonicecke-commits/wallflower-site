@@ -80,10 +80,21 @@
     .then(function (j) { deals = Array.isArray(j) ? j : (j.deals || []); drawDeals(); setInterval(drawDeals, 60000) })
     .catch(function () {});
 
-  /* ---- sign-up ---- */
-  document.querySelectorAll('form[data-kit-signup]').forEach(function (f) {
+  /* ---- sign-up ----
+     Every form[data-kit-signup] on the page works the same way. data-place on the form ("mid", "bottom", "back")
+     says where it sits; it goes to MailerLite as signup_source "<source>-<place>" (e.g. "instagram-mid", or
+     "picks-mid" with no ?src=) and to GoatCounter as "signup-<place>", so we can see which spot gets sign-ups.
+
+     Welcome-back bar (data-bar on the <script> tag holds its line, data-bar-btn its button text):
+     a slim bar at the bottom of the screen, shown only when someone clicked an Amazon button and then came back
+     to this tab. It shows at most once per browser, never before a click, and never again after a close or a
+     sign-up. Nothing is stored except two on/off flags in this browser (no personal data). */
+  var LS = { get: function (k) { try { return localStorage.getItem(k) } catch (e) { return null } },
+             set: function (k) { try { localStorage.setItem(k, '1') } catch (e) {} } };
+  function wire(f) {
+    var place = f.getAttribute('data-place') || 'bottom';
     var srcField = f.querySelector('input[name="fields[signup_source]"]');
-    if (srcField) srcField.value = src || 'picks-page';
+    if (srcField) srcField.value = (src || 'picks') + '-' + place;
     var msg = f.querySelector('.su-msg'), btn = f.querySelector('button[type=submit]'), email = f.querySelector('input[type=email]');
     f.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -95,9 +106,75 @@
           if (!d || !d.success) throw new Error('not ok');
           f.classList.add('su-done');
           msg.textContent = 'Nearly done: check your inbox and tap the link in our email to confirm.';
-          count('signup', 'Email sign-up');
+          LS.set('kit-signed');
+          count('signup-' + place, 'Email sign-up (' + place + ')');
         })
         .catch(function () { btn.disabled = false; msg.textContent = 'That didn’t go through. Please try again in a minute.' });
     });
-  });
+  }
+  var forms = document.querySelectorAll('form[data-kit-signup]');
+  forms.forEach(wire);
+
+  var barLine = cfg.bar, first = forms[0], left = false, shown = false;
+  if (barLine && first) {
+    var bcss = document.createElement('style');
+    bcss.textContent =
+      '.kbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--kbar-bg,#24272B);color:var(--kbar-fg,#EEE9E1);' +
+      'padding:8px 16px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .35s ease}' +
+      '.kbar.on{transform:none}@media (prefers-reduced-motion:reduce){.kbar{transition:none}}' +
+      '.kbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px}' +
+      '.kbar .kl{flex:0 1 auto;font-weight:600;font-size:15px;line-height:1.25;margin:0}' +
+      '@media (max-width:640px){.kbar:not(.open){flex-wrap:nowrap;justify-content:space-between}.kbar .kl{font-size:14px;flex:1 1 auto}.kbar .ko button{padding:0 10px}.kbar .kx{padding:0 4px}}' +
+      '.kbar .ko,.kbar .kr{display:flex;gap:6px;align-items:center}.kbar .kr{display:none;flex:1 1 100%;max-width:560px}' +
+      '.kbar.open .ko{display:none}.kbar.open .kr{display:flex}' +
+      '.kbar input[type=email]{flex:1;min-width:0;min-height:44px;border:0;border-radius:6px;padding:0 12px;font:inherit;font-size:16px;background:#fff;color:#1E1F21}' +
+      '.kbar button{min-height:44px;border:1.5px solid currentColor;border-radius:6px;padding:0 14px;font:600 15px/1 inherit;font-family:inherit;cursor:pointer;background:transparent;color:inherit;white-space:nowrap}' +
+      '.kbar .kgo,.kbar button[type=submit]{background:var(--kbar-btn,#EEE9E1);color:var(--kbar-btn-fg,#24272B);border-color:transparent}' +
+      '.kbar .kx{border-color:transparent;text-decoration:underline;padding:0 8px;font-weight:500}' +
+      '.kbar button:focus-visible,.kbar input:focus-visible{outline:3px solid var(--kbar-btn,#EEE9E1);outline-offset:2px}' +
+      '.kbar .su-msg{flex-basis:100%;text-align:center;margin:0;font-size:14px}.kbar .su-msg:empty{display:none}' +
+      '.kbar .su-small{display:none;flex-basis:100%;text-align:center;margin:0;font-size:12px;opacity:.85}.kbar.open .su-small{display:block}' +
+      '.kbar .su-small a{color:inherit}.kbar.su-done .kr{display:none}' +
+      '.kbar .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}' +
+      'body.kbar-pad{padding-bottom:var(--kbar-h,0px)}';
+    document.head.appendChild(bcss);
+    var showBar = function () {
+      if (shown || LS.get('kit-bar') || LS.get('kit-signed')) return;
+      shown = true; LS.set('kit-bar');
+      var priv = (first.querySelector('.su-small a') || {}).href || '';
+      var bar = document.createElement('form');
+      bar.className = 'kbar'; bar.action = first.action; bar.method = 'post'; bar.setAttribute('data-place', 'back');
+      bar.setAttribute('aria-label', 'Email sign-up'); bar.noValidate = true;
+      // Starts slim (one line + two buttons, under 64 px on phones); "Email me" opens the email box.
+      bar.innerHTML = '<p class="kl"></p><div class="ko"><button type="button" class="kgo"></button><button type="button" class="kx">No thanks</button></div>' +
+        '<div class="kr"><label class="vh" for="kbar-email">Your email</label>' +
+        '<input id="kbar-email" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com">' +
+        '<button type="submit">Sign up</button><button type="button" class="kx">No thanks</button></div>' +
+        '<input type="hidden" name="fields[signup_source]" value=""><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">' +
+        '<p class="su-msg" role="status" aria-live="polite"></p>' +
+        '<p class="su-small">We send one email first so you can confirm. Unsubscribe any time.' + (priv ? ' <a>Privacy notice</a>.' : '') + '</p>';
+      bar.querySelector('.kl').textContent = barLine;
+      bar.querySelector('.kgo').textContent = cfg.barBtn || 'Email me';
+      if (priv) bar.querySelector('.su-small a').href = priv;
+      document.body.appendChild(bar);
+      wire(bar);
+      var pad = function () { document.body.style.setProperty('--kbar-h', bar.offsetHeight + 'px') };
+      bar.querySelector('.kgo').addEventListener('click', function () {
+        bar.classList.add('open'); pad(); bar.querySelector('input[type=email]').focus();
+      });
+      bar.querySelectorAll('.kx').forEach(function (x) { x.addEventListener('click', function () {
+        bar.classList.remove('on'); document.body.classList.remove('kbar-pad');
+        setTimeout(function () { bar.remove() }, 400);
+      }) });
+      requestAnimationFrame(function () { bar.classList.add('on'); pad(); document.body.classList.add('kbar-pad') });
+      count('signup-bar-shown', 'Welcome-back bar shown');
+    };
+    var markOut = function (e) { if (e.target.closest && e.target.closest('a[href*="amazon.com"]')) left = true };
+    document.addEventListener('click', markOut);
+    document.addEventListener('auxclick', markOut);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible' && left) setTimeout(showBar, 800);
+    });
+    window.addEventListener('pageshow', function (e) { if (e.persisted && left) setTimeout(showBar, 800) });
+  }
 })();
