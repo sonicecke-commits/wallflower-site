@@ -185,15 +185,63 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .glance{padding:0 var(--m) clamp(64px,8vw,120px)}
 .glance h2,.faq h2{font-size:clamp(34px,4.6vw,64px);line-height:.95;letter-spacing:-.04em;margin:0 0 12px}
 .glance>p{margin:0 0 24px;color:var(--fg-2);max-width:52ch}
-.gl{width:100%;border-collapse:collapse;font-size:17px}
-.gl th{text-align:left;font:500 13px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2);padding:0 16px 10px 0;border-bottom:2px solid var(--fg)}
-.gl td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
-.gl td a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--orange)}
-.gl td a:hover{color:var(--accent-text)}
-.gl .gl-most{display:block;margin-top:6px;font-size:13px;font-weight:600;color:var(--accent-text)}
-.gl .tier{margin:0}
-.gl tr.off{display:none}
-@media (max-width:700px){.gl thead{display:none}.gl,.gl tbody,.gl tr,.gl td{display:block;width:100%}.gl tr{padding:14px 0;border-bottom:1px solid var(--line)}.gl td{border:0;padding:3px 0}.gl td[data-l]::before{content:attr(data-l) ": ";color:var(--fg-2);font-size:14px}}
+/* at a glance v2 (gl-v2): Sam 2026-11-12 "make the at a glance tables look better". Rows become tappable bands, our pick inverted, tier meter, staggered reveal. */
+.glance{--gl-row:var(--chip);--gl-row-hi:#FBF8F3;--gl-ink:var(--fg);--gl-muted:var(--fg-2);--gl-acc:var(--orange);--gl-acc-ink:var(--graphite);--gl-top:var(--graphite);--gl-top-ink:#EEE9E1;--gl-top-muted:#AEB0AE;--gl-top-acc:#FF6B38;--gl-off:var(--line);--gl-top-off:#4A4F55;--gl-r:6px;--gl-name:700 clamp(18px,1.5vw,21px)/1.2 var(--display);--gl-name-case:none;--gl-chip-r:999px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glance{--gl-row-hi:#32363B;--gl-top:var(--orange);--gl-top-ink:var(--graphite);--gl-top-muted:#3A2A22;--gl-top-acc:var(--graphite);--gl-top-off:#C7451A;--gl-acc:var(--graphite);--gl-acc-ink:var(--orange)}}
+:root[data-theme="dark"] .glance{--gl-row-hi:#32363B;--gl-top:var(--orange);--gl-top-ink:var(--graphite);--gl-top-muted:#3A2A22;--gl-top-acc:var(--graphite);--gl-top-off:#C7451A;--gl-acc:var(--graphite);--gl-acc-ink:var(--orange)}
+.gl .tier{display:inline;color:var(--accent-text)}.gl tr.gl-top .tier{color:var(--gl-top-acc)}
+.gl{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:17px;margin-top:-8px}
+.gl th{text-align:left;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gl-muted);padding:0 20px 2px;border:0;font-family:inherit}
+.gl td{position:static;background:var(--gl-row);color:var(--gl-ink);padding:22px 20px;vertical-align:middle;border:0;line-height:1.4;transition:background-color .25s,color .25s}
+.gl td:first-child{border-radius:var(--gl-r) 0 0 var(--gl-r);width:36%}
+.gl td:last-child{border-radius:0 var(--gl-r) var(--gl-r) 0;white-space:nowrap}
+.gl tbody tr{position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .5s cubic-bezier(.2,.8,.2,1)}
+.gl tbody tr:hover td{background:var(--gl-row-hi)}
+.gl td a{font:var(--gl-name);text-transform:var(--gl-name-case);color:inherit;text-decoration:none;border:0;letter-spacing:-.01em}
+.gl td a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--gl-r)}
+.gl td a::after{content:"\2192";display:inline-block;margin-left:.35em;color:var(--gl-acc);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.gl td a:hover{color:inherit}
+.gl td a:focus-visible{outline:none}.gl td a:focus-visible::before{outline:3px solid var(--gl-acc);outline-offset:2px}
+.gl .gl-most{display:table;white-space:nowrap;margin-top:10px;font-size:13px;font-weight:700;line-height:1;padding:6px 10px;border-radius:var(--gl-chip-r);background:var(--gl-acc);color:var(--gl-acc-ink)}
+.gl td[data-l]{color:var(--gl-ink)}
+.gl tr.gl-top td{background:var(--gl-top);color:var(--gl-top-ink)}
+.gl tr.gl-top:hover td{background:var(--gl-top)}
+.gl tr.gl-top td a::after{color:var(--gl-top-acc)}
+.gl-m{display:inline-flex;gap:4px;margin-right:10px;vertical-align:middle;position:relative;top:-1px}
+.gl-m b{display:block;width:8px;height:8px;border-radius:50%;background:var(--gl-off);transition:transform .45s cubic-bezier(.3,1.6,.5,1),background-color .25s}
+.gl-t[data-t="1"] .gl-m b:nth-child(1),.gl-t[data-t="2"] .gl-m b:nth-child(-n+2),.gl-t[data-t="3"] .gl-m b{background:var(--gl-acc)}
+.gl tr.gl-top .gl-m b{background:var(--gl-top-off)}
+.gl tr.gl-top .gl-t[data-t="1"] .gl-m b:nth-child(1),.gl tr.gl-top .gl-t[data-t="2"] .gl-m b:nth-child(-n+2),.gl tr.gl-top .gl-t[data-t="3"] .gl-m b{background:var(--gl-top-acc)}
+.gl tr.off{display:none!important}
+@media (hover:hover){.gl tbody tr:hover{transform:translateX(6px)}.gl tbody tr:hover td a::after{transform:translateX(5px)}}
+.gl tbody tr:active{transform:scale(.985)}
+.gl-arm tbody tr{opacity:0;transform:translateY(22px)}
+.gl-arm .gl-m b{transform:scale(0)}
+.gl-arm.gl-in tbody tr{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 70ms)}
+.gl-arm.gl-in .gl-m b{transform:none;transition-delay:calc(var(--i,0) * 70ms + 350ms)}
+.gl-arm.gl-in .gl-m b:nth-child(2){transition-delay:calc(var(--i,0) * 70ms + 430ms)}
+.gl-arm.gl-in .gl-m b:nth-child(3){transition-delay:calc(var(--i,0) * 70ms + 510ms)}
+.gl-arm.gl-done tbody tr,.gl-arm.gl-done .gl-m b{transition-delay:0s!important}
+@media (max-width:700px){
+.gl thead{display:none}
+.gl,.gl tbody{display:block;width:100%;margin:0}
+.gl tbody{display:grid;gap:10px}
+.gl tr{display:grid;grid-template-columns:1fr;grid-template-areas:"t" "n" "s" "o";gap:0;background:var(--gl-row);border-radius:var(--gl-r);padding:18px 18px 16px}
+.gl tr.gl-top{background:var(--gl-top);color:var(--gl-top-ink)}
+.gl tbody tr:hover td,.gl tr.gl-top td,.gl td{background:none!important;border-radius:0!important;padding:0;width:auto}
+.gl tbody tr:hover{background:var(--gl-row-hi)}.gl tbody tr.gl-top:hover{background:var(--gl-top)}
+.gl td:nth-child(1){grid-area:n;width:auto;margin-top:8px}
+.gl td:nth-child(2){grid-area:s;margin-top:14px}
+.gl td:nth-child(3){grid-area:o;margin-top:6px}
+.gl td:nth-child(4){grid-area:t;font-size:14px;white-space:nowrap}
+.gl td:nth-child(4)::before{content:none!important}
+.gl td[data-l]:not(:nth-child(4)){display:grid;grid-template-columns:5.4em 1fr;gap:10px;font-size:16px;line-height:1.4}
+.gl td[data-l]:not(:nth-child(4))::before{content:attr(data-l);color:var(--gl-muted);font-size:14px;padding-top:1px}
+.gl tr.gl-top td[data-l]::before{color:var(--gl-top-muted)}
+.gl td a{font-size:19px}
+.gl-m{gap:3px;margin-right:6px}.gl-m b{width:7px;height:7px}
+}
+@media (prefers-reduced-motion:reduce){.gl tbody tr,.gl-m b,.gl td a::after{transition:none!important}.gl-arm tbody tr{opacity:1;transform:none}.gl-arm .gl-m b{transform:none}.gl tbody tr:hover{transform:none}}
 .faq{padding:clamp(64px,8vw,120px) var(--m) 0}
 .faq dl{margin:24px 0 0;display:grid;gap:28px;max-width:70ch}
 .faq dt{font:800 clamp(21px,2vw,26px)/1.2 var(--display);margin:0 0 8px}
@@ -245,17 +293,17 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <section class="glance" id="glance" aria-labelledby="h-glance">
   <h2 id="h-glance" class="rise">At a glance</h2>
   <p class="rise">Every pick on one screen. Tap a name to jump to it.</p>
-  <table class="gl rise">
+  <table class="gl">
     <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Tier</th></tr></thead>
     <tbody>
-      <tr data-ride="road"><td><a href="#most">monTEK Swivel Bike Wall Mount</a><span class="gl-most">Our pick for most homes</span></td><td data-l="Suits">Road and hybrid bikes in a tight hallway</td><td data-l="Trade-off">You lift the front wheel up to the hook</td><td><span class="tier">Budget</span></td></tr>
-      <tr data-ride="mtb ebike"><td><a href="#pk-nolift">monTEK No-Lift Swivel Bike Wall Mount</a></td><td data-l="Suits">Heavier bikes; you roll it up</td><td data-l="Trade-off">Costs more, needs more wall height</td><td><span class="tier">Mid-range</span></td></tr>
-      <tr data-ride="road"><td><a href="#pk-steadyrack">Steadyrack Classic Road Bike Wall Mount</a></td><td data-l="Suits">Road and hybrid bikes in a hallway</td><td data-l="Trade-off">Tires up to 2.1 in, no fenders</td><td><span class="tier">Premium</span></td></tr>
-      <tr data-ride="mtb ebike"><td><a href="#pk-borgen">Borgen Wall Mount Pedal Hook</a></td><td data-l="Suits">E-bikes and mountain bikes, sideways on a wall</td><td data-l="Trade-off">Narrow pedal slot, so check your pedal</td><td><span class="tier">Budget</span></td></tr>
-      <tr data-ride="road"><td><a href="#pk-probike">PRO BIKE TOOL Horizontal Wall Mount</a></td><td data-l="Suits">Road and hybrid bikes with a top tube</td><td data-l="Trade-off">Included screws can strip; use lag screws</td><td><span class="tier">Mid-range</span></td></tr>
-      <tr data-ride="road mtb"><td><a href="#pk-bikehand">BikeHand Bike Floor Stand</a></td><td data-l="Suits">Renters: 24 to 29 inch wheels, no drilling</td><td data-l="Trade-off">Takes floor space</td><td><span class="tier">Budget</span></td></tr>
-      <tr data-ride="road mtb"><td><a href="#pk-rakk">Feedback Sports Rakk Floor Stand</a></td><td data-l="Suits">Renters: one bike, small footprint</td><td data-l="Trade-off">Very heavy e-bikes or thin tires can tip it</td><td><span class="tier">Mid-range</span></td></tr>
-      <tr data-ride="road mtb"><td><a href="#pk-velocache">Feedback Sports Velo Cache Two-Bike Tower</a></td><td data-l="Suits">Two bikes, no drilling</td><td data-l="Trade-off">Listed limit 40 lb per bike</td><td><span class="tier">Premium</span></td></tr>
+      <tr class="gl-top" data-ride="road"><td><a href="#most">monTEK Swivel Bike Wall Mount</a><span class="gl-most">Our pick for most homes</span></td><td data-l="Suits">Road and hybrid bikes in a tight hallway</td><td data-l="Trade-off">You lift the front wheel up to the hook</td><td class="gl-t" data-t="1"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Budget</span></td></tr>
+      <tr data-ride="mtb ebike"><td><a href="#pk-nolift">monTEK No-Lift Swivel Bike Wall Mount</a></td><td data-l="Suits">Heavier bikes; you roll it up</td><td data-l="Trade-off">Costs more, needs more wall height</td><td class="gl-t" data-t="2"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Mid-range</span></td></tr>
+      <tr data-ride="road"><td><a href="#pk-steadyrack">Steadyrack Classic Road Bike Wall Mount</a></td><td data-l="Suits">Road and hybrid bikes in a hallway</td><td data-l="Trade-off">Tires up to 2.1 in, no fenders</td><td class="gl-t" data-t="3"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Premium</span></td></tr>
+      <tr data-ride="mtb ebike"><td><a href="#pk-borgen">Borgen Wall Mount Pedal Hook</a></td><td data-l="Suits">E-bikes and mountain bikes, sideways on a wall</td><td data-l="Trade-off">Narrow pedal slot, so check your pedal</td><td class="gl-t" data-t="1"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Budget</span></td></tr>
+      <tr data-ride="road"><td><a href="#pk-probike">PRO BIKE TOOL Horizontal Wall Mount</a></td><td data-l="Suits">Road and hybrid bikes with a top tube</td><td data-l="Trade-off">Included screws can strip; use lag screws</td><td class="gl-t" data-t="2"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Mid-range</span></td></tr>
+      <tr data-ride="road mtb"><td><a href="#pk-bikehand">BikeHand Bike Floor Stand</a></td><td data-l="Suits">Renters: 24 to 29 inch wheels, no drilling</td><td data-l="Trade-off">Takes floor space</td><td class="gl-t" data-t="1"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Budget</span></td></tr>
+      <tr data-ride="road mtb"><td><a href="#pk-rakk">Feedback Sports Rakk Floor Stand</a></td><td data-l="Suits">Renters: one bike, small footprint</td><td data-l="Trade-off">Very heavy e-bikes or thin tires can tip it</td><td class="gl-t" data-t="2"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Mid-range</span></td></tr>
+      <tr data-ride="road mtb"><td><a href="#pk-velocache">Feedback Sports Velo Cache Two-Bike Tower</a></td><td data-l="Suits">Two bikes, no drilling</td><td data-l="Trade-off">Listed limit 40 lb per bike</td><td class="gl-t" data-t="3"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="tier">Premium</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -436,5 +484,6 @@ const glRows=[...document.querySelectorAll('.gl tbody tr')];document.querySelect
 document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
 </script>
 <script src="kit.js" data-gc="wallflowerbikes" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
+<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},1400)},{threshold:.12});io.observe(t)})();</script>
 </body>
 </html>
