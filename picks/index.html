@@ -251,6 +251,28 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .gl td a{font-size:19px}
 .gl-m{gap:3px;margin-right:6px}.gl-m b{width:7px;height:7px}
 }
+/* gl-compact (Sam 2026-11-12 05:38: condense At a glance) */
+@media (min-width:701px){.gl td{padding-top:14px;padding-bottom:14px}}
+.glance.gl-collapsed .gl-more,.glance.gl-collapsed .gl-hidegroup{display:none!important}
+.gl-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:12px 18px;border:0;border-radius:var(--gl-r);background:var(--gl-row);color:var(--gl-ink);font-family:inherit;font-weight:600;font-size:16px;line-height:1;cursor:pointer;transition:background-color .2s,transform .2s}
+.gl-toggle:hover{background:var(--gl-row-hi)}.gl-toggle:active{transform:scale(.97)}
+.gl-toggle:focus-visible{outline:3px solid var(--gl-acc);outline-offset:2px}
+.gl-toggle::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.glance:not(.gl-collapsed) .gl-toggle::after{transform:translateY(2px) rotate(-135deg)}
+@media (max-width:700px){
+.gl tbody{gap:8px}
+.gl tr{grid-template-columns:1fr auto;grid-template-areas:"n t" "s s";padding:13px 16px;gap:0 10px}
+.gl td:nth-child(1){margin-top:0}
+.gl td:nth-child(3){display:none!important}
+.gl td:nth-child(4){justify-self:end;align-self:start;padding-top:3px;font-size:13px}
+.gl td:nth-child(2){margin-top:4px}
+.gl td[data-l]:not(:nth-child(4)){display:block;font-size:15px;color:var(--gl-muted)}
+.gl td[data-l]:not(:nth-child(4))::before{content:none!important}
+.gl tr.gl-top td[data-l]{color:var(--gl-top-muted)}
+.gl td a{font-size:17px}
+.gl .gl-most{margin-top:6px;font-size:12px;padding:5px 9px}
+.gl-toggle{width:100%;justify-content:center}
+}
 @media (prefers-reduced-motion:reduce){.gl tbody tr,.gl-m b,.gl td a::after{transition:none!important}.gl-arm tbody tr{opacity:1;transform:none}.gl-arm .gl-m b{transform:none}.gl-arm td,.gl-arm tbody tr{clip-path:none!important}.gl-arm .gl-most,.gl-arm td a::after{opacity:1;transform:none}.gl tbody tr:hover{transform:none}}
 .faq{padding:clamp(64px,8vw,120px) var(--m) 0}
 .faq dl{margin:24px 0 0;display:grid;gap:28px;max-width:70ch}
@@ -301,7 +323,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 
 <section class="glance" id="glance" aria-labelledby="h-glance">
   <h2 id="h-glance" class="rise">At a glance</h2>
-  <p class="rise">Every pick on one screen. Tap a name to jump to it.</p>
+  <p class="rise">Three to start with. Tap a name to jump to it.</p>
   <table class="gl">
     <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Tier</th></tr></thead>
     <tbody>
@@ -502,5 +524,13 @@ document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('cha
 </script>
 <script src="kit.js" data-gc="wallflowerbikes" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
 <script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},t.querySelectorAll('tbody tr').length*90+1500)},{threshold:.12});io.observe(t)})();</script>
+<script>/* gl-compact */(function(){var sec=document.querySelector('.glance');if(!sec)return;var rows=sec.querySelectorAll('.gl tbody tr');var SHOW=3;if(rows.length<=SHOW+1)return;
+[].forEach.call(rows,function(r,i){if(i>=SHOW)r.classList.add('gl-more')});
+[].forEach.call(sec.querySelectorAll('.gl'),function(t){if(!t.querySelector('tbody tr:not(.gl-more)')){t.classList.add('gl-hidegroup');var h=t.previousElementSibling;if(h&&h.classList.contains('gl-h'))h.classList.add('gl-hidegroup')}});
+var last=sec.querySelectorAll('.gl');last=last[last.length-1];var b=document.createElement('button');b.type='button';b.className='gl-toggle';b.setAttribute('aria-expanded','false');
+var more='See all '+rows.length+' picks',less='Show fewer';b.textContent=more;last.parentNode.insertBefore(b,last.nextSibling);sec.classList.add('gl-collapsed');
+function set(open){sec.classList.toggle('gl-collapsed',!open);b.setAttribute('aria-expanded',String(open));b.textContent=open?less:more;}
+b.addEventListener('click',function(){var open=sec.classList.contains('gl-collapsed');set(open);if(!open){var y=sec.getBoundingClientRect().top;if(y<0)sec.scrollIntoView({block:'start'})}});
+[].forEach.call(document.querySelectorAll('input[name=ride],input[name=plug]'),function(r){r.addEventListener('change',function(){set(true)})});})();</script>
 </body>
 </html>
