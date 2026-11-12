@@ -51,7 +51,8 @@ p{margin:0}
 .photo{position:relative;margin:0;overflow:hidden;background:var(--graphite)}
 .photo img{width:100%;height:100%;object-fit:cover}
 .photo figcaption{position:absolute;left:12px;bottom:12px;right:12px;font-size:13px;color:#fff;background:rgba(20,22,24,.62);padding:5px 9px;width:max-content;max-width:calc(100% - 24px)}
-.hero .photo{aspect-ratio:4/5}.hero .photo img{object-position:50% 12%}
+.hero .photo{aspect-ratio:4/5}.hero .photo img{object-position:16% 40%}
+@media (max-width:880px){.hero .photo .tag{left:auto!important;right:12px}.hero .photo img{object-position:8% 40%}}
 .hero .photo img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
 .hero .photo.in img{transform:scale(1)}
 .tag{position:absolute;left:12px;top:12px;background:var(--graphite);color:#EEE9E1;padding:10px 14px}
@@ -112,8 +113,9 @@ section.group{padding:clamp(72px,10vw,150px) var(--m)}
 .pick .why{max-width:54ch}
 .pick .give{max-width:54ch;margin-top:8px;font-size:16px;color:var(--fg-2)}
 .g-wall .pick .give{color:#B9BBB9}
-.pick .stud{margin-top:10px;font-size:15px;font-weight:600;display:flex;gap:8px;align-items:center}
-.pick .stud::before{content:"";width:10px;height:10px;background:var(--oak);border-radius:2px;flex:none}
+p.stud-sec{margin:-12px 0 clamp(28px,4vw,48px);font-size:17px!important}
+.pick .stud,.stud-sec{margin-top:10px;font-size:15px;font-weight:600;display:flex;gap:8px;align-items:center}
+.pick .stud::before,.stud-sec::before{content:"";width:10px;height:10px;background:var(--oak);border-radius:2px;flex:none}
 .pick .buy{grid-column:3;grid-row:1/span 2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .btn{display:inline-flex;align-items:center;min-height:48px;text-decoration:none;font-weight:600;padding:0 20px;border-radius:999px;white-space:nowrap;background:var(--graphite);color:#EEE9E1;transition:transform .2s,background .2s}
 .g-wall .btn{background:var(--orange);color:var(--graphite)}
@@ -173,10 +175,11 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .su-mid button{background:transparent;color:var(--fg);border:2px solid var(--fg)}
 .su-mid button:hover{background:var(--fg);color:var(--bg)}
 .su-mid .su-small{font-size:14px;margin-top:10px}
+.faq .src{font-size:15px;color:var(--fg-2)}
 :root{--kbar-bg:var(--graphite);--kbar-fg:#EEE9E1;--kbar-btn:#EEE9E1;--kbar-btn-fg:var(--graphite)}
 
-/* quieter paid-link label beside each button (Sam 2026-11-11) */
-.paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}@media (max-width:640px){.pick .buy{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}}
+/* paid-link label: darker and near body size so it reads as clear (site review 2026-11-12) */
+.paidtag{font-size:14px;font-weight:500;letter-spacing:0;color:var(--fg)}.g-wall .paidtag{color:#EEE9E1}@media (max-width:640px){.pick .buy{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}}
 .most-tag{display:inline-block;margin:0 0 10px;padding:4px 10px;border-radius:999px;font:600 13px/1.2 var(--mono);letter-spacing:.04em;text-transform:uppercase;background:var(--orange);color:#24272B}
 .most-why{font-weight:600;margin:6px 0}
 .start{margin:10px 0 0}.start a{color:var(--accent-text);font-weight:600}
@@ -285,6 +288,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta property="og:image" content="https://wallflowerbikes.com/og.png">
 <meta property="og:url" content="https://wallflowerbikes.com/picks/">
+<style>.photo.illo{background:#E9E1D4}.photo.illo svg{display:block;width:100%;height:100%}</style>
 </head>
 <body>
 <a class="skip" href="#hall">Skip to the picks</a>
@@ -298,7 +302,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <section class="hero" aria-labelledby="h1">
   <div>
     <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
-    <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives, each with a budget and a mid-range pick.</p>
+    <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives and labelled budget, mid-range or premium.</p>
     <p class="paid rise"><strong>Paid links:</strong> As an Amazon Associate we earn from qualifying purchases.</p>
     <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See where we'd start</a></p>
     <form class="rise" onsubmit="return false">
@@ -315,9 +319,9 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
     </form>
   </div>
   <figure class="photo rise">
-    <img src="../assets/cafe-wall.jpg" alt="A city bike hung high on a café wall above the tables" fetchpriority="high">
+    <img src="../assets/home-wall.jpg" alt="A road bike hung sideways on a brick wall above a dining table at home" fetchpriority="high">
     <div class="tag"><b>11 sq ft</b><span>of floor a parked bike covers</span></div>
-    <figcaption>Stock photo of a café wall. Not one of the picks.</figcaption>
+    <figcaption>Stock photo of a dining room. Not one of the picks.</figcaption>
   </figure>
 </section>
 
@@ -356,75 +360,72 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 
 <section class="group g-hall" id="hall" aria-labelledby="h-hall">
   <div class="gh"><div><p class="label rise">Narrow hallway</p><h2 id="h-hall" class="rise">Up the wall, swung flat.</h2></div><p class="rise">The bike hangs by its front wheel, then swivels flat so it doesn't stick out into the hall.</p></div>
+  <p class="stud stud-sec rise">Every mount here: screw it into a wall stud, not drywall anchors alone.</p>
   <div class="split">
-    <figure class="photo rise"><img src="../assets/hallway.jpg" alt="A narrow apartment hallway with doors on both sides" loading="lazy"><figcaption>A narrow hallway. Stock photo.</figcaption></figure>
+    <figure class="photo rise"><img src="../assets/flat-wall.jpg" alt="A road bike hung flat against a wall, its shadow beside it" loading="lazy" style="object-position:50% 62%"><figcaption>A bike hung flat to the wall. Stock photo. Not one of the picks.</figcaption></figure>
     <ul class="picks">
       <li class="pick most rise" id="most" data-ride="road">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
-        <div><span class="most-tag">Our pick for most homes</span><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="most-why">Not sure where to start? Start here. It suits most road and hybrid bikes, and it swings the bike flat against the wall, so it fits even a narrow hallway.</p><p class="why">For most road and hybrid bikes in a tight hallway. The maker says it swivels so the bike sits closer to the wall.</p><p class="give">Trade-off: you lift the front wheel up to the hook yourself.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="most-tag">Our pick for most homes</span><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="most-why">Not sure where to start? Start here. It suits most road and hybrid bikes, and the maker says it swivels the bike flat to the wall, so it fits even a narrow hallway.</p><p class="give">Trade-off: you lift the front wheel up to the hook yourself.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-nolift" data-ride="mtb ebike">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M10 48l12-12" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/><path d="M16 36h6v6" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: the maker says you roll the bike up rather than lift it.</p><p class="give">Trade-off: costs more than the basic swivel, and needs more wall height.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: the maker says you roll the bike up rather than lift it.</p><p class="give">Trade-off: costs more than the basic swivel, and needs more wall height.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-steadyrack" data-ride="road">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
-        <div><span class="tier">Premium pick</span><h3>Steadyrack Classic Road Bike Wall Mount</h3><p class="why">For road and hybrid bikes: the maker says you roll the front wheel in, then pivot the bike flat toward the wall.</p><p class="give">Trade-off: the maker lists tires up to 2.1 inches and no fenders, so check your bike first.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Premium pick</span><h3>Steadyrack Classic Road Bike Wall Mount</h3><p class="why">For road and hybrid bikes: the maker says you roll the front wheel in, then pivot the bike flat toward the wall.</p><p class="give">Trade-off: the maker lists tires up to 2.1 inches and no fenders, so check your bike first.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0D3TCXQ68?th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=7b2239cfed284da1afd5e9eecc8ac5ba&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
     </ul>
   </div>
 </section>
 
-<section class="su su-mid" id="tips" aria-labelledby="h-tips">
-  <div class="su-in">
-    <div class="su-copy"><h2 id="h-tips">Small-space bike storage, by email</h2>
-    <p>A few short emails: wall and floor fixes, and any pick we add or swap.</p></div>
-    <form class="su-form" data-kit-signup data-place="mid" action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
-      <label for="su-email-mid">Your email</label>
-      <div class="su-row"><input id="su-email-mid" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me the tips</button></div>
-      <input type="hidden" name="fields[signup_source]" value="picks-mid"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
-      <p class="su-msg" role="status" aria-live="polite"></p>
-      <p class="su-small">We send one email first so you can confirm. Unsubscribe any time. <a href="../privacy.html">Privacy notice</a>.</p>
-    </form>
-  </div>
-</section>
 
 <section class="group g-wall flip" id="wall" aria-labelledby="h-wall">
   <div class="gh"><div><p class="label rise">Living room</p><h2 id="h-wall" class="rise">Sideways, like a display.</h2></div><p class="rise">The bike sits level along the wall and becomes part of the room.</p></div>
+  <p class="stud stud-sec rise">Every mount here: screw it into a wall stud, not drywall anchors alone.</p>
   <div class="split">
     <ul class="picks">
       <li class="pick rise" id="pk-borgen" data-ride="mtb ebike">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="10" width="10" height="20" rx="2" fill="#C9A27A"/><path d="M16 20h14" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><rect x="30" y="16" width="16" height="8" rx="2" fill="#EEE9E1"/><circle cx="38" cy="38" r="9" fill="none" stroke="#EEE9E1" stroke-width="3"/></svg></div>
-        <div><span class="tier">Budget pick</span><h3>Borgen Wall Mount Pedal Hook</h3><p class="why">For e-bikes and mountain bikes: hangs the bike by one pedal, close to the wall.</p><p class="give">Trade-off: owners mention a narrow pedal slot, so check your pedal fits first.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Budget pick</span><h3>Borgen Wall Mount Pedal Hook</h3><p class="why">For e-bikes and mountain bikes: hangs the bike by one pedal, close to the wall.</p><p class="give">Trade-off: owners mention a narrow pedal slot, so check your pedal fits first.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CN3686YG?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-probike" data-ride="road">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="12" width="42" height="8" rx="2" fill="#C9A27A"/><path d="M14 20v10M40 20v10" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><path d="M8 34h38" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p class="why">For road and hybrid bikes with a top tube: adjustable arms hold the frame level.</p><p class="give">Trade-off: owners say the included screws can strip, so use lag screws into a stud.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p class="why">For road and hybrid bikes with a top tube: adjustable arms hold the frame level.</p><p class="give">Trade-off: owners say the included screws can strip, so use lag screws into a stud.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B07RBZJDGS?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-mountit" data-ride="road mtb">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="8" width="42" height="6" rx="2" fill="#C9A27A"/><path d="M14 14v6M40 14v6" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/><rect x="10" y="24" width="34" height="7" rx="2" fill="#EEE9E1"/><path d="M18 31v8M36 31v8" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Premium pick</span><h3>Mount-It! Horizontal Bike Wall Mount with Shelf</h3><p class="why">For road and mountain bikes: the maker says a steel arm holds the bike level, with a shelf and hooks above for a helmet and gear.</p><p class="give">Trade-off: the maker lists a 33 lb limit, so most e-bikes are too heavy for it. It's a newer listing, so fewer owners have reviewed it so far.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Premium pick</span><h3>Mount-It! Horizontal Bike Wall Mount with Shelf</h3><p class="why">For road and mountain bikes: the maker says a steel arm holds the bike level, with a shelf and hooks above for a helmet and gear.</p><p class="give">Trade-off: the maker lists a 33 lb limit, so most e-bikes are too heavy for it. It's a newer listing, so fewer owners have reviewed it so far.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/Mount-Horizontal-Mounted-Mountain-Bicycle/dp/B0CKFKDVJH?crid=1JFF7ZRL6NIXJ&amp;dib=eyJ2IjoiMSJ9.-PPtI0S2VxT7XNim_tW_HvjNcqoEz7Br-QC_R-cVWEll8Ocy_8AVx4u529oxuNadINne_Oz82KqCMiakv8u_0z_aPjQQsspEzY6w5Sa7YvqNTBDNodNq8eX3GBi3oBvJOQtybubhbwlTu7S1bDYD78W80ISnW31M2uPr9P_1JvcSaLof64NQiz-QL26lPvXqB75aTdX1kDcBt3fZy3S9Br-SDouFmcmW3ihbja55rP0.ZS09cDBOSJXzaCNe4tWLPS1nyfc7C1-pWNhxx0h2ML4&amp;dib_tag=se&amp;keywords=Mount-It%21%2Bhorizontal%2Bwith%2Bshelf&amp;qid=1794460667&amp;sprefix=mount-it%2Bhorizontal%2Bwith%2Bshelf%2Caps%2C239&amp;sr=8-1&amp;th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=32a9bf63aeffe5dfb275c0fd019dcb74&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-wokk" data-ride="road">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="10" y="12" width="34" height="18" rx="3" fill="#8A5A3B"/><path d="M20 30v8M34 30v8" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M14 21h26" stroke="#FF5B24" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Premium pick</span><h3>WOKK Wooden Bike Wall Mount</h3><p class="why">For a living-room wall: the maker describes a walnut-finish wood cradle that holds the bike level, with rubber padding where the frame rests.</p><p class="give">Trade-off: the maker lists a 40 lb limit, and owners give mixed reports on the included hardware.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="tier">Premium pick</span><h3>WOKK Wooden Bike Wall Mount</h3><p class="why">For a living-room wall: the maker describes a walnut-finish wood cradle that holds the bike level, with rubber padding where the frame rests.</p><p class="give">Trade-off: the maker lists a 40 lb limit, and owners give mixed reports on the included hardware.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/WOKK-Wooden-Saving-Design-Apartment/dp/B0BJLDN6L2?dib=eyJ2IjoiMSJ9.Xuv8ivNBno45_OxkwuLRmInGx_hhEN-8yGFPw_2DkpdQPCmxCzijbvO8vsyNoqH8hekFP6oEOXGe_6EjSRRwnwQAes0RDOpwa8ZLmRH24iJNtFMEJ0mgKYBucCMpx4LAGfiE22qKLqkP9ttyDB64UDx2e3SqG4kOKakY6z3wUNkH-LdXIv6d3erIHIDlKfnjhx5T7p_G-Be9DKHuhisb7eAExArp3xvipJwKkHbL3IwqmSvVQXUYkmW5JvtRxrCvkRRjSA9QtomZ5kdkrChqKXgmOMMOKpjC5VrujVL_ywI.aBRwx6CPggxaB4WLnmhOmrxPEcWBSFBH2EF-_RGg20Q&amp;dib_tag=se&amp;keywords=WOKK+wooden+bike+wall+mount&amp;qid=1794460470&amp;sr=8-6&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=16469b8436e88b69191b9c8ad24985fe&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
     </ul>
-    <figure class="photo rise"><img src="../assets/detail.jpg" alt="Black and white photo of a bicycle against a white wall" loading="lazy"><figcaption>Stock photo. Not one of the picks.</figcaption></figure>
+    <figure class="photo rise"><img src="../assets/living-wall.jpg" alt="A bike hung level on a brick living-room wall" loading="lazy" style="object-position:50% 50%"><figcaption>A bike hung level in a living room. Stock photo. Not one of the picks.</figcaption></figure>
   </div>
 </section>
 
 <section class="group" id="floor" aria-labelledby="h-floor">
   <div class="gh"><div><p class="label rise">Renting, or can't drill</p><h2 id="h-floor" class="rise">No drilling at all.</h2></div><p class="rise">A stand holds the bike upright. It still uses some floor, but it leaves no holes.</p></div>
   <div class="split">
-    <figure class="photo rise"><img src="../assets/shop.jpg" alt="Bikes standing in a row inside a bike shop" loading="lazy"><figcaption>Bikes in a shop. Stock photo.</figcaption></figure>
+    <figure class="photo illo rise"><svg viewBox="0 60 400 400" role="img" aria-label="Drawing of a bike held upright by a floor stand under its rear wheel"><rect y="60" width="400" height="400" fill="#E9E1D4"/><line x1="24" y1="330" x2="376" y2="330" stroke="#24272B" stroke-width="2" opacity=".25"/>
+<path d="M58 330 L74 322 L154 322 L170 330" fill="none" stroke="#FF5B24" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82 322 L92 268 M146 322 L136 268" fill="none" stroke="#FF5B24" stroke-width="7" stroke-linecap="round"/>
+<circle cx="114" cy="258" r="64" fill="none" stroke="#24272B" stroke-width="5"/><circle cx="292" cy="258" r="64" fill="none" stroke="#24272B" stroke-width="5"/>
+<circle cx="114" cy="258" r="5" fill="#24272B"/><circle cx="292" cy="258" r="5" fill="#24272B"/>
+<path d="M114 258 L190 262 L170 160 Z M170 160 L272 152 L190 262 M272 152 L292 258" fill="none" stroke="#24272B" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M166 160 L162 140 M148 138 L180 138" fill="none" stroke="#24272B" stroke-width="6" stroke-linecap="round"/>
+<path d="M272 152 L266 126 Q284 120 296 128" fill="none" stroke="#24272B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="262" r="9" fill="none" stroke="#24272B" stroke-width="4"/></svg><figcaption>Illustration of a floor stand. Not one of the picks.</figcaption></figure>
     <ul class="picks">
       <li class="pick rise" id="pk-bikehand" data-ride="road mtb">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="27" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M14 42h26" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M21 42l3-6h6l3 6" fill="none" stroke="#FF5B24" stroke-width="3"/></svg></div>
@@ -445,14 +446,29 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   </div>
 </section>
 
+<section class="su su-mid" id="tips" aria-labelledby="h-tips">
+  <div class="su-in">
+    <div class="su-copy"><h2 id="h-tips">Small-space bike storage, by email</h2>
+    <p>A few short emails: wall and floor fixes, and any pick we add or swap.</p></div>
+    <form class="su-form" data-kit-signup data-place="end" action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
+      <label for="su-email-mid">Your email</label>
+      <div class="su-row"><input id="su-email-mid" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me the tips</button></div>
+      <input type="hidden" name="fields[signup_source]" value="picks-end"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
+      <p class="su-msg" role="status" aria-live="polite"></p>
+      <p class="su-small">We send one email first so you can confirm. Unsubscribe any time. <a href="../privacy.html">Privacy notice</a>.</p>
+    </form>
+  </div>
+</section>
+
 <section class="faq" id="questions" aria-labelledby="h-faq">
   <p class="label rise">Questions</p>
   <h2 id="h-faq" class="rise">Before you hang it.</h2>
   <dl>
     <div class="rise">
       <dt id="brakes">Can I hang a bike with hydraulic disc brakes?</dt>
-      <dd><p>Shimano's manual says its disc brakes aren't designed to work with the bike upside down or on its side, and asks you to squeeze each brake lever a few times before you ride to check the brakes work normally (<a href="https://si.shimano.com/en/pdfs/um/07X0A/UM-07X0A-000-00-ENG.pdf">Shimano user's manual</a>). SRAM, quoted by the rack maker Steadyrack, says storing a bike vertically "should not create any harm to the brakes", and that a brake bleed takes care of the odd air bubble (<a href="https://www.steadyrack.com/blogs/blog/storing-bikes-with-hydraulic-brakes-in-a-steadyrack">Steadyrack</a>).</p>
-      <p>If a lever feels soft after storage, stop and have a bike shop look at it. If you'd rather keep the bike level, the <a href="#floor">floor stands</a> or the <a href="#wall">sideways wall mounts</a> do that.</p></dd>
+      <dd><p>Shimano's manual says its disc brakes aren't designed to work with the bike upside down or on its side, and asks you to squeeze each lever a few times before you ride. SRAM, quoted by Steadyrack, says vertical storage "should not create any harm to the brakes".</p>
+      <p>If a lever feels soft after storage, have a bike shop check it. To keep the bike level, use a <a href="#floor">floor stand</a> or a <a href="#wall">sideways wall mount</a>.</p>
+      <p class="src">Sources: <a href="https://si.shimano.com/en/pdfs/um/07X0A/UM-07X0A-000-00-ENG.pdf" rel="noopener" target="_blank">Shimano user's manual</a> · <a href="https://www.steadyrack.com/blogs/blog/storing-bikes-with-hydraulic-brakes-in-a-steadyrack" rel="noopener" target="_blank">Steadyrack, quoting SRAM</a></p></dd>
     </div>
     <div class="rise">
       <dt id="ebike">I ride an e-bike. What should I check?</dt>
@@ -479,19 +495,6 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
     <a class="btn rise" href="#hall">Back to the picks</a>
   </div>
   <small>Stock photo (Pexels)</small>
-</section>
-<section class="su" id="updates" aria-labelledby="h-updates">
-  <div class="su-in">
-    <h2 id="h-updates">New picks, by email</h2>
-    <p>We add and swap racks and stands as better ones show up. Leave your email and we'll tell you when this page changes. Our emails link back to this page, never straight to a store.</p>
-    <form class="su-form" data-kit-signup data-place="bottom" action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
-      <label for="su-email">Your email</label>
-      <div class="su-row"><input id="su-email" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me new picks</button></div>
-      <input type="hidden" name="fields[signup_source]" value="picks-page"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
-      <p class="su-msg" role="status" aria-live="polite"></p>
-      <p class="su-small">We send one email first so you can confirm. Unsubscribe any time. <a href="../privacy.html">Privacy notice</a>.</p>
-    </form>
-  </div>
 </section>
 </main>
 
