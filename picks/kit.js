@@ -36,7 +36,7 @@
     if (!a) return;
     var m = a.href.match(/\/dp\/([A-Z0-9]{10})/i), card = a.closest('.pick, article, li');
     var h = card && card.querySelector('h3');
-    count('out/' + (m ? m[1].toUpperCase() : 'other'), 'Amazon click: ' + (h ? h.textContent.trim() : (m ? m[1] : 'link')));
+    count('out/' + (a.closest('.gift') ? 'gift-' : '') + (m ? m[1].toUpperCase() : 'other'), 'Amazon click: ' + (h ? h.textContent.trim() : (m ? m[1] : 'link')));
   }
   document.addEventListener('click', onOut);
   document.addEventListener('auxclick', function (e) { if (e.button === 1) onOut(e) });   // middle-click, new tab
