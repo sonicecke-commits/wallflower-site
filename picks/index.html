@@ -170,6 +170,9 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 
 /* quieter paid-link label beside each button (Sam 2026-11-11) */
 .paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}@media (max-width:640px){.pick .buy{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}}
+.most-tag{display:inline-block;margin:0 0 10px;padding:4px 10px;border-radius:999px;font:600 13px/1.2 var(--mono);letter-spacing:.04em;text-transform:uppercase;background:var(--orange);color:#24272B}
+.most-why{font-weight:600;margin:6px 0}
+.start{margin:10px 0 0}.start a{color:var(--accent-text);font-weight:600}
 </style>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -191,6 +194,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
     <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
     <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives, each with a budget and a mid-range pick. Chosen from makers' specs and owner reports; we haven't tested any of them ourselves.</p>
     <p class="paid rise"><strong>Paid links:</strong> we earn a commission if you buy through our links. Amazon doesn't endorse this page.</p>
+    <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See our pick for most people</a></p>
     <form class="rise" onsubmit="return false">
       <fieldset class="picker">
         <legend>What do you ride?</legend>
@@ -229,9 +233,9 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="split">
     <figure class="photo rise"><img src="../assets/hallway.jpg" alt="A narrow apartment hallway with doors on both sides" loading="lazy"><figcaption>A narrow hallway. Stock photo.</figcaption></figure>
     <ul class="picks">
-      <li class="pick rise" data-ride="road">
+      <li class="pick most rise" id="most" data-ride="road">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
-        <div><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="why">For most road and hybrid bikes in a tight hallway. The maker says it swivels so the bike sits closer to the wall.</p><p class="give">Trade-off: you lift the front wheel up to the hook yourself.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
+        <div><span class="most-tag">Our pick for most people</span><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="most-why">Not sure where to start? Start here. It suits most road and hybrid bikes, and it swings the bike flat against the wall, so it fits even a narrow hallway.</p><p class="why">For most road and hybrid bikes in a tight hallway. The maker says it swivels so the bike sits closer to the wall.</p><p class="give">Trade-off: you lift the front wheel up to the hook yourself.</p><p class="stud">Screw it into a wall stud, not drywall anchors alone.</p></div>
         <div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" data-ride="mtb ebike">
