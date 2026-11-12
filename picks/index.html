@@ -214,13 +214,24 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .gl tr.off{display:none!important}
 @media (hover:hover){.gl tbody tr:hover{transform:translateX(6px)}.gl tbody tr:hover td a::after{transform:translateX(5px)}}
 .gl tbody tr:active{transform:scale(.985)}
-.gl-arm tbody tr{opacity:0;transform:translateY(22px)}
+/* gl-v3 reveal: rise + wipe per row, arrow glides in, dots pop, our-pick chip pops (Sam 2026-11-12 03:51) */
+.gl-arm tbody tr{opacity:0;transform:translateY(26px) scale(.985)}
+.gl-arm td a::after{opacity:0;transform:translateX(-10px)}
 .gl-arm .gl-m b{transform:scale(0)}
-.gl-arm.gl-in tbody tr{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 70ms)}
-.gl-arm.gl-in .gl-m b{transform:none;transition-delay:calc(var(--i,0) * 70ms + 350ms)}
-.gl-arm.gl-in .gl-m b:nth-child(2){transition-delay:calc(var(--i,0) * 70ms + 430ms)}
-.gl-arm.gl-in .gl-m b:nth-child(3){transition-delay:calc(var(--i,0) * 70ms + 510ms)}
-.gl-arm.gl-done tbody tr,.gl-arm.gl-done .gl-m b{transition-delay:0s!important}
+.gl-arm .gl-most{opacity:0;transform:scale(.7)}
+.gl-arm.gl-in tbody tr{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0) * 90ms)}
+.gl-arm.gl-in td a::after{opacity:1;transform:none;transition:opacity .4s ease calc(var(--i,0) * 90ms + 520ms),transform .6s cubic-bezier(.16,1,.3,1) calc(var(--i,0) * 90ms + 520ms)}
+.gl-arm.gl-in .gl-m b{transform:none;transition:transform .45s cubic-bezier(.3,1.6,.5,1) calc(var(--i,0) * 90ms + 420ms)}
+.gl-arm.gl-in .gl-m b:nth-child(2){transition-delay:calc(var(--i,0) * 90ms + 500ms)}
+.gl-arm.gl-in .gl-m b:nth-child(3){transition-delay:calc(var(--i,0) * 90ms + 580ms)}
+.gl-arm.gl-in .gl-most{opacity:1;transform:none;transition:opacity .3s ease calc(var(--i,0) * 90ms + 700ms),transform .55s cubic-bezier(.3,1.7,.5,1) calc(var(--i,0) * 90ms + 700ms)}
+.gl-arm.gl-done td{clip-path:none;transition:background-color .25s,color .25s}
+.gl-arm.gl-done tbody tr{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.gl-arm.gl-done td a::after{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.gl-arm.gl-done .gl-m b,.gl-arm.gl-done .gl-most{transition:none}
+@media (hover:hover){.gl-arm.gl-done tbody tr:hover{transform:translateX(6px)}.gl-arm.gl-done tbody tr:hover td a::after{transform:translateX(5px)}}
+.gl-arm.gl-done tbody tr:active{transform:scale(.985)}
+@media (max-width:700px){.gl-arm td{clip-path:none!important}.gl-arm tbody tr{clip-path:inset(0 100% 0 0 round var(--gl-r))}.gl-arm.gl-in tbody tr{clip-path:inset(0 0 0 0 round var(--gl-r));transition:opacity .6s cubic-bezier(.16,1,.3,1) calc(var(--i,0) * 90ms),transform .8s cubic-bezier(.16,1,.3,1) calc(var(--i,0) * 90ms),clip-path .9s cubic-bezier(.16,1,.3,1) calc(var(--i,0) * 90ms + 40ms)}.gl-arm.gl-done tbody tr{clip-path:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}}
 @media (max-width:700px){
 .gl thead{display:none}
 .gl,.gl tbody{display:block;width:100%;margin:0}
@@ -240,7 +251,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .gl td a{font-size:19px}
 .gl-m{gap:3px;margin-right:6px}.gl-m b{width:7px;height:7px}
 }
-@media (prefers-reduced-motion:reduce){.gl tbody tr,.gl-m b,.gl td a::after{transition:none!important}.gl-arm tbody tr{opacity:1;transform:none}.gl-arm .gl-m b{transform:none}.gl tbody tr:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.gl tbody tr,.gl-m b,.gl td a::after{transition:none!important}.gl-arm tbody tr{opacity:1;transform:none}.gl-arm .gl-m b{transform:none}.gl-arm td,.gl-arm tbody tr{clip-path:none!important}.gl-arm .gl-most,.gl-arm td a::after{opacity:1;transform:none}.gl tbody tr:hover{transform:none}}
 .faq{padding:clamp(64px,8vw,120px) var(--m) 0}
 .faq dl{margin:24px 0 0;display:grid;gap:28px;max-width:70ch}
 .faq dt{font:800 clamp(21px,2vw,26px)/1.2 var(--display);margin:0 0 8px}
@@ -482,6 +493,6 @@ const glRows=[...document.querySelectorAll('.gl tbody tr')];document.querySelect
 document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
 </script>
 <script src="kit.js" data-gc="wallflowerbikes" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
-<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},1400)},{threshold:.12});io.observe(t)})();</script>
+<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},t.querySelectorAll('tbody tr').length*90+1500)},{threshold:.12});io.observe(t)})();</script>
 </body>
 </html>
