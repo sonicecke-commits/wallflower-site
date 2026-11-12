@@ -166,6 +166,15 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .hero h1 span:nth-child(2){transition-delay:.1s}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rise:not(.in),.js .hero h1:not(.in) span{opacity:1;transform:none}.hero .photo img{transform:none}}
 .su{background:var(--plaster-2);padding:clamp(48px,7vw,96px) var(--m)}.su .su-in{max-width:760px}.su h2{font-size:clamp(34px,4.6vw,60px);line-height:1;margin:10px 0 16px}.su p{max-width:52ch;margin:0 0 20px}.su label{display:block;font-weight:600;margin-bottom:8px}.su-row{display:flex;gap:10px;flex-wrap:wrap}.su input[type=email]{flex:1 1 260px;min-height:56px;border:1px solid var(--line);border-radius:6px;background:var(--chip);color:var(--fg);font:inherit;padding:0 16px}.su button{min-height:56px;border:0;border-radius:6px;background:var(--orange);color:var(--graphite);font:600 18px/1 var(--sans);padding:0 26px;cursor:pointer}.su button:disabled{opacity:.6}.su input:focus-visible,.su button:focus-visible{outline:3px solid var(--fg);outline-offset:2px}.su .su-small{font-size:15px;color:var(--fg-2);margin:14px 0 0}.su .su-msg{font-weight:600;margin:10px 0 0;min-height:1.5em}.su-done .su-row{display:none}
+.su-mid{background:transparent;padding:clamp(28px,4vw,48px) var(--m);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.su-mid .su-in{max-width:1100px;display:grid;gap:12px 40px;grid-template-columns:1fr}
+@media (min-width:880px){.su-mid .su-in{grid-template-columns:1fr 1.1fr;align-items:center}}
+.su-mid h2{font-size:clamp(24px,2.6vw,34px);margin:0 0 8px}.su-mid p{margin:0}.su-mid .su-form p{margin:0}
+.su-mid label{font-size:15px;margin-bottom:6px}.su-mid input[type=email],.su-mid button{min-height:50px}
+.su-mid button{background:transparent;color:var(--fg);border:2px solid var(--fg)}
+.su-mid button:hover{background:var(--fg);color:var(--bg)}
+.su-mid .su-small{font-size:14px;margin-top:10px}
+:root{--kbar-bg:var(--graphite);--kbar-fg:#EEE9E1;--kbar-btn:#EEE9E1;--kbar-btn-fg:var(--graphite)}
 
 /* quieter paid-link label beside each button (Sam 2026-11-11) */
 .paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}@media (max-width:640px){.pick .buy{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}}
@@ -251,6 +260,20 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   </div>
 </section>
 
+<section class="su su-mid" id="tips" aria-labelledby="h-tips">
+  <div class="su-in">
+    <div class="su-copy"><h2 id="h-tips">Small-space bike storage, by email</h2>
+    <p>A few short emails: wall and floor fixes, and any pick we add or swap.</p></div>
+    <form class="su-form" data-kit-signup data-place="mid" action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
+      <label for="su-email-mid">Your email</label>
+      <div class="su-row"><input id="su-email-mid" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me the tips</button></div>
+      <input type="hidden" name="fields[signup_source]" value="picks-mid"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
+      <p class="su-msg" role="status" aria-live="polite"></p>
+      <p class="su-small">We send one email first so you can confirm. Unsubscribe any time. <a href="../privacy.html">Privacy notice</a>.</p>
+    </form>
+  </div>
+</section>
+
 <section class="group g-wall flip" id="wall" aria-labelledby="h-wall">
   <div class="gh"><div><p class="label rise">Living room</p><h2 id="h-wall" class="rise">Sideways, like a display.</h2></div><p class="rise">The bike sits level along the wall and becomes part of the room.</p></div>
   <div class="split">
@@ -321,7 +344,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="su-in">
     <h2 id="h-updates">New picks, by email</h2>
     <p>We add and swap racks and stands as better ones show up. Leave your email and we'll tell you when this page changes. Our emails link back to this page, never straight to a store.</p>
-    <form class="su-form" data-kit-signup action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
+    <form class="su-form" data-kit-signup data-place="bottom" action="https://assets.mailerlite.com/jsonp/2783388/forms/203724961674691697/subscribe" method="post">
       <label for="su-email">Your email</label>
       <div class="su-row"><input id="su-email" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me new picks</button></div>
       <input type="hidden" name="fields[signup_source]" value="picks-page"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
@@ -358,6 +381,6 @@ function apply(v){let n=0;picks.forEach(p=>{const on=v==='all'||p.dataset.ride.s
  count.textContent=v==='all'?n+' picks below.':n+' picks suit '+(v==='ebike'?'an ':'a ')+names[v]+', by the makers’ descriptions. Check your bike’s weight and tire width.';}
 document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
 </script>
-<script src="kit.js" data-gc="wallflowerbikes" defer></script>
+<script src="kit.js" data-gc="wallflowerbikes" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
 </body>
 </html>
