@@ -83,7 +83,7 @@ fieldset.picker{border:0;margin:0;padding:0}
 .cmp .knob svg{width:28px;height:28px}
 .cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .cmp input:focus-visible~.knob{outline:3px solid #fff;outline-offset:3px}
-.cmp .side{position:absolute;top:14px;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;background:rgba(20,22,24,.62);color:#fff;padding:7px 10px;pointer-events:none}
+.cmp .side{position:absolute;top:14px;font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;background:rgba(20,22,24,.62);color:#fff;padding:7px 10px;pointer-events:none;transition:opacity .15s}
 .cmp .s1{left:14px}.cmp .s2{right:14px}
 .note{font-size:14px;color:var(--fg-2);margin-top:10px}
 @media (max-width:640px){.cmp{aspect-ratio:4/5}.cmp img{object-position:28% 50%}}
@@ -457,8 +457,8 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <section class="compare" aria-labelledby="h-cmp">
   <div class="gh"><div><p class="label rise">Why bother</p><h2 id="h-cmp" class="rise">Same room. Floor back.</h2></div><p class="rise">Drag the line to compare. A typical adult bike is about 69 × 24 in, so it covers roughly 11 sq ft of floor.</p></div>
   <div class="cmp rise" id="cmp">
-    <img src="../assets/office-floor.jpg" alt="A home office with a bike leaning against the wall on the floor" loading="lazy">
-    <img class="after" src="../assets/office-wall.jpg" alt="The same home office with the bike hung on a wall mount and the floor clear" loading="lazy">
+    <img src="../assets/office-floor.jpg?v=2" alt="A home office with a bike leaning against the wall on the floor" loading="lazy">
+    <img class="after" src="../assets/office-wall.jpg?v=2" alt="The same home office with the bike hung on a wall mount and the floor clear" loading="lazy">
     <span class="side s1">Bike on the floor</span><span class="side s2">Floor back</span>
     <span class="line" aria-hidden="true"></span>
     <input type="range" min="0" max="100" value="50" aria-label="Compare the room with and without the bike">
@@ -608,8 +608,9 @@ const revealPast=()=>document.querySelectorAll('.rise:not(.in)').forEach(el=>{if
 addEventListener('scroll',revealPast,{passive:true});setTimeout(revealPast,400);
 requestAnimationFrame(()=>document.querySelector('.hero h1').classList.add('in'));
 // compare slider
-const cmp=document.getElementById('cmp'),rng=cmp.querySelector('input');
-const setX=v=>cmp.style.setProperty('--x',v+'%');rng.addEventListener('input',()=>setX(rng.value));
+const cmp=document.getElementById('cmp'),rng=cmp.querySelector('input'),s1=cmp.querySelector('.s1'),s2=cmp.querySelector('.s2');
+// each label names its own side, so it hides once the line has passed over most of it
+const setX=v=>{cmp.style.setProperty('--x',v+'%');const px=cmp.clientWidth*v/100;s1.style.opacity=px<s1.offsetLeft+s1.offsetWidth/2?0:1;s2.style.opacity=px>s2.offsetLeft+s2.offsetWidth/2?0:1};rng.addEventListener('input',()=>setX(rng.value));
 // ride filter
 const picks=[...document.querySelectorAll('.pick:not(.none)')],count=document.getElementById('count');
 const names={road:'road, gravel or hybrid bike',mtb:'mountain bike',ebike:'e-bike'};
