@@ -439,6 +439,11 @@ h1,h2,footer .name,.mark{font-variant-ligatures:no-common-ligatures;font-feature
 @media (max-width:880px){.hero{row-gap:0!important}}
 .gl tr.gl-top .tier{color:#C9CBC8!important}
 .start a,.faq dd a,.su-small a,footer .cols a{color:var(--fg)!important;text-decoration-color:var(--oak);text-decoration-thickness:2px;text-underline-offset:3px}
+/* round 2: FAQ answers capped near 70 characters a line on desktop; darker scrim behind Find the stud first. */
+.faq dd{max-width:30em}
+.close .scrim{background:linear-gradient(90deg,rgba(20,22,24,.8) 0%,rgba(20,22,24,.72) 48%,rgba(20,22,24,.3) 80%,rgba(20,22,24,.1) 100%),linear-gradient(180deg,rgba(20,22,24,0) 30%,rgba(20,22,24,.6))}
+@media (max-width:860px){.close .scrim{background:linear-gradient(180deg,rgba(20,22,24,.45) 0%,rgba(20,22,24,.78) 50%,rgba(20,22,24,.86) 100%)}}
+.close small{opacity:1;background:rgba(20,22,24,.82);padding:3px 8px;border-radius:3px}
 </style>
 </head>
 <body>
