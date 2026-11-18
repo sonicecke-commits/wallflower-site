@@ -118,6 +118,7 @@ p.stud-sec{margin:-12px 0 clamp(28px,4vw,48px);font-size:17px!important}
 .pick .stud::before,.stud-sec::before{content:"";width:10px;height:10px;background:var(--oak);border-radius:2px;flex:none}
 .pick .buy{grid-column:3;grid-row:1/span 2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .btn{display:inline-flex;align-items:center;min-height:48px;text-decoration:none;font-weight:600;padding:0 20px;border-radius:999px;white-space:nowrap;background:var(--graphite);color:#EEE9E1;transition:transform .2s,background .2s}
+@media (max-width:340px){.btn{white-space:normal;text-align:center;padding:8px 18px}}
 .g-wall .btn{background:var(--orange);color:var(--graphite)}
 .btn:hover{transform:translateY(-2px)}
 .paidtag{font-size:14px;color:var(--fg-2)}
@@ -208,7 +209,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 .gl td a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--gl-r)}
 .gl td a::after{content:"\2192";display:inline-block;margin-left:.35em;color:var(--gl-acc);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 .gl td a:hover{color:inherit}
-.gl td a:focus-visible{outline:none}.gl td a:focus-visible::before{outline:3px solid var(--gl-acc);outline-offset:2px}
+.gl td a:focus-visible{outline:none}.gl td a:focus-visible::before{outline:3px solid var(--gl-acc);outline-offset:-3px}
 .gl .gl-most{display:table;white-space:nowrap;margin-top:10px;font-size:13px;font-weight:700;line-height:1;padding:6px 10px;border-radius:var(--gl-chip-r);background:var(--gl-acc);color:var(--gl-acc-ink)}
 .gl td[data-l]{color:var(--gl-ink)}
 .gl tr.gl-top td{background:var(--gl-top);color:var(--gl-top-ink)}
@@ -381,7 +382,6 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   </div>
   <figure class="photo rise">
     <img src="../assets/home-wall-1200.jpg" srcset="../assets/home-wall-800.jpg 800w, ../assets/home-wall-1200.jpg 1200w, ../assets/home-wall.jpg 1800w" sizes="(max-width:880px) 100vw, 55vw" width="1800" height="1202" alt="A road bike hung sideways on a brick wall above a dining table at home" fetchpriority="high">
-    <div class="tag"><b>11 sq ft</b><span>of floor a parked bike covers</span></div>
     <figcaption>Stock photo of a dining room. Not one of the picks.</figcaption>
   </figure>
 </section>
@@ -447,7 +447,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
       </li>
       <li class="pick has-ph rise" id="pk-nolift" data-ride="mtb ebike">
         <figure class="ic ph"><img src="../assets/products/B0CSSJFVBM.jpg" alt="The monTEK No-Lift Swivel Bike Wall Mount, maker's product photo" width="800" height="800" loading="lazy"><figcaption>Photo: monTEK</figcaption></figure>
-        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: the maker says you roll the bike up rather than lift it.</p><p class="give"><b>Trade-off:</b> costs more than the basic swivel, and needs more wall height. Skip it if your ceiling is low.</p></div>
+        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: you roll the bike up to the hook, with no lifting (our summary of the maker's listing).</p><p class="give"><b>Trade-off:</b> costs more than the basic swivel, and needs more wall height. Skip it if your ceiling is low.</p></div>
         <div class="buy"><a class="btn" aria-label="Check today's price: monTEK No-Lift Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-steadyrack" data-ride="road">
@@ -460,7 +460,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 </section>
 
 <section class="compare" aria-labelledby="h-cmp">
-  <div class="gh"><div><p class="label rise">Why bother</p><h2 id="h-cmp" class="rise">Same room. Floor back.</h2></div><p class="rise">Drag the line to compare. A typical adult bike is about 69 × 24 in, so it covers roughly 11 sq ft of floor.</p></div>
+  <div class="gh"><div><p class="label rise">Why bother</p><h2 id="h-cmp" class="rise">Same room. Floor back.</h2></div><p class="rise">Drag the line: the same room, bike on the floor and on the wall.</p></div>
   <div class="cmp rise" id="cmp">
     <img src="../assets/office-floor.jpg?v=2" alt="A home office with a bike leaning against the wall on the floor" loading="lazy">
     <img class="after" src="../assets/office-wall.jpg?v=3" alt="The same home office with the bike hung on a wall mount and the floor clear" loading="lazy">
@@ -601,7 +601,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="cols">
     <p><strong>Paid links</strong>Wallflower earns a commission on purchases made through this page. As an Amazon Associate we earn from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
     <p><strong>About this page</strong>Wallflower is a small independent picks site. Contact: <a href="mailto:hello@wallflowerbikes.com">hello@wallflowerbikes.com</a>. Product names belong to their makers. Neither Amazon nor any maker endorses this page. <a href="../privacy.html">Privacy notice</a>.</p>
-    <p><strong>Pictures</strong>All photos are from <a href="https://www.pexels.com/">Pexels</a> under the Pexels licence; in the "Floor back" photo we moved the bike onto the wall and drew the mount. None of them show the picks. Icons drawn for this page.</p>
+    <p><strong>Pictures</strong>The two monTEK product photos are the maker's, used with their permission. All other photos are from <a href="https://www.pexels.com/">Pexels</a> under the Pexels licence; in the "Floor back" photo we moved the bike onto the wall and drew the mount. Icons drawn for this page.</p>
   </div>
 </footer>
 
