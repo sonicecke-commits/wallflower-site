@@ -27,7 +27,7 @@ p{margin:0}
 .label{font:500 13px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .skip{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--graphite);padding:10px 14px;z-index:50}
 .skip:focus{left:8px}
-:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+:focus-visible{outline:3px solid var(--graphite);outline-offset:3px;box-shadow:0 0 0 6px #EEE9E1}
 
 /* bar */
 .bar{display:flex;align-items:center;gap:28px;padding:20px var(--m)}
@@ -351,6 +351,100 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 @media (prefers-reduced-motion:reduce){.rise,.js .rise,.js .rise:not(.in){transition:none!important;transform:none!important}}
 </style>
 <script>(function(){if(!('IntersectionObserver' in window)){document.documentElement.classList.add('no-io');return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add(e.target.classList.contains('gh')?'in':'seen');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.gh,.group .photo').forEach(function(el){io.observe(el)})})})();</script>
+<style id="visual-v3">
+/* visual v3 (sample, 2026-11-18): one type scale, looser display tracking, one card and one button pattern,
+   orange kept for the "Our pick" pill, eyebrows, the logo dot and the slider. Motion: decoration only, 0.3 s or less. */
+:root{
+  --fs-1:13px;--fs-2:15px;--fs-3:18px;--fs-4:clamp(21px,1.8vw,24px);--fs-5:clamp(30px,3.6vw,48px);--fs-6:clamp(44px,6.6vw,104px);--fs-7:clamp(54px,8.6vw,140px);
+  --track:-.02em;--btn-bg:var(--graphite);--btn-fg:#EEE9E1;--tile:2px solid var(--oak);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--btn-bg:#EEE9E1;--btn-fg:var(--graphite)}}
+:root[data-theme="dark"]{--btn-bg:#EEE9E1;--btn-fg:var(--graphite)}
+/* type scale: every size on the page is one of the seven tokens */
+body{font-size:var(--fs-3)}
+.label,.tier,.most-tag,.photo figcaption,.pick .ic.ph figcaption,.cmp .side,.tag span,.close small,.gl th,.gl .gl-most,.gl td:nth-child(4),.paid,.hero .paid,p.paid{font-size:var(--fs-1)!important}
+.paidtag,.count,.note,.pick .stud,.stud-sec,p.stud-sec,footer .cols,.su .su-small,.su-mid .su-small,.su-mid label,.faq .src,.gift-card .more,.jump a,.empty-note,.gl-toggle,body .kbar .kl,body .kbar button,body .kbar .su-msg,.gl td[data-l]::before{font-size:var(--fs-2)!important}
+.pick .give,.gift-card p,.gift .before,.gift .after,.gl,.gl td a,.gl td[data-l]:not(:nth-child(4)),.gift-card h3,.su button,.picker legend,.close p{font-size:var(--fs-3)!important}
+.mark,.lede,.gh p,.pick h3,.steps h3,.faq dt,.gift-card .if,.su-mid h2{font-size:var(--fs-4)!important}
+.glance h2,.faq h2,.su h2:not(.su-mid h2),.steps li::before,.tag b{font-size:var(--fs-5)!important}
+.su-mid h2{font-size:var(--fs-4)!important}
+.gh h2,.close h2{font-size:var(--fs-6)!important}
+.hero h1,footer .name{font-size:var(--fs-7)!important}
+body .dealtag small,body .kbar .su-small{font-size:var(--fs-1)!important}
+@media (max-width:700px){.gl td[data-l]:not(:nth-child(4)){font-size:var(--fs-2)!important}}
+/* display tracking: loose enough that no letters touch */
+h1,h2,.hero h1,.gh h2,.close h2,.glance h2,.faq h2,.su h2,footer .name,.mark,.steps li::before,.pick h3,.steps h3,.gift-card .if{letter-spacing:var(--track)!important}
+.hero h1{line-height:.94}.gh h2,.close h2{line-height:.96}footer .name{line-height:.9}
+.pick h3,.steps h3,.faq dt,.gift-card .if{line-height:1.15}
+/* colour: orange only for the pill, eyebrows, logo dot and slider */
+.hero h1 em{color:inherit}
+.paid{border-left-color:var(--oak)!important}
+.tier,.gl .tier,.g-wall .tier{color:var(--fg-2)!important}.g-wall .tier{color:#C9CBC8!important}
+.steps li::before{color:var(--fg-2)}
+.gh h2::after,.g-wall .gh h2::after{background:var(--oak)!important}
+.glance{--gl-acc:var(--fg);--gl-top-acc:var(--oak)}
+.gl .gl-most{background:var(--orange)!important;color:var(--graphite)!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glance{--gl-top:#2E3236;--gl-top-ink:#EEE9E1;--gl-top-muted:#AEB0AE;--gl-top-acc:var(--oak);--gl-top-off:#4A4F55;--gl-acc:var(--fg);--gl-acc-ink:var(--graphite)}}
+:root[data-theme="dark"] .glance{--gl-top:#2E3236;--gl-top-ink:#EEE9E1;--gl-top-muted:#AEB0AE;--gl-top-acc:var(--oak);--gl-top-off:#4A4F55;--gl-acc:var(--fg);--gl-acc-ink:var(--graphite)}
+/* one button: graphite on paper, warm light on graphite or photo; never orange */
+.btn,.act,.su button:not(.su-mid button){background:var(--btn-bg)!important;color:var(--btn-fg)!important}
+.g-wall .btn,.close .btn{background:#EEE9E1!important;color:var(--graphite)!important}
+.act{transition:transform .2s}
+/* one card: same framed tile for every pick, text in one column, button with "Paid link" beside it */
+.pick,.pick.has-ph,.pick.none{grid-template-columns:88px 1fr!important;gap:0 24px}
+.pick .ic,.pick .ic.ph{width:88px!important;height:88px!important;margin:0;border:var(--tile);border-radius:6px;overflow:visible;display:grid;place-items:center;background:var(--graphite)!important;position:relative}
+.g-wall .pick .ic{background:#33373C!important}
+.pick .ic svg{width:58px;height:58px}
+.pick .ic.ph{background:#fff!important}
+.pick .ic.ph img{width:100%!important;height:100%!important;object-fit:contain;padding:6px!important;border:0!important;border-radius:4px;background:#fff;box-shadow:none!important}
+.pick .ic.ph figcaption{position:absolute;top:100%;left:-8px;right:-8px;margin-top:6px;line-height:1.3}
+.pick>div:not(.ic):not(.buy){grid-column:2}
+.pick .buy,.gift-card .buy{grid-column:2!important;grid-row:auto!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start;flex-wrap:wrap;gap:8px 12px!important;margin-top:16px}
+.gift-card .buy{margin-top:auto}
+.pick .buy .dealtag{flex-basis:100%}
+.most-why{font-weight:400!important}
+@media (max-width:640px){
+ .pick,.pick.has-ph,.pick.none{grid-template-columns:64px 1fr!important;gap:0 16px}
+ .pick .ic,.pick .ic.ph{width:64px!important;height:64px!important}
+ .pick .ic svg{width:44px;height:44px}
+ .pick .ic.ph img{padding:4px!important}
+ .pick .buy{grid-column:1/-1!important;margin-top:18px}
+}
+@media (max-width:360px){.btn{padding:0 16px;font-size:var(--fs-2)}.gift-card{padding:20px}}
+/* phone hero: headline first, then the photo, caption under the photo */
+@media (max-width:880px){
+ .hero>div{display:contents}
+ .hero h1{order:-2}
+ .hero .photo{order:-1;height:auto!important;margin:0 calc(var(--m)*-1) 24px;overflow:visible;background:transparent}
+ .hero .photo img{height:220px!important}
+ .hero .photo figcaption{position:static;width:auto;max-width:none;margin:8px var(--m) 0;padding:0;background:none;color:var(--fg-2)}
+ .hero h1{margin-bottom:20px}
+}
+.jump{margin-bottom:8px}
+@media (max-width:880px){.glance{padding-top:24px}}
+/* motion: text, headline and picks never move; decoration only, 0.3 s or less */
+.rise,.js .rise,.js .rise:not(.in){transform:none!important;opacity:1!important}
+.js .hero h1 span,.js .hero .lede,.js .hero h1:not(.in) span{animation:none!important;transform:none!important;opacity:1!important}
+.js .hero .photo img{animation-duration:.3s!important}
+.gh h2::after{transition-duration:.3s!important;transition-delay:0s!important}
+.group .photo img{transition-duration:.3s!important}
+.pick{transition:opacity .25s}
+.gl tbody tr{transition:transform .25s cubic-bezier(.2,.8,.2,1)!important;opacity:1!important;clip-path:none!important}
+.gl td a::after{opacity:1!important;transition:transform .25s cubic-bezier(.2,.8,.2,1)!important}
+.gl-m b,.gl .gl-most{transform:none!important;opacity:1!important}
+.cmp .side{transition:opacity .15s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.gh h2::after{display:none}.gl tbody tr:hover,.btn:hover,.act:hover{transform:none!important}}
+/* follow-up: no display ligatures (ff, fl stay apart), tighter phone hero rhythm, text links in ink with an oak underline */
+h1,h2,footer .name,.mark{font-variant-ligatures:no-common-ligatures;font-feature-settings:"liga" 0,"clig" 0}
+@media (max-width:880px){.hero{row-gap:0!important}}
+.gl tr.gl-top .tier{color:#C9CBC8!important}
+.start a,.faq dd a,.su-small a,footer .cols a{color:var(--fg)!important;text-decoration-color:var(--oak);text-decoration-thickness:2px;text-underline-offset:3px}
+/* round 2: FAQ answers capped near 70 characters a line on desktop; darker scrim behind Find the stud first. */
+.faq dd{max-width:30em}
+.close .scrim{background:linear-gradient(90deg,rgba(20,22,24,.8) 0%,rgba(20,22,24,.72) 48%,rgba(20,22,24,.3) 80%,rgba(20,22,24,.1) 100%),linear-gradient(180deg,rgba(20,22,24,0) 30%,rgba(20,22,24,.6))}
+@media (max-width:860px){.close .scrim{background:linear-gradient(180deg,rgba(20,22,24,.45) 0%,rgba(20,22,24,.78) 50%,rgba(20,22,24,.86) 100%)}}
+.close small{opacity:1;background:rgba(20,22,24,.82);padding:3px 8px;border-radius:3px}
+</style>
 </head>
 <body>
 <a class="skip" href="#hall">Skip to the picks</a>
@@ -366,15 +460,15 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
     <h1 id="h1"><span>Get the bike</span><span>off the <em>floor.</em></span></h1>
     <p class="lede rise">Bike storage picks for small homes, sorted by where your bike lives and labelled budget, mid-range or premium. Each one says who it suits and its trade-off.</p>
     <p class="paid rise"><strong>Paid links:</strong> As an Amazon Associate we earn from qualifying purchases. The commission never decides what we list (<a href="#how">how we pick</a>).</p>
-    <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See where we'd start</a></p>
+    <p class="start rise"><a href="#most" onclick="var a=document.getElementById('r-all');if(a&&!a.checked){a.checked=true;a.dispatchEvent(new Event('change',{bubbles:true}))}">Not sure? See where we’d start</a></p>
     <form class="rise" onsubmit="return false">
       <fieldset class="picker">
         <legend>What do you ride?</legend>
         <div class="rides">
-          <input type="radio" name="ride" id="r-road" value="road"><label for="r-road"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 19l5-9h7l2 9M13 10l3 9" fill="none" stroke="#FF5B24" stroke-width="2"/></svg>Road, gravel or hybrid</label>
-          <input type="radio" name="ride" id="r-mtb" value="mtb"><label for="r-mtb"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 19l5-8h7l2 8M13 11l3 8" fill="none" stroke="#FF5B24" stroke-width="2"/></svg>Mountain bike</label>
-          <input type="radio" name="ride" id="r-e" value="ebike"><label for="r-e"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 3l-5 8h4l-2 6 6-8h-4z" fill="#FF5B24"/></svg>E-bike</label>
-          <input type="radio" name="ride" id="r-all" value="all" checked><label for="r-all"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="3" fill="currentColor"/><rect x="4" y="13.5" width="22" height="3" fill="#FF5B24"/><rect x="4" y="21" width="22" height="3" fill="currentColor"/></svg>Show everything</label>
+          <input type="radio" name="ride" id="r-road" value="road"><label for="r-road"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 19l5-9h7l2 9M13 10l3 9" fill="none" stroke="#C9A27A" stroke-width="2"/></svg>Road, gravel or hybrid</label>
+          <input type="radio" name="ride" id="r-mtb" value="mtb"><label for="r-mtb"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="19" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 19l5-8h7l2 8M13 11l3 8" fill="none" stroke="#C9A27A" stroke-width="2"/></svg>Mountain bike</label>
+          <input type="radio" name="ride" id="r-e" value="ebike"><label for="r-e"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="8" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 3l-5 8h4l-2 6 6-8h-4z" fill="#C9A27A"/></svg>E-bike</label>
+          <input type="radio" name="ride" id="r-all" value="all" checked><label for="r-all"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="3" fill="currentColor"/><rect x="4" y="13.5" width="22" height="3" fill="#C9A27A"/><rect x="4" y="21" width="22" height="3" fill="currentColor"/></svg>Show everything</label>
         </div>
       </fieldset>
       <p class="count" id="count" aria-live="polite">10 picks below.</p>
@@ -415,27 +509,27 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
       <li class="gift-card rise">
         <p class="if">If they rent</p>
         <span class="tier">Budget pick</span><h3>BikeHand Bike Floor Stand</h3>
-        <p>No drilling, so it's an easier ask if they rent. The bike stands upright in a floor slot, and the maker says it takes most 24 to 29 inch wheels.</p>
-        <div class="buy"><a class="btn" aria-label="Check today's price: BikeHand Bike Floor Stand (paid link)" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-bikehand">See the trade-off</a></div>
+        <p>No drilling, so it’s an easier ask if they rent. The bike stands upright in a floor slot, and the maker says it takes most 24 to 29 inch wheels.</p>
+        <div class="buy"><a class="btn" aria-label="Check today's price: BikeHand Bike Floor Stand (paid link)" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-bikehand">See the trade-off</a></div>
       </li>
       <li class="gift-card rise">
         <p class="if">If their hallway is narrow</p>
         <span class="tier">Budget pick · our pick for most homes</span><h3>monTEK Swivel Bike Wall Mount</h3>
         <p>It holds the bike upright, and the maker says it swivels so the bike sits flatter to the wall, which helps in a narrow hallway. It needs a drill and a wall stud.</p>
-        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#most">See the trade-off</a></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span><a class="more" href="#most">See the trade-off</a></div>
       </li>
       <li class="gift-card rise">
         <p class="if">If it should feel special</p>
         <span class="tier">Premium pick</span><h3>Steadyrack Classic Road Bike Wall Mount</h3>
         <p>The maker says the rider rolls the front wheel in and pivots the bike against the wall. The maker lists tires up to 2.1 inches, on bikes without fenders. It needs a drill and a wall stud.</p>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Steadyrack Classic Road Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0D3TCXQ68?th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=7b2239cfed284da1afd5e9eecc8ac5ba&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-steadyrack">See the trade-off</a></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Steadyrack Classic Road Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0D3TCXQ68?th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=7b2239cfed284da1afd5e9eecc8ac5ba&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-steadyrack">See the trade-off</a></div>
       </li>
   </ul>
   <p class="after rise">Unsure about fit? Check the return window on the Amazon page before you buy.</p>
 </section>
 
 <section class="group g-hall" id="hall" aria-labelledby="h-hall">
-  <div class="gh"><div><p class="label rise">Narrow hallway</p><h2 id="h-hall" class="rise">Up the wall, swung flat.</h2></div><p class="rise">The bike hangs by its front wheel, then swivels flat so it doesn't stick out into the hall.</p></div>
+  <div class="gh"><div><p class="label rise">Narrow hallway</p><h2 id="h-hall" class="rise">Up the wall, swung flat.</h2></div><p class="rise">The bike hangs by its front wheel, then swivels flat so it doesn’t stick out into the hall.</p></div>
   <p class="stud stud-sec rise">Every mount here: screw it into a wall stud, not drywall anchors alone.</p>
   <div class="split">
     <figure class="photo rise"><img src="../assets/flat-wall.jpg" alt="A road bike hung flat against a wall, its shadow beside it" loading="lazy" style="object-position:50% 62%"><figcaption>A bike hung flat to the wall. Stock photo. Not one of the picks.</figcaption></figure>
@@ -443,17 +537,17 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
       <li class="pick has-ph most rise" id="most" data-ride="road">
         <figure class="ic ph"><img src="../assets/products/B0CJR3QCL5.jpg" alt="The monTEK Swivel Bike Wall Mount, maker's product photo" width="800" height="800" loading="lazy"><figcaption>Photo: monTEK</figcaption></figure>
         <div><span class="most-tag">Our pick for most homes</span><span class="tier">Budget pick</span><h3>monTEK Swivel Bike Wall Mount</h3><p class="most-why">Not sure where to start? Start here. The maker says it swivels so you can store the bike flush against the wall, which helps in a narrow hallway. The maker also lists a 66 lb limit and tires and rims up to 3.54 in deep.</p><p class="give"><b>Trade-off:</b> you lift the front wheel up to the hook yourself. Skip it if lifting the bike is hard for you.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CJR3QCL5?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick has-ph rise" id="pk-nolift" data-ride="mtb ebike">
         <figure class="ic ph"><img src="../assets/products/B0CSSJFVBM.jpg" alt="The monTEK No-Lift Swivel Bike Wall Mount, maker's product photo" width="800" height="800" loading="lazy"><figcaption>Photo: monTEK</figcaption></figure>
-        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: you roll the bike up to the hook, with no lifting (our summary of the maker's listing).</p><p class="give"><b>Trade-off:</b> costs more than the basic swivel, and needs more wall height. Skip it if your ceiling is low.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK No-Lift Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div><span class="tier">Mid-range pick</span><h3>monTEK No-Lift Swivel Bike Wall Mount</h3><p class="why">For heavier bikes: you roll the bike up to the hook, with no lifting (our summary of the maker’s listing).</p><p class="give"><b>Trade-off:</b> costs more than the basic swivel, and needs more wall height. Skip it if your ceiling is low.</p></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: monTEK No-Lift Swivel Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0CSSJFVBM?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-steadyrack" data-ride="road">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="20" y="4" width="14" height="18" rx="2" fill="#C9A27A"/><path d="M27 22v8c0 5 7 5 7 0" fill="none" stroke="#C9A27A" stroke-width="3.5" stroke-linecap="round"/><path d="M12 44a15 15 0 0 1 30 0" fill="none" stroke="#EEE9E1" stroke-width="3" stroke-dasharray="4 4"/></svg></div>
         <div><span class="tier">Premium pick</span><h3>Steadyrack Classic Road Bike Wall Mount</h3><p class="why">For road and hybrid bikes: the maker says you roll the front wheel in, then pivot the bike flat toward the wall.</p><p class="give"><b>Trade-off:</b> the maker lists tires up to 2.1 inches and no fenders. Skip it if your bike has fenders or wide tires.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Steadyrack Classic Road Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0D3TCXQ68?th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=7b2239cfed284da1afd5e9eecc8ac5ba&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Steadyrack Classic Road Bike Wall Mount (paid link)" href="https://www.amazon.com/dp/B0D3TCXQ68?th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=7b2239cfed284da1afd5e9eecc8ac5ba&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
     </ul>
   </div>
@@ -479,24 +573,24 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="split">
     <ul class="picks">
       <li class="pick rise" id="pk-borgen" data-ride="mtb ebike">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="10" width="10" height="20" rx="2" fill="#C9A27A"/><path d="M16 20h14" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><rect x="30" y="16" width="16" height="8" rx="2" fill="#EEE9E1"/><circle cx="38" cy="38" r="9" fill="none" stroke="#EEE9E1" stroke-width="3"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="10" width="10" height="20" rx="2" fill="#C9A27A"/><path d="M16 20h14" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><rect x="30" y="16" width="16" height="8" rx="2" fill="#EEE9E1"/><circle cx="38" cy="38" r="9" fill="none" stroke="#EEE9E1" stroke-width="3"/></svg></div>
         <div><span class="tier">Budget pick</span><h3>Borgen Wall Mount Pedal Hook</h3><p class="why">For e-bikes and mountain bikes: the maker says it hangs the bike by one pedal, close to the wall.</p><p class="give"><b>Trade-off:</b> owners mention a narrow pedal slot. Skip it if your pedals are wide or flat.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Borgen Wall Mount Pedal Hook (paid link)" href="https://www.amazon.com/dp/B0CN3686YG?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Borgen Wall Mount Pedal Hook (paid link)" href="https://www.amazon.com/dp/B0CN3686YG?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-probike" data-ride="road">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="12" width="42" height="8" rx="2" fill="#C9A27A"/><path d="M14 20v10M40 20v10" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/><path d="M8 34h38" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p class="why">For road and hybrid bikes with a top tube: the maker says adjustable arms hold the frame level.</p><p class="give"><b>Trade-off:</b> owners say the included screws can strip, so use lag screws into a stud. Skip it if you can't find a stud there.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: PRO BIKE TOOL Horizontal Wall Mount (paid link)" href="https://www.amazon.com/dp/B07RBZJDGS?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="12" width="42" height="8" rx="2" fill="#C9A27A"/><path d="M14 20v10M40 20v10" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M8 34h38" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Mid-range pick</span><h3>PRO BIKE TOOL Horizontal Wall Mount</h3><p class="why">For road and hybrid bikes with a top tube: the maker says adjustable arms hold the frame level.</p><p class="give"><b>Trade-off:</b> owners say the included screws can strip, so use lag screws into a stud. Skip it if you can’t find a stud there.</p></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: PRO BIKE TOOL Horizontal Wall Mount (paid link)" href="https://www.amazon.com/dp/B07RBZJDGS?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-mountit" data-ride="road mtb">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="8" width="42" height="6" rx="2" fill="#C9A27A"/><path d="M14 14v6M40 14v6" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/><rect x="10" y="24" width="34" height="7" rx="2" fill="#EEE9E1"/><path d="M18 31v8M36 31v8" stroke="#FF5B24" stroke-width="4" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Premium pick</span><h3>Mount-It! Horizontal Bike Wall Mount with Shelf</h3><p class="why">For road and mountain bikes: the maker says a steel arm holds the bike level, with a shelf and hooks above for a helmet and gear.</p><p class="give"><b>Trade-off:</b> the maker lists a 33 lb limit. Skip it if you ride an e-bike. It's a newer listing, so fewer owners have reviewed it so far.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Mount-It! Horizontal Bike Wall Mount with Shelf (paid link)" href="https://www.amazon.com/Mount-Horizontal-Mounted-Mountain-Bicycle/dp/B0CKFKDVJH?crid=1JFF7ZRL6NIXJ&amp;dib=eyJ2IjoiMSJ9.-PPtI0S2VxT7XNim_tW_HvjNcqoEz7Br-QC_R-cVWEll8Ocy_8AVx4u529oxuNadINne_Oz82KqCMiakv8u_0z_aPjQQsspEzY6w5Sa7YvqNTBDNodNq8eX3GBi3oBvJOQtybubhbwlTu7S1bDYD78W80ISnW31M2uPr9P_1JvcSaLof64NQiz-QL26lPvXqB75aTdX1kDcBt3fZy3S9Br-SDouFmcmW3ihbja55rP0.ZS09cDBOSJXzaCNe4tWLPS1nyfc7C1-pWNhxx0h2ML4&amp;dib_tag=se&amp;keywords=Mount-It%21%2Bhorizontal%2Bwith%2Bshelf&amp;qid=1794460667&amp;sprefix=mount-it%2Bhorizontal%2Bwith%2Bshelf%2Caps%2C239&amp;sr=8-1&amp;th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=32a9bf63aeffe5dfb275c0fd019dcb74&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="6" y="8" width="42" height="6" rx="2" fill="#C9A27A"/><path d="M14 14v6M40 14v6" stroke="#EEE9E1" stroke-width="3" stroke-linecap="round"/><rect x="10" y="24" width="34" height="7" rx="2" fill="#EEE9E1"/><path d="M18 31v8M36 31v8" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Premium pick</span><h3>Mount-It! Horizontal Bike Wall Mount with Shelf</h3><p class="why">For road and mountain bikes: the maker says a steel arm holds the bike level, with a shelf and hooks above for a helmet and gear.</p><p class="give"><b>Trade-off:</b> the maker lists a 33 lb limit. Skip it if you ride an e-bike. It’s a newer listing, so fewer owners have reviewed it so far.</p></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Mount-It! Horizontal Bike Wall Mount with Shelf (paid link)" href="https://www.amazon.com/Mount-Horizontal-Mounted-Mountain-Bicycle/dp/B0CKFKDVJH?crid=1JFF7ZRL6NIXJ&amp;dib=eyJ2IjoiMSJ9.-PPtI0S2VxT7XNim_tW_HvjNcqoEz7Br-QC_R-cVWEll8Ocy_8AVx4u529oxuNadINne_Oz82KqCMiakv8u_0z_aPjQQsspEzY6w5Sa7YvqNTBDNodNq8eX3GBi3oBvJOQtybubhbwlTu7S1bDYD78W80ISnW31M2uPr9P_1JvcSaLof64NQiz-QL26lPvXqB75aTdX1kDcBt3fZy3S9Br-SDouFmcmW3ihbja55rP0.ZS09cDBOSJXzaCNe4tWLPS1nyfc7C1-pWNhxx0h2ML4&amp;dib_tag=se&amp;keywords=Mount-It%21%2Bhorizontal%2Bwith%2Bshelf&amp;qid=1794460667&amp;sprefix=mount-it%2Bhorizontal%2Bwith%2Bshelf%2Caps%2C239&amp;sr=8-1&amp;th=1&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=32a9bf63aeffe5dfb275c0fd019dcb74&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-wokk" data-ride="road">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="10" y="12" width="34" height="18" rx="3" fill="#8A5A3B"/><path d="M20 30v8M34 30v8" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M14 21h26" stroke="#FF5B24" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><rect x="10" y="12" width="34" height="18" rx="3" fill="#8A5A3B"/><path d="M20 30v8M34 30v8" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M14 21h26" stroke="#C9A27A" stroke-width="3" stroke-linecap="round"/></svg></div>
         <div><span class="tier">Premium pick</span><h3>WOKK Wooden Bike Wall Mount</h3><p class="why">For a living-room wall: the maker describes a walnut-finish wood cradle that holds the bike level, with rubber padding where the frame rests.</p><p class="give"><b>Trade-off:</b> the maker lists a 40 lb limit, and owners give mixed reports on the included hardware. It has slightly fewer ratings than our usual bar. Skip it for a bike over 40 lb.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: WOKK Wooden Bike Wall Mount (paid link)" href="https://www.amazon.com/WOKK-Wooden-Saving-Design-Apartment/dp/B0BJLDN6L2?dib=eyJ2IjoiMSJ9.Xuv8ivNBno45_OxkwuLRmInGx_hhEN-8yGFPw_2DkpdQPCmxCzijbvO8vsyNoqH8hekFP6oEOXGe_6EjSRRwnwQAes0RDOpwa8ZLmRH24iJNtFMEJ0mgKYBucCMpx4LAGfiE22qKLqkP9ttyDB64UDx2e3SqG4kOKakY6z3wUNkH-LdXIv6d3erIHIDlKfnjhx5T7p_G-Be9DKHuhisb7eAExArp3xvipJwKkHbL3IwqmSvVQXUYkmW5JvtRxrCvkRRjSA9QtomZ5kdkrChqKXgmOMMOKpjC5VrujVL_ywI.aBRwx6CPggxaB4WLnmhOmrxPEcWBSFBH2EF-_RGg20Q&amp;dib_tag=se&amp;keywords=WOKK+wooden+bike+wall+mount&amp;qid=1794460470&amp;sr=8-6&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=16469b8436e88b69191b9c8ad24985fe&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: WOKK Wooden Bike Wall Mount (paid link)" href="https://www.amazon.com/WOKK-Wooden-Saving-Design-Apartment/dp/B0BJLDN6L2?dib=eyJ2IjoiMSJ9.Xuv8ivNBno45_OxkwuLRmInGx_hhEN-8yGFPw_2DkpdQPCmxCzijbvO8vsyNoqH8hekFP6oEOXGe_6EjSRRwnwQAes0RDOpwa8ZLmRH24iJNtFMEJ0mgKYBucCMpx4LAGfiE22qKLqkP9ttyDB64UDx2e3SqG4kOKakY6z3wUNkH-LdXIv6d3erIHIDlKfnjhx5T7p_G-Be9DKHuhisb7eAExArp3xvipJwKkHbL3IwqmSvVQXUYkmW5JvtRxrCvkRRjSA9QtomZ5kdkrChqKXgmOMMOKpjC5VrujVL_ywI.aBRwx6CPggxaB4WLnmhOmrxPEcWBSFBH2EF-_RGg20Q&amp;dib_tag=se&amp;keywords=WOKK+wooden+bike+wall+mount&amp;qid=1794460470&amp;sr=8-6&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=16469b8436e88b69191b9c8ad24985fe&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
     </ul>
     <figure class="photo rise"><img src="../assets/living-wall-1200.jpg" srcset="../assets/living-wall-800.jpg 800w, ../assets/living-wall-1200.jpg 1200w, ../assets/living-wall.jpg 1400w" sizes="(max-width:880px) 100vw, 50vw" alt="A bike hung level on a brick living-room wall" loading="lazy" style="object-position:50% 50%"><figcaption>A bike hung level in a living room. Stock photo. Not one of the picks.</figcaption></figure>
@@ -504,7 +598,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 </section>
 
 <section class="group" id="floor" aria-labelledby="h-floor">
-  <div class="gh"><div><p class="label rise">Renting, or can't drill</p><h2 id="h-floor" class="rise">No drilling at all.</h2></div><p class="rise">A stand holds the bike upright. It still uses some floor, but it leaves no holes.</p></div>
+  <div class="gh"><div><p class="label rise">Renting, or can’t drill</p><h2 id="h-floor" class="rise">No drilling at all.</h2></div><p class="rise">A stand holds the bike upright. It still uses some floor, but it leaves no holes.</p></div>
   <div class="split">
     <figure class="photo illo rise"><svg viewBox="0 60 400 400" role="img" aria-label="Drawing of a bike held upright by a floor stand under its rear wheel"><rect y="60" width="400" height="400" fill="#E9E1D4"/><line x1="24" y1="330" x2="376" y2="330" stroke="#24272B" stroke-width="2" opacity=".25"/>
 <path d="M58 330 L74 322 L154 322 L170 330" fill="none" stroke="#FF5B24" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -517,19 +611,19 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <circle cx="190" cy="262" r="9" fill="none" stroke="#24272B" stroke-width="4"/></svg><figcaption>Illustration of a floor stand. Not one of the picks.</figcaption></figure>
     <ul class="picks">
       <li class="pick rise" id="pk-bikehand" data-ride="road mtb">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="27" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M14 42h26" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M21 42l3-6h6l3 6" fill="none" stroke="#FF5B24" stroke-width="3"/></svg></div>
-        <div><span class="tier">Budget pick</span><h3>BikeHand Bike Floor Stand</h3><p class="why">For most 24 to 29 inch wheels (maker's range): the bike stands upright in a floor slot.</p><p class="give"><b>Trade-off:</b> it takes floor space. That's the price of no holes. Skip it if floor space is the problem.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: BikeHand Bike Floor Stand (paid link)" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="27" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M14 42h26" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M21 42l3-6h6l3 6" fill="none" stroke="#C9A27A" stroke-width="3"/></svg></div>
+        <div><span class="tier">Budget pick</span><h3>BikeHand Bike Floor Stand</h3><p class="why">For most 24 to 29 inch wheels (maker’s range): the bike stands upright in a floor slot.</p><p class="give"><b>Trade-off:</b> it takes floor space. That’s the price of no holes. Skip it if floor space is the problem.</p></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: BikeHand Bike Floor Stand (paid link)" href="https://www.amazon.com/dp/B00FLTZ26C?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-rakk" data-ride="road mtb">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="24" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M10 42h34" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M34 42V24l-6-6" fill="none" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><circle cx="24" cy="22" r="14" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M10 42h34" stroke="#C9A27A" stroke-width="5" stroke-linecap="round"/><path d="M34 42V24l-6-6" fill="none" stroke="#C9A27A" stroke-width="3.5" stroke-linecap="round"/></svg></div>
         <div><span class="tier">Mid-range pick</span><h3>Feedback Sports Rakk Floor Stand</h3><p class="why">For road, gravel and mountain bikes: the maker says it holds one wheel, with a small footprint.</p><p class="give"><b>Trade-off:</b> owners say very heavy e-bikes or very thin tires can tip it. Skip it for a heavy e-bike.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Feedback Sports Rakk Floor Stand (paid link)" href="https://www.amazon.com/dp/B001F9V842?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Feedback Sports Rakk Floor Stand (paid link)" href="https://www.amazon.com/dp/B001F9V842?tag=wallflower.-20" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
       <li class="pick rise" id="pk-velocache" data-ride="road mtb">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><path d="M27 4v44" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M16 48h22" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><circle cx="27" cy="15" r="8" fill="none" stroke="#EEE9E1" stroke-width="3"/><circle cx="27" cy="35" r="8" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M27 15h9M27 35h9" stroke="#FF5B24" stroke-width="3.5" stroke-linecap="round"/></svg></div>
-        <div><span class="tier">Premium pick</span><h3>Feedback Sports Velo Cache Two-Bike Tower</h3><p class="why">For two bikes and no drilling: a freestanding column holds one bike above the other.</p><p class="give"><b>Trade-off:</b> you lift the top bike up, and the listed limit is 40 lb per bike. One owner says it doesn't suit mountain bikes. Skip it for e-bikes over 40 lb.</p></div>
-        <div class="buy"><a class="btn" aria-label="Check today's price: Feedback Sports Velo Cache Two-Bike Tower (paid link)" href="https://www.amazon.com/dp/B003O7P6LO?&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=09b2b70a9f3e7865afcb547182597a93&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span></div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 54 54"><path d="M27 4v44" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><path d="M16 48h22" stroke="#C9A27A" stroke-width="4" stroke-linecap="round"/><circle cx="27" cy="15" r="8" fill="none" stroke="#EEE9E1" stroke-width="3"/><circle cx="27" cy="35" r="8" fill="none" stroke="#EEE9E1" stroke-width="3"/><path d="M27 15h9M27 35h9" stroke="#C9A27A" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+        <div><span class="tier">Premium pick</span><h3>Feedback Sports Velo Cache Two-Bike Tower</h3><p class="why">For two bikes and no drilling: a freestanding column holds one bike above the other.</p><p class="give"><b>Trade-off:</b> you lift the top bike up, and the listed limit is 40 lb per bike. One owner says it doesn’t suit mountain bikes. Skip it for e-bikes over 40 lb.</p></div>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Feedback Sports Velo Cache Two-Bike Tower (paid link)" href="https://www.amazon.com/dp/B003O7P6LO?&amp;linkCode=ll2&amp;tag=wallflower.-20&amp;linkId=09b2b70a9f3e7865afcb547182597a93&amp;language=en_US&amp;gaOptInStatus=true&amp;ref_=as_li_ss_tl" rel="sponsored nofollow noopener" target="_blank">Check today’s price</a><span class="paidtag">Paid link</span></div>
       </li>
     </ul>
   </div>
@@ -555,17 +649,17 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <dl>
     <div class="rise">
       <dt id="brakes">Can I hang a bike with hydraulic disc brakes?</dt>
-      <dd><p>Shimano's manual says its disc brakes aren't designed to work with the bike upside down or on its side, and asks you to squeeze each lever a few times before you ride. SRAM, quoted by Steadyrack, says vertical storage "should not create any harm to the brakes".</p>
+      <dd><p>Shimano’s manual says its disc brakes aren’t designed to work with the bike upside down or on its side, and asks you to squeeze each lever a few times before you ride. SRAM, quoted by Steadyrack, says vertical storage “should not create any harm to the brakes”.</p>
       <p>If a lever feels soft after storage, have a bike shop check it. To keep the bike level, use a <a href="#floor">floor stand</a> or a <a href="#wall">sideways wall mount</a>.</p>
-      <p class="src">Sources: <a href="https://si.shimano.com/en/pdfs/um/07X0A/UM-07X0A-000-00-ENG.pdf" rel="noopener" target="_blank">Shimano user's manual</a> · <a href="https://www.steadyrack.com/blogs/blog/storing-bikes-with-hydraulic-brakes-in-a-steadyrack" rel="noopener" target="_blank">Steadyrack, quoting SRAM</a></p></dd>
+      <p class="src">Sources: <a href="https://si.shimano.com/en/pdfs/um/07X0A/UM-07X0A-000-00-ENG.pdf" rel="noopener" target="_blank">Shimano user’s manual</a> · <a href="https://www.steadyrack.com/blogs/blog/storing-bikes-with-hydraulic-brakes-in-a-steadyrack" rel="noopener" target="_blank">Steadyrack, quoting SRAM</a></p></dd>
     </div>
     <div class="rise">
       <dt id="ebike">I ride an e-bike. What should I check?</dt>
-      <dd><p>E-bikes are heavy. Check the mount's weight limit against your bike's weight before you buy.</p></dd>
+      <dd><p>E-bikes are heavy. Check the mount’s weight limit against your bike’s weight before you buy.</p></dd>
     </div>
     <div class="rise">
       <dt id="money">How do you make money?</dt>
-      <dd><p>Amazon pays us a small commission when you buy through a "Check today's price" link. It costs you nothing extra. Picks are chosen on fit, ratings and owner complaints first, and the commission doesn't decide what we list.</p></dd>
+      <dd><p>Amazon pays us a small commission when you buy through a “Check today’s price” link. It costs you nothing extra. Picks are chosen on fit, ratings and owner complaints first, and the commission doesn’t decide what we list.</p></dd>
     </div>
     <div class="rise">
       <dt id="contact">Who runs Wallflower?</dt>
@@ -577,7 +671,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <section class="how" id="how" aria-labelledby="h-how">
   <div class="gh"><div><p class="label rise">How we pick</p><h2 id="h-how" class="rise">How a mount gets listed.</h2></div><p class="rise">Picks checked November 12, 2026. Prices change, so check them on Amazon.</p></div>
   <ol class="steps">
-    <li class="rise"><h3>Fit first</h3><p>We sort by the space and the bike, using each maker's own description of what it holds.</p></li>
+    <li class="rise"><h3>Fit first</h3><p>We sort by the space and the bike, using each maker’s own description of what it holds.</p></li>
     <li class="rise"><h3>Complaints read</h3><p>We read owner complaints and product recall lists for safety problems, and leave out anything that looks risky.</p></li>
     <li class="rise"><h3>Ratings bar</h3><p>4.5 stars or more from at least 150 ratings when we check. Two living-room mounts have fewer ratings, and their cards say so.</p></li>
     <li class="rise"><h3>Empty tiers</h3><p>If nothing passes in a tier, we leave it empty.</p></li>
@@ -589,7 +683,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="scrim"></div>
   <div class="inner">
     <h2 id="h-close" class="rise">Find the stud first.</h2>
-    <p class="rise">Any wall mount is only as strong as what it's screwed into. A cheap stud finder, two lag screws into wood, and your landlord's OK if you rent.</p>
+    <p class="rise">Any wall mount is only as strong as what it’s screwed into. A cheap stud finder, two lag screws into wood, and your landlord’s OK if you rent.</p>
     <a class="btn rise" href="#hall">Back to the picks</a>
   </div>
   <small>Stock photo (Pexels)</small>
@@ -601,7 +695,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="cols">
     <p><strong>Paid links</strong>Wallflower earns a commission on purchases made through this page. As an Amazon Associate we earn from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
     <p><strong>About this page</strong>Wallflower is a small independent picks site. Contact: <a href="mailto:hello@wallflowerbikes.com">hello@wallflowerbikes.com</a>. Product names belong to their makers. Neither Amazon nor any maker endorses this page. <a href="../privacy.html">Privacy notice</a>.</p>
-    <p><strong>Pictures</strong>The two monTEK product photos are the maker's, used with their permission. All other photos are from <a href="https://www.pexels.com/">Pexels</a> under the Pexels licence; in the "Floor back" photo we moved the bike onto the wall and drew the mount. Icons drawn for this page.</p>
+    <p><strong>Pictures</strong>The two monTEK product photos are the maker’s, used with their permission. All other photos are from <a href="https://www.pexels.com/">Pexels</a> under the Pexels licence; in the “Floor back” photo we moved the bike onto the wall and drew the mount. Icons drawn for this page.</p>
   </div>
 </footer>
 
@@ -626,7 +720,6 @@ const glRows=[...document.querySelectorAll('.gl tbody tr')];document.querySelect
 document.querySelectorAll('input[name=ride]').forEach(r=>r.addEventListener('change',()=>apply(r.value)));
 </script>
 <script src="kit.js" data-gc="wallflowerbikes" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
-<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},t.querySelectorAll('tbody tr').length*90+1500)},{threshold:.12});io.observe(t)})();</script>
 <script>/* gl-compact */(function(){var sec=document.querySelector('.glance');if(!sec)return;var rows=sec.querySelectorAll('.gl tbody tr');var SHOW=3;if(rows.length<=SHOW+1)return;
 [].forEach.call(rows,function(r,i){if(i>=SHOW)r.classList.add('gl-more')});
 [].forEach.call(sec.querySelectorAll('.gl'),function(t){if(!t.querySelector('tbody tr:not(.gl-more)')){t.classList.add('gl-hidegroup');var h=t.previousElementSibling;if(h&&h.classList.contains('gl-h'))h.classList.add('gl-hidegroup')}});
