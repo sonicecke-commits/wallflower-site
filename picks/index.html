@@ -377,8 +377,6 @@ h1,h2,.hero h1,.gh h2,.close h2,.glance h2,.faq h2,.su h2,footer .name,.mark,.st
 .hero h1{line-height:.94}.gh h2,.close h2{line-height:.96}footer .name{line-height:.9}
 .pick h3,.steps h3,.faq dt,.gift-card .if{line-height:1.15}
 /* colour: orange only for the pill, eyebrows, logo dot and slider */
-.hero h1 em{color:inherit}
-.paid{border-left-color:var(--oak)!important}
 .tier,.gl .tier,.g-wall .tier{color:var(--fg-2)!important}.g-wall .tier{color:#C9CBC8!important}
 .steps li::before{color:var(--fg-2)}
 .gh h2::after,.g-wall .gh h2::after{background:var(--oak)!important}
@@ -387,7 +385,7 @@ h1,h2,.hero h1,.gh h2,.close h2,.glance h2,.faq h2,.su h2,footer .name,.mark,.st
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glance{--gl-top:#2E3236;--gl-top-ink:#EEE9E1;--gl-top-muted:#AEB0AE;--gl-top-acc:var(--oak);--gl-top-off:#4A4F55;--gl-acc:var(--fg);--gl-acc-ink:var(--graphite)}}
 :root[data-theme="dark"] .glance{--gl-top:#2E3236;--gl-top-ink:#EEE9E1;--gl-top-muted:#AEB0AE;--gl-top-acc:var(--oak);--gl-top-off:#4A4F55;--gl-acc:var(--fg);--gl-acc-ink:var(--graphite)}
 /* one button: graphite on paper, warm light on graphite or photo; never orange */
-.btn,.act,.su button:not(.su-mid button){background:var(--btn-bg)!important;color:var(--btn-fg)!important}
+.btn,.su button:not(.su-mid button){background:var(--btn-bg)!important;color:var(--btn-fg)!important}
 .g-wall .btn,.close .btn{background:#EEE9E1!important;color:var(--graphite)!important}
 .act{transition:transform .2s}
 /* one card: same framed tile for every pick, text in one column, button with "Paid link" beside it */
@@ -438,7 +436,7 @@ h1,h2,.hero h1,.gh h2,.close h2,.glance h2,.faq h2,.su h2,footer .name,.mark,.st
 h1,h2,footer .name,.mark{font-variant-ligatures:no-common-ligatures;font-feature-settings:"liga" 0,"clig" 0}
 @media (max-width:880px){.hero{row-gap:0!important}}
 .gl tr.gl-top .tier{color:#C9CBC8!important}
-.start a,.faq dd a,.su-small a,footer .cols a{color:var(--fg)!important;text-decoration-color:var(--oak);text-decoration-thickness:2px;text-underline-offset:3px}
+.faq dd a,.su-small a,footer .cols a{color:var(--fg)!important;text-decoration-color:var(--oak);text-decoration-thickness:2px;text-underline-offset:3px}
 /* round 2: FAQ answers capped near 70 characters a line on desktop; darker scrim behind Find the stud first. */
 .faq dd{max-width:30em}
 .close .scrim{background:linear-gradient(90deg,rgba(20,22,24,.8) 0%,rgba(20,22,24,.72) 48%,rgba(20,22,24,.3) 80%,rgba(20,22,24,.1) 100%),linear-gradient(180deg,rgba(20,22,24,0) 30%,rgba(20,22,24,.6))}
